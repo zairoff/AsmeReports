@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1082
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reports", "Reports\Reports.csproj", "{DE69D052-3794-4CCF-9879-A54223E36326}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "QuantReport", "QuantReport\QuantReport.vdproj", "{494F3655-13B4-46BB-85C2-B47F6DBE86C1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE69D052-3794-4CCF-9879-A54223E36326}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE69D052-3794-4CCF-9879-A54223E36326}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE69D052-3794-4CCF-9879-A54223E36326}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE69D052-3794-4CCF-9879-A54223E36326}.Release|Any CPU.Build.0 = Release|Any CPU
+		{494F3655-13B4-46BB-85C2-B47F6DBE86C1}.Debug|Any CPU.ActiveCfg = Debug
+		{494F3655-13B4-46BB-85C2-B47F6DBE86C1}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A6AFEA5B-D714-4744-848C-8C1864FCF74B}
+	EndGlobalSection
+EndGlobal
