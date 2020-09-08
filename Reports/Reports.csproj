@@ -89,6 +89,12 @@
     </Compile>
     <Compile Include="CustomClasses\MultipleShift.cs" />
     <Compile Include="CustomClasses\MultipleShiftTemp.cs" />
+    <Compile Include="Doors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Doors.Designer.cs">
+      <DependentUpon>Doors.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,9 @@
     </Compile>
     <EmbeddedResource Include="ChangePassword.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Doors.resx">
+      <DependentUpon>Doors.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -246,6 +255,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\quant.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\doorway.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

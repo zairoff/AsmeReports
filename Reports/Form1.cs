@@ -12,7 +12,7 @@ namespace Reports
             myDatabase = new MyDatabase();
             //thread1 = new System.Threading.Thread(new System.Threading.ThreadStart(fillTree));
             //thread1.Start();
-            fillTree();            
+            FillTree();            
             dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-dd");
             dateTimePicker2.Text = DateTime.Now.ToString("yyyy-MM-dd");
             programm_type = Convert.ToInt32((System.Configuration.ConfigurationManager.AppSettings["program_type"]));
@@ -63,7 +63,7 @@ namespace Reports
             pictureBox4.Image = Properties.Resources.calendar_light;
         }
 
-        private void fillTree()
+        private void FillTree()
         {
             System.Collections.Generic.List<MyTree> myTrees = myDatabase.getTree("select ttext, mytree from department order by id asc");
             for (int i = 0; i < myTrees.Count; i++)
@@ -170,25 +170,22 @@ namespace Reports
                         single.ReportByPerson(comboBox1.SelectedIndex, employeeListboxes[comboBox2.SelectedIndex].ID,
                         dateTimePicker1.Text, dateTimePicker2.Text);
                         break;
+                    //case 2:
+                    //    var single_temp = new CustomClasses.SingleShiftTemp(dataGridView1, label5);
+                    //    single_temp.ReportByPerson(comboBox1.SelectedIndex, employeeListboxes[comboBox2.SelectedIndex].ID,
+                    //    dateTimePicker1.Text, dateTimePicker2.Text);
+                    //    break;
                     case 2:
-                        var single_temp = new CustomClasses.SingleShiftTemp(dataGridView1, label5);
-                        single_temp.ReportByPerson(comboBox1.SelectedIndex, employeeListboxes[comboBox2.SelectedIndex].ID,
-                        dateTimePicker1.Text, dateTimePicker2.Text);
-                        break;
-                    case 3:
                         var multiple = new CustomClasses.MultipleShift(dataGridView1, label5);
                         multiple.ReportByPerson(comboBox1.SelectedIndex, employeeListboxes[comboBox2.SelectedIndex].ID,
                         dateTimePicker1.Text, dateTimePicker2.Text);
                         break;
-                    case 4:
-                        var multiple_temp = new CustomClasses.MultipleShiftTemp(dataGridView1, label5);
-                        multiple_temp.ReportByPerson(comboBox1.SelectedIndex, employeeListboxes[comboBox2.SelectedIndex].ID,
-                        dateTimePicker1.Text, dateTimePicker2.Text);
-                        break;
-                    default:
-                        var single_default = new CustomClasses.SingleShift(dataGridView1, label5);
-                        single_default.ReportByPerson(comboBox1.SelectedIndex, employeeListboxes[comboBox2.SelectedIndex].ID,
-                        dateTimePicker1.Text, dateTimePicker2.Text);
+                    //case 4:
+                    //    var multiple_temp = new CustomClasses.MultipleShiftTemp(dataGridView1, label5);
+                    //    multiple_temp.ReportByPerson(comboBox1.SelectedIndex, employeeListboxes[comboBox2.SelectedIndex].ID,
+                    //    dateTimePicker1.Text, dateTimePicker2.Text);
+                    //    break;
+                    default:                        
                         break;
                 }
             }
@@ -219,25 +216,22 @@ namespace Reports
                         single.ReportByOtdel(comboBox1.SelectedIndex, treeView1.SelectedNode.Name, dateTimePicker1.Text,
                             dateTimePicker2.Text);
                         break;
+                    //case 2:
+                    //    var single_temp = new CustomClasses.SingleShiftTemp(dataGridView1, label5);
+                    //    single_temp.ReportByOtdel(comboBox1.SelectedIndex, treeView1.SelectedNode.Name, dateTimePicker1.Text,
+                    //        dateTimePicker2.Text);
+                    //    break;
                     case 2:
-                        var single_temp = new CustomClasses.SingleShiftTemp(dataGridView1, label5);
-                        single_temp.ReportByOtdel(comboBox1.SelectedIndex, treeView1.SelectedNode.Name, dateTimePicker1.Text,
-                            dateTimePicker2.Text);
-                        break;
-                    case 3:
                         var multiple = new CustomClasses.MultipleShift(dataGridView1, label5);
                         multiple.ReportByOtdel(comboBox1.SelectedIndex, treeView1.SelectedNode.Name, dateTimePicker1.Text,
                             dateTimePicker2.Text);
                         break;
-                    case 4:
-                        var multiple_temp = new CustomClasses.MultipleShiftTemp(dataGridView1, label5);
-                        multiple_temp.ReportByOtdel(comboBox1.SelectedIndex, treeView1.SelectedNode.Name, dateTimePicker1.Text,
-                            dateTimePicker2.Text);
-                        break;
-                    default:
-                        var single_default = new CustomClasses.SingleShift(dataGridView1, label5);
-                        single_default.ReportByOtdel(comboBox1.SelectedIndex, treeView1.SelectedNode.Name, dateTimePicker1.Text,
-                            dateTimePicker2.Text);
+                    //case 4:
+                    //    var multiple_temp = new CustomClasses.MultipleShiftTemp(dataGridView1, label5);
+                    //    multiple_temp.ReportByOtdel(comboBox1.SelectedIndex, treeView1.SelectedNode.Name, dateTimePicker1.Text,
+                    //        dateTimePicker2.Text);
+                    //    break;
+                    default:                        
                         break;
                 }
             }
@@ -269,6 +263,11 @@ namespace Reports
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
