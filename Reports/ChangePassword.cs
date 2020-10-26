@@ -7,7 +7,10 @@ namespace Reports
         public ChangePassword()
         {
             InitializeComponent();
+            _dataBase = new DataBase();
         }
+
+        private readonly DataBase _dataBase;
 
         private void button2_Click(object sender, System.EventArgs e)
         {
@@ -17,31 +20,31 @@ namespace Reports
 
         private void button1_Click(object sender, System.EventArgs e)
         {
-            MyDatabase myDatabase = new MyDatabase();
             if(string.IsNullOrEmpty(textBox1.Text) && string.IsNullOrEmpty(textBox2.Text) &&
                 string.IsNullOrEmpty(textBox3.Text))
             {
-                MessageBox.Show("заполните все обязательные поля");
+                MessageBox.Show(Properties.Resources.FILL_IN_FIELDS, "info", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (!myDatabase.checkRow("select 1 from login where pass = '" + textBox1.Text + "'"))
+            if (!_dataBase.checkRow("select 1 from login where pass = '" + textBox1.Text.Trim() + "'"))
             {
                 textBox1.ForeColor = System.Drawing.Color.Red;
-                MessageBox.Show("неверный пароль");                
+                MessageBox.Show(Properties.Resources.PASSWORD_WRONG, "info", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (!string.Equals(textBox2.Text, textBox3.Text))
+            if (!string.Equals(textBox2.Text.Trim(), textBox3.Text.Trim()))
             {
                 textBox2.ForeColor = System.Drawing.Color.Red;
                 textBox3.ForeColor = System.Drawing.Color.Red;
-                MessageBox.Show("пароли не совпадают");                
+                MessageBox.Show(Properties.Resources.PASSWORD_NOT_MATCH, "info", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            myDatabase.insertData("update login set pass = '" + textBox3.Text + "' where pass = '" +
-                textBox1.Text + "'");
-            if(myDatabase.checkRow("select 1 from login where pass = '" + textBox3.Text + "'"))
+
+            _dataBase.insertData("update login set pass = '" + textBox3.Text + "' where pass = '" + textBox1.Text + "'");
+
+            if(_dataBase.checkRow("select 1 from login where pass = '" + textBox3.Text.Trim() + "'"))
             {
-                MessageBox.Show("Успешно обновлено");
+                MessageBox.Show(Properties.Resources.PASSWORD_SUCCESS, "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 textBox1.Text = "";
                 textBox2.Text = "";
                 textBox3.Text = "";
@@ -61,36 +64,6 @@ namespace Reports
         private void textBox3_KeyDown(object sender, KeyEventArgs e)
         {
             textBox3.ForeColor = System.Drawing.Color.Black;
-        }
-
-        private void label1_Click(object sender, System.EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, System.EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, System.EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, System.EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, System.EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, System.EventArgs e)
-        {
-
         }
     }
 }

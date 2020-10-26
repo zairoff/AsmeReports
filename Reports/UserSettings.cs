@@ -7,17 +7,17 @@ namespace Reports
         public UserSettings()
         {
             InitializeComponent();            
-            myDatabase = new MyDatabase();
-            fillTree();
+            _dataBase = new DataBase();
+            FillTree();
         }
 
-        private MyDatabase myDatabase;
+        private DataBase _dataBase;
         private System.Drawing.Point lastLocation;
         private bool mouseDown = false;
 
-        private void fillTree()
+        private void FillTree()
         {
-            System.Collections.Generic.List<MyTree> myTrees = myDatabase.getTree("select ttext, mytree from department order by id asc");
+            System.Collections.Generic.List<MyTree> myTrees = _dataBase.getTree("select ttext, mytree from department order by id asc");
             for (int i = 0; i < myTrees.Count; i++)
             {
                 TreeNode tnode = new TreeNode();
@@ -27,10 +27,10 @@ namespace Reports
             }
         }
 
-        private void getEmpl(string str)
+        private void GetEmployee(string str)
         {
             flowLayoutPanel1.Controls.Clear();
-            System.Collections.Generic.List<MyControls.Employee> employees = myDatabase.GetEmployees(str);
+            var employees = _dataBase.GetEmployees(str);
             foreach (MyControls.Employee employee in employees)
             {
                 flowLayoutPanel1.Controls.Add(employee);
@@ -39,8 +39,8 @@ namespace Reports
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            getEmpl("select employeeid, familiya, ism, otchestvo, photo::bytea, otdel, lavozim from employee where" +
-                " department <@ '" + treeView1.SelectedNode.Name + "'");
+            GetEmployee("select employeeid, familiya, ism, otchestvo, photo::bytea, otdel, lavozim from employee where" +
+                " department <@ '" + treeView1.SelectedNode.Name + "' and status = true");
         }
 
         private void btn_close_Click(object sender, System.EventArgs e)
@@ -73,6 +73,17 @@ namespace Reports
 
                 this.Update();
             }
+        }
+
+        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBox1.Text))
+                return;
+
+            var query = "select employeeid, familiya, ism, otchestvo, photo::bytea, otdel, lavozim from employee where" +
+                " familiya ILIKE '" + textBox1.Text.Trim() + "%' and status = true";
+
+            GetEmployee(query);
         }
     }
 }

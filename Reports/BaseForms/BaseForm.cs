@@ -54,5 +54,17 @@ namespace Reports.BaseForms
                 ClearRecursive(treeNode.Nodes[i], treeView);
             }
         }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // BaseForm
+            // 
+            this.ClientSize = new System.Drawing.Size(412, 388);
+            this.Name = "BaseForm";
+            this.ResumeLayout(false);
+
+        }
     }
 }

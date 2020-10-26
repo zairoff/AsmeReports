@@ -1,7 +1,7 @@
 ﻿
 namespace Reports
 {
-    class MyDatabase
+    class DataBase
     {
         public System.Collections.Generic.List<MyTree> getTree(string query)
         {

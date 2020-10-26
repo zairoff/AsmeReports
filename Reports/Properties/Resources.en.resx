@@ -117,197 +117,163 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="calendar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\calendar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="quant" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\quant.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="calendar_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\calendar_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="excel_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\excel_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="user_holiday" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\user_holiday.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="user_holiday_light" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\user_holiday_light.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="doorway" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\doorway.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="FILL_IN_FIELDS" xml:space="preserve">
-    <value>Заполните все обязательные поля</value>
-  </data>
-  <data name="PASSWORD_NOT_MATCH" xml:space="preserve">
-    <value>Пароли не совпадают</value>
-  </data>
-  <data name="PASSWORD_SUCCESS" xml:space="preserve">
-    <value>Обновлено успешно!</value>
-  </data>
-  <data name="PASSWORD_WRONG" xml:space="preserve">
-    <value>Неверный пароль</value>
-  </data>
-  <data name="DEPARTMENT" xml:space="preserve">
-    <value>Отдел</value>
-  </data>
-  <data name="FILTER" xml:space="preserve">
-    <value>фильтр по</value>
-  </data>
-  <data name="REPORT_FROM" xml:space="preserve">
-    <value>Отчёт от</value>
-  </data>
-  <data name="TO" xml:space="preserve">
-    <value>до</value>
-  </data>
   <data name="BUSSINESS_TRIP" xml:space="preserve">
-    <value>командировка</value>
+    <value>business trip</value>
   </data>
   <data name="DATE_FUTURE" xml:space="preserve">
-    <value>Дата должна быть установлена ​​на будущее</value>
+    <value>The date must be set for the future</value>
   </data>
   <data name="DELETE" xml:space="preserve">
-    <value>Удалить?</value>
+    <value>Delete?</value>
+  </data>
+  <data name="DEPARTMENT" xml:space="preserve">
+    <value>Department</value>
   </data>
   <data name="EARLY_GONE" xml:space="preserve">
-    <value>Ранний уход</value>
+    <value>Early gone</value>
   </data>
   <data name="EMPLOYEE_INSIDE" xml:space="preserve">
-    <value>Сотрудники внутри</value>
+    <value>Employee inside</value>
   </data>
   <data name="EMPLOYEE_IN_PERIOD_TIME" xml:space="preserve">
-    <value>Сотрудник уже занял в этот период времени</value>
+    <value>The employee has already occupied during this period of time</value>
+  </data>
+  <data name="FILL_IN_FIELDS" xml:space="preserve">
+    <value>Fill in all required fields</value>
+  </data>
+  <data name="FILTER" xml:space="preserve">
+    <value>filter by</value>
   </data>
   <data name="FROM" xml:space="preserve">
-    <value>От</value>
+    <value>From</value>
   </data>
   <data name="GRIDVIEW_DATE" xml:space="preserve">
-    <value>Дата</value>
+    <value>DATE</value>
   </data>
   <data name="GRIDVIEW_DAY" xml:space="preserve">
-    <value>День</value>
+    <value>DAY</value>
   </data>
   <data name="GRIDVIEW_DEPARTMENT" xml:space="preserve">
-    <value>ОТДЕЛ</value>
+    <value>DEPARTMENT</value>
   </data>
   <data name="GRIDVIEW_EARLY" xml:space="preserve">
-    <value>Рано</value>
+    <value>EARLY</value>
   </data>
   <data name="GRIDVIEW_ENTER" xml:space="preserve">
-    <value>Вход</value>
+    <value>ENTER</value>
   </data>
   <data name="GRIDVIEW_EXIT" xml:space="preserve">
-    <value>Выход</value>
+    <value>EXIT</value>
   </data>
   <data name="GRIDVIEW_FAMILY_NAME" xml:space="preserve">
-    <value>ОТЧЕСТВО</value>
+    <value>FAMILY NAME</value>
   </data>
   <data name="GRIDVIEW_FROM" xml:space="preserve">
-    <value>От</value>
+    <value>FROM</value>
   </data>
   <data name="GRIDVIEW_HOLIDAY" xml:space="preserve">
-    <value>Праздник</value>
+    <value>HOLIDAY</value>
   </data>
   <data name="GRIDVIEW_HOURS_DAY" xml:space="preserve">
-    <value>День</value>
+    <value>HOURS DAY</value>
   </data>
   <data name="GRIDVIEW_HOURS_NIGHT" xml:space="preserve">
-    <value>Ноч</value>
+    <value>HOURS NIGHT</value>
   </data>
   <data name="GRIDVIEW_HOURS_PERIOD" xml:space="preserve">
-    <value>Часы </value>
+    <value>HOURS IN THIS PERIOD</value>
   </data>
   <data name="GRIDVIEW_LATE" xml:space="preserve">
-    <value>Опаздал/а</value>
+    <value>LATE</value>
   </data>
   <data name="GRIDVIEW_MISSING" xml:space="preserve">
-    <value>Отсутствующие</value>
+    <value>MISSING</value>
   </data>
   <data name="GRIDVIEW_NAME" xml:space="preserve">
-    <value>ИМЯ</value>
+    <value>NAME</value>
   </data>
   <data name="GRIDVIEW_PERSENCE" xml:space="preserve">
-    <value>ПРИСУТСТВИЕ</value>
+    <value>TIME OF PRESENCE</value>
   </data>
   <data name="GRIDVIEW_POSITION" xml:space="preserve">
-    <value>ДОЛЖНОСТЬ</value>
+    <value>POSITION</value>
   </data>
   <data name="GRIDVIEW_QUICK_OUTSIDE" xml:space="preserve">
-    <value>Уволнительные</value>
+    <value>OUTSIDE</value>
   </data>
   <data name="GRIDVIEW_REASON" xml:space="preserve">
-    <value>ПРИЧИНА</value>
+    <value>REASON</value>
   </data>
   <data name="GRIDVIEW_SURNAME" xml:space="preserve">
-    <value>ФАМИЛИЯ</value>
+    <value>SURNAME</value>
   </data>
   <data name="GRIDVIEW_TEMPERATURE" xml:space="preserve">
-    <value />
+    <value>TEMPERATURE</value>
   </data>
   <data name="GRIDVIEW_TO" xml:space="preserve">
-    <value />
+    <value>TO</value>
   </data>
   <data name="GRIDVIEW_TOTAL_HOURS_DAY" xml:space="preserve">
-    <value />
+    <value>TOTAL HOURS DAY</value>
   </data>
   <data name="GRIDVIEW_TOTAL_HOURS_NIGHT" xml:space="preserve">
-    <value />
+    <value>TOTAL HOURS NIGHT</value>
   </data>
   <data name="GRIDVIEW_VACATION" xml:space="preserve">
-    <value />
+    <value>VACATION</value>
   </data>
   <data name="HOLIDAY" xml:space="preserve">
-    <value>Праздник</value>
+    <value>Holiday</value>
   </data>
   <data name="HOLIDAY_INFO" xml:space="preserve">
-    <value>Праздник существует в этом периоде времени</value>
+    <value>The holiday exists in this period of time</value>
   </data>
   <data name="LATE_COME" xml:space="preserve">
-    <value>Опоздал/а</value>
+    <value>Late come</value>
   </data>
   <data name="MISSING" xml:space="preserve">
-    <value>Отсуствует</value>
+    <value>Missing</value>
   </data>
   <data name="NUMBER_OF_EVENTS" xml:space="preserve">
-    <value>Количество событий</value>
+    <value>Number of events</value>
   </data>
   <data name="PAID_VACATION" xml:space="preserve">
-    <value>оплачиваемый отпуск</value>
+    <value>paid vacation</value>
+  </data>
+  <data name="PASSWORD_NOT_MATCH" xml:space="preserve">
+    <value>Passwords don't match</value>
+  </data>
+  <data name="PASSWORD_SUCCESS" xml:space="preserve">
+    <value>Updated successfully!</value>
+  </data>
+  <data name="PASSWORD_WRONG" xml:space="preserve">
+    <value>Password is wrong</value>
   </data>
   <data name="QUICK_OUTSIDE_INFO" xml:space="preserve">
-    <value>Этот таблица для события в течение рабoчий день</value>
+    <value>This table for events during the working day</value>
   </data>
   <data name="QUICK_OUTSIDE_PAID" xml:space="preserve">
-    <value>оплачиваемый</value>
+    <value>paid</value>
   </data>
   <data name="QUICK_OUTSIDE_UNPAID" xml:space="preserve">
-    <value>неоплачиваемый</value>
+    <value>unpaid</value>
+  </data>
+  <data name="REPORT_FROM" xml:space="preserve">
+    <value>Report from</value>
+  </data>
+  <data name="TO" xml:space="preserve">
+    <value>to</value>
   </data>
   <data name="UNPAID_VACATION" xml:space="preserve">
-    <value>неоплачиваемый отпуск</value>
+    <value>unpaid vacation</value>
   </data>
   <data name="USERNAME_OR_PASSWORD_WRONG" xml:space="preserve">
-    <value>Неверный логин или пароль</value>
+    <value>Username or password is wrong</value>
   </data>
   <data name="VACATION" xml:space="preserve">
-    <value>Отпуск</value>
+    <value>Vacation</value>
   </data>
   <data name="WARNING" xml:space="preserve">
-    <value>Предупреждение</value>
+    <value>Warning</value>
   </data>
 </root>

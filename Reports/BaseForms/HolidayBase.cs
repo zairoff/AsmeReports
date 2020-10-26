@@ -15,7 +15,7 @@ namespace Reports.BaseForms
 
         protected bool checkDate()
         {
-            return dateTimePicker1.Value < dateTimePicker2.Value;
+            return dateTimePicker1.Value <= dateTimePicker2.Value;
         }
 
         private void btn_close_Click(object sender, EventArgs e)
@@ -26,8 +26,8 @@ namespace Reports.BaseForms
         protected bool Check()
         {
             DialogResult dialogResult = MessageBox.Show("Index:" + dataGridView1[0, dataGridView1.CurrentCell.RowIndex].Value +
-                " действительно хотите удалить?",
-                "Предупреждение", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                Properties.Resources.DELETE,
+                Properties.Resources.WARNING, MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
                 return true;

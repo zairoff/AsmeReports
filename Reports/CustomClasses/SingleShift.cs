@@ -5,13 +5,13 @@ namespace Reports.CustomClasses
 {
     class SingleShift
     {
-        private readonly MyDatabase _dataBase;
+        private readonly DataBase _dataBase;
         private readonly DataGridView _dataGridView;
         private readonly Label _label;
 
         public SingleShift(DataGridView dataGridView, Label label)
         {
-            _dataBase = new MyDatabase();
+            _dataBase = new DataBase();
             _dataGridView = dataGridView;
             _label = label;
         }        
@@ -51,14 +51,22 @@ namespace Reports.CustomClasses
                         dan + "','" + gacha + "')", _dataGridView);
                     break;
                 case 7:
-                    _dataBase.getRecords("select *from getbeing_factory_by_otdel('" + tree + "','" +
+                    _dataBase.getRecords("select *from get_extra_worked_hours_total_by_otdel('" + tree + "','" +
                         dan + "','" + gacha + "')", _dataGridView);
                     break;
                 case 8:
+                    _dataBase.getRecords("select *from get_extrawork_by_otdel('" + tree + "','" +
+                        dan + "','" + gacha + "')", _dataGridView);
+                    break;
+                case 9:
+                    _dataBase.getRecords("select *from getbeing_factory_by_otdel('" + tree + "','" +
+                        dan + "','" + gacha + "')", _dataGridView);
+                    break;
+                case 10:
                     _dataBase.getRecords("select *from getsotrudniki_vnutri_day('" + DateTime.Now.ToString("yyyy-MM-dd") + "','" +
                     DateTime.Now.ToString("yyyy-MM-dd") + "')", _dataGridView);
                     break;
-                case 9:
+                case 11:
                     _dataBase.getRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, " +
                     "t2.lavozim, t1.sabab, t1.dan, t1.gacha from otpusk t1 inner join employee t2 on t1.employeeid = " +
                     "t2.employeeid where (t2.department  <@ '" + tree + "' and dan >= '" +
@@ -66,7 +74,7 @@ namespace Reports.CustomClasses
                     tree + "' and gacha >= '" + dan + "' and gacha <= '" +
                     gacha + "')", _dataGridView);
                     break;
-                case 10:
+                case 12:
                     _dataBase.getRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, t2.lavozim, " +
                         "t1.door, t1.sana, t1.temperature from temperature t1 inner join employee t2 on t1.employeeid = " +
                         "t2.employeeid where t2.department <@ '" + tree + "' and t1.sana >= '" + dan + "' and " +
@@ -112,17 +120,25 @@ namespace Reports.CustomClasses
                     gacha + "')", _dataGridView);
                     break;
                 case 7:
-                    _dataBase.getRecords("select *from getbeing_factory_by_person(" + id + ",'" + dan + "','" +
+                    _dataBase.getRecords("select *from get_extra_worked_hours_total_by_person(" + id + ",'" + dan + "','" +
+                    gacha + "')", _dataGridView);
+                    break;
+                case 8:
+                    _dataBase.getRecords("select *from get_extrawork_by_person(" + id + ",'" + dan + "','" +
                     gacha + "')", _dataGridView);
                     break;
                 case 9:
+                    _dataBase.getRecords("select *from getbeing_factory_by_person(" + id + ",'" + dan + "','" +
+                    gacha + "')", _dataGridView);
+                    break;
+                case 10:
                     _dataBase.getRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, " +
                     "t2.lavozim, t1.sabab, t1.dan, t1.gacha from otpusk t1 inner join employee t2 on t1.employeeid = " +
                     "t2.employeeid where (t1.employeeid = " + id + " and dan >= '" + dan + "' and dan <= '" +
                     gacha + "') or (t1.employeeid = " + id + " and gacha >= '" + dan + "' and gacha <= '" +
                     gacha + "')", _dataGridView);
                     break;
-                case 10:
+                case 11:
                     _dataBase.getRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, t2.lavozim, " +
                         "t1.door, t1.sana, t1.temperature from temperature t1 inner join employee t2 on t1.employeeid = " +
                         "t2.employeeid where t1.employeeid = " + id + " and t1.sana >= '" + dan + "' and " +
@@ -166,6 +182,7 @@ namespace Reports.CustomClasses
                     _dataGridView.Columns[5].HeaderText = "Должность";
                     _dataGridView.Columns[6].HeaderText = "Вход";
                     _dataGridView.Columns[7].HeaderText = "Выход";
+
                     break;
                 case 2:
                     _dataGridView.Columns[0].HeaderText = "ID";
@@ -178,6 +195,7 @@ namespace Reports.CustomClasses
                     _dataGridView.Columns[7].HeaderText = "Вход";
                     _dataGridView.Columns[8].HeaderText = "Опоздал/а";
                     break;
+
                 case 3:
                     _dataGridView.Columns[0].HeaderText = "ID";
                     _dataGridView.Columns[1].HeaderText = "Фамилия";
@@ -189,6 +207,7 @@ namespace Reports.CustomClasses
                     _dataGridView.Columns[7].HeaderText = "Выход";
                     _dataGridView.Columns[8].HeaderText = "Ранний";
                     break;
+
                 case 4:
                     _dataGridView.Columns[0].HeaderText = "ID";
                     _dataGridView.Columns[1].HeaderText = "Фамилия";
@@ -237,13 +256,9 @@ namespace Reports.CustomClasses
                     _dataGridView.Columns[3].HeaderText = "Отчество";
                     _dataGridView.Columns[4].HeaderText = "Отдел";
                     _dataGridView.Columns[5].HeaderText = "Должность";
-                    _dataGridView.Columns[6].HeaderText = "День";
-                    _dataGridView.Columns[7].HeaderText = "Праздник";
-                    _dataGridView.Columns[8].HeaderText = "Отпуск";
-                    _dataGridView.Columns[9].HeaderText = "Увольнительные";
-                    _dataGridView.Columns[10].HeaderText = "Вход";
-                    _dataGridView.Columns[11].HeaderText = "Выход";
-                    _dataGridView.Columns[12].HeaderText = "Время присутствия";
+                    _dataGridView.Columns[6].HeaderText = "От";
+                    _dataGridView.Columns[7].HeaderText = "До";
+                    _dataGridView.Columns[8].HeaderText = "Часы за период";
                     break;
 
                 case 8:
@@ -254,9 +269,36 @@ namespace Reports.CustomClasses
                     _dataGridView.Columns[4].HeaderText = "Отдел";
                     _dataGridView.Columns[5].HeaderText = "Должность";
                     _dataGridView.Columns[6].HeaderText = "Число";
+                    _dataGridView.Columns[7].HeaderText = "Часы в день";
                     break;
 
                 case 9:
+                    _dataGridView.Columns[0].HeaderText = "ID";
+                    _dataGridView.Columns[1].HeaderText = "Фамилия";
+                    _dataGridView.Columns[2].HeaderText = "Имя";
+                    _dataGridView.Columns[3].HeaderText = "Отчество";
+                    _dataGridView.Columns[4].HeaderText = "Отдел";
+                    _dataGridView.Columns[5].HeaderText = "Должность";
+                    _dataGridView.Columns[6].HeaderText = "День";
+                    _dataGridView.Columns[7].HeaderText = "Праздник";
+                    _dataGridView.Columns[8].HeaderText = "Отпуск";
+                    _dataGridView.Columns[9].HeaderText = "Увольнительные";
+                    _dataGridView.Columns[10].HeaderText = "Вход";
+                    _dataGridView.Columns[11].HeaderText = "Выход";
+                    _dataGridView.Columns[12].HeaderText = "Время присутствия";
+                    break;
+
+                case 10:
+                    _dataGridView.Columns[0].HeaderText = "ID";
+                    _dataGridView.Columns[1].HeaderText = "Фамилия";
+                    _dataGridView.Columns[2].HeaderText = "Имя";
+                    _dataGridView.Columns[3].HeaderText = "Отчество";
+                    _dataGridView.Columns[4].HeaderText = "Отдел";
+                    _dataGridView.Columns[5].HeaderText = "Должность";
+                    _dataGridView.Columns[6].HeaderText = "Число";
+                    break;
+
+                case 11:
                     _dataGridView.Columns[0].HeaderText = "ID";
                     _dataGridView.Columns[1].HeaderText = "Фамилия";
                     _dataGridView.Columns[2].HeaderText = "Имя";
@@ -268,7 +310,7 @@ namespace Reports.CustomClasses
                     _dataGridView.Columns[8].HeaderText = "До";
                     break;
 
-                case 10:
+                case 12:
                     _dataGridView.Columns[0].HeaderText = "ID";
                     _dataGridView.Columns[1].HeaderText = "Фамилия";
                     _dataGridView.Columns[2].HeaderText = "Имя";
@@ -326,10 +368,10 @@ namespace Reports.CustomClasses
                 case 4:
                     _label.Text += "   Отсутсвующие: " + _dataGridView.RowCount;
                     break;
-                case 8:
+                case 10:
                     _label.Text += "   Сотрудники - внутри: " + _dataGridView.RowCount;
                     break;
-                case 9:
+                case 11:
                     _label.Text += "   Отпуск - больничный: " + _dataGridView.RowCount;
                     break;
                 default: _label.Text = ""; break;

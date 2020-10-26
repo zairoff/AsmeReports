@@ -61,6 +61,15 @@ namespace Reports.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to командировка.
+        /// </summary>
+        internal static string BUSSINESS_TRIP {
+            get {
+                return ResourceManager.GetString("BUSSINESS_TRIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap calendar {
@@ -81,12 +90,66 @@ namespace Reports.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Дата должна быть установлена ​​на будущее.
+        /// </summary>
+        internal static string DATE_FUTURE {
+            get {
+                return ResourceManager.GetString("DATE_FUTURE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Удалить?.
+        /// </summary>
+        internal static string DELETE {
+            get {
+                return ResourceManager.GetString("DELETE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Отдел.
+        /// </summary>
+        internal static string DEPARTMENT {
+            get {
+                return ResourceManager.GetString("DEPARTMENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap doorway {
             get {
                 object obj = ResourceManager.GetObject("doorway", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ранний уход.
+        /// </summary>
+        internal static string EARLY_GONE {
+            get {
+                return ResourceManager.GetString("EARLY_GONE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сотрудник уже занял в этот период времени.
+        /// </summary>
+        internal static string EMPLOYEE_IN_PERIOD_TIME {
+            get {
+                return ResourceManager.GetString("EMPLOYEE_IN_PERIOD_TIME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Сотрудники внутри.
+        /// </summary>
+        internal static string EMPLOYEE_INSIDE {
+            get {
+                return ResourceManager.GetString("EMPLOYEE_INSIDE", resourceCulture);
             }
         }
         
@@ -111,6 +174,285 @@ namespace Reports.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Заполните все обязательные поля.
+        /// </summary>
+        internal static string FILL_IN_FIELDS {
+            get {
+                return ResourceManager.GetString("FILL_IN_FIELDS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to фильтр по.
+        /// </summary>
+        internal static string FILTER {
+            get {
+                return ResourceManager.GetString("FILTER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to От.
+        /// </summary>
+        internal static string FROM {
+            get {
+                return ResourceManager.GetString("FROM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Дата.
+        /// </summary>
+        internal static string GRIDVIEW_DATE {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_DATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to День.
+        /// </summary>
+        internal static string GRIDVIEW_DAY {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_DAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ОТДЕЛ.
+        /// </summary>
+        internal static string GRIDVIEW_DEPARTMENT {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_DEPARTMENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Рано.
+        /// </summary>
+        internal static string GRIDVIEW_EARLY {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_EARLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Вход.
+        /// </summary>
+        internal static string GRIDVIEW_ENTER {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_ENTER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Выход.
+        /// </summary>
+        internal static string GRIDVIEW_EXIT {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_EXIT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ОТЧЕСТВО.
+        /// </summary>
+        internal static string GRIDVIEW_FAMILY_NAME {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_FAMILY_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to От.
+        /// </summary>
+        internal static string GRIDVIEW_FROM {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_FROM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Праздник.
+        /// </summary>
+        internal static string GRIDVIEW_HOLIDAY {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_HOLIDAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to День.
+        /// </summary>
+        internal static string GRIDVIEW_HOURS_DAY {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_HOURS_DAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ноч.
+        /// </summary>
+        internal static string GRIDVIEW_HOURS_NIGHT {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_HOURS_NIGHT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Часы .
+        /// </summary>
+        internal static string GRIDVIEW_HOURS_PERIOD {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_HOURS_PERIOD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Опаздал/а.
+        /// </summary>
+        internal static string GRIDVIEW_LATE {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_LATE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Отсутствующие.
+        /// </summary>
+        internal static string GRIDVIEW_MISSING {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_MISSING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ИМЯ.
+        /// </summary>
+        internal static string GRIDVIEW_NAME {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_NAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ПРИСУТСТВИЕ.
+        /// </summary>
+        internal static string GRIDVIEW_PERSENCE {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_PERSENCE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ДОЛЖНОСТЬ.
+        /// </summary>
+        internal static string GRIDVIEW_POSITION {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_POSITION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Уволнительные.
+        /// </summary>
+        internal static string GRIDVIEW_QUICK_OUTSIDE {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_QUICK_OUTSIDE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ПРИЧИНА.
+        /// </summary>
+        internal static string GRIDVIEW_REASON {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_REASON", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ФАМИЛИЯ.
+        /// </summary>
+        internal static string GRIDVIEW_SURNAME {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_SURNAME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string GRIDVIEW_TEMPERATURE {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_TEMPERATURE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string GRIDVIEW_TO {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_TO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string GRIDVIEW_TOTAL_HOURS_DAY {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_TOTAL_HOURS_DAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string GRIDVIEW_TOTAL_HOURS_NIGHT {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_TOTAL_HOURS_NIGHT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string GRIDVIEW_VACATION {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_VACATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Праздник.
+        /// </summary>
+        internal static string HOLIDAY {
+            get {
+                return ResourceManager.GetString("HOLIDAY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Праздник существует в этом периоде времени.
+        /// </summary>
+        internal static string HOLIDAY_INFO {
+            get {
+                return ResourceManager.GetString("HOLIDAY_INFO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Опоздал/а.
+        /// </summary>
+        internal static string LATE_COME {
+            get {
+                return ResourceManager.GetString("LATE_COME", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap logo {
@@ -131,6 +473,60 @@ namespace Reports.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Отсуствует.
+        /// </summary>
+        internal static string MISSING {
+            get {
+                return ResourceManager.GetString("MISSING", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Количество событий.
+        /// </summary>
+        internal static string NUMBER_OF_EVENTS {
+            get {
+                return ResourceManager.GetString("NUMBER_OF_EVENTS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to оплачиваемый отпуск.
+        /// </summary>
+        internal static string PAID_VACATION {
+            get {
+                return ResourceManager.GetString("PAID_VACATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Пароли не совпадают.
+        /// </summary>
+        internal static string PASSWORD_NOT_MATCH {
+            get {
+                return ResourceManager.GetString("PASSWORD_NOT_MATCH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Обновлено успешно!.
+        /// </summary>
+        internal static string PASSWORD_SUCCESS {
+            get {
+                return ResourceManager.GetString("PASSWORD_SUCCESS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Неверный пароль.
+        /// </summary>
+        internal static string PASSWORD_WRONG {
+            get {
+                return ResourceManager.GetString("PASSWORD_WRONG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap quant {
@@ -141,12 +537,66 @@ namespace Reports.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Этот таблица для события в течение рабoчий день.
+        /// </summary>
+        internal static string QUICK_OUTSIDE_INFO {
+            get {
+                return ResourceManager.GetString("QUICK_OUTSIDE_INFO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to оплачиваемый.
+        /// </summary>
+        internal static string QUICK_OUTSIDE_PAID {
+            get {
+                return ResourceManager.GetString("QUICK_OUTSIDE_PAID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to неоплачиваемый.
+        /// </summary>
+        internal static string QUICK_OUTSIDE_UNPAID {
+            get {
+                return ResourceManager.GetString("QUICK_OUTSIDE_UNPAID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Отчёт от.
+        /// </summary>
+        internal static string REPORT_FROM {
+            get {
+                return ResourceManager.GetString("REPORT_FROM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap search {
             get {
                 object obj = ResourceManager.GetObject("search", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to до.
+        /// </summary>
+        internal static string TO {
+            get {
+                return ResourceManager.GetString("TO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to неоплачиваемый отпуск.
+        /// </summary>
+        internal static string UNPAID_VACATION {
+            get {
+                return ResourceManager.GetString("UNPAID_VACATION", resourceCulture);
             }
         }
         
@@ -167,6 +617,33 @@ namespace Reports.Properties {
             get {
                 object obj = ResourceManager.GetObject("user_holiday_light", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Неверный логин или пароль.
+        /// </summary>
+        internal static string USERNAME_OR_PASSWORD_WRONG {
+            get {
+                return ResourceManager.GetString("USERNAME_OR_PASSWORD_WRONG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Отпуск.
+        /// </summary>
+        internal static string VACATION {
+            get {
+                return ResourceManager.GetString("VACATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Предупреждение.
+        /// </summary>
+        internal static string WARNING {
+            get {
+                return ResourceManager.GetString("WARNING", resourceCulture);
             }
         }
     }

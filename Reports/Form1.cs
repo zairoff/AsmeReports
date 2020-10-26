@@ -7,65 +7,42 @@ namespace Reports
     {
         public Form1()
         {
-            InitializeComponent();            
+            InitializeComponent();
             comboBox1.SelectedIndex = 0;
-            myDatabase = new MyDatabase();
+            _dataBase = new DataBase();
             //thread1 = new System.Threading.Thread(new System.Threading.ThreadStart(fillTree));
             //thread1.Start();
             FillTree();            
             dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-dd");
             dateTimePicker2.Text = DateTime.Now.ToString("yyyy-MM-dd");
-            programm_type = Convert.ToInt32((System.Configuration.ConfigurationManager.AppSettings["program_type"]));
+            programm_type = (System.Configuration.ConfigurationManager.AppSettings["program_type"]);
         }
 
-        private MyDatabase myDatabase;
-        private readonly int programm_type;
+        private DataBase _dataBase;
+        private readonly string programm_type;
         private System.Collections.Generic.List<EmployeeListbox> employeeListboxes;
-        //private System.Threading.Thread thread1;
+        private bool max_check;
+        private System.Drawing.Point lastLocation;
+        private bool mouseDown = false;
+        //private System.Threading.Thread thread1;       
 
-        private void pictureBox1_MouseEnter(object sender, System.EventArgs e)
+        private void MaximizeCheck()
         {
-            pictureBox1.Image = Properties.Resources.excel_light;
-        }
-
-        private void pictureBox1_MouseLeave(object sender, System.EventArgs e)
-        {
-            pictureBox1.Image = Properties.Resources.excel;
-        }
-
-        private void btn_close_MouseEnter(object sender, System.EventArgs e)
-        {
-            btn_close.BackColor = System.Drawing.Color.Red;
-        }
-
-        private void btn_close_MouseLeave(object sender, System.EventArgs e)
-        {
-            btn_close.BackColor = System.Drawing.Color.FromArgb(47, 47, 47);
-        }
-
-        private void pictureBox2_MouseEnter(object sender, System.EventArgs e)
-        {
-            pictureBox2.Image = Properties.Resources.user_holiday;
-        }
-
-        private void pictureBox2_MouseLeave(object sender, System.EventArgs e)
-        {
-            pictureBox2.Image = Properties.Resources.user_holiday_light;
-        }
-
-        private void pictureBox4_MouseEnter(object sender, System.EventArgs e)
-        {
-            pictureBox4.Image = Properties.Resources.calendar;
-        }
-
-        private void pictureBox4_MouseLeave(object sender, System.EventArgs e)
-        {
-            pictureBox4.Image = Properties.Resources.calendar_light;
+            if (max_check)
+            {
+                WindowState = FormWindowState.Normal;
+                max_check = false;
+            }
+            else
+            {
+                WindowState = FormWindowState.Maximized;
+                max_check = true;
+            }
         }
 
         private void FillTree()
         {
-            System.Collections.Generic.List<MyTree> myTrees = myDatabase.getTree("select ttext, mytree from department order by id asc");
+            System.Collections.Generic.List<MyTree> myTrees = _dataBase.getTree("select ttext, mytree from department order by id asc");
             for (int i = 0; i < myTrees.Count; i++)
             {
                 TreeNode tnode = new TreeNode
@@ -79,20 +56,15 @@ namespace Reports
 
         private void Form1_Load(object sender, System.EventArgs e)
         {
-            MaximizedBounds = Screen.FromHandle(Handle).WorkingArea;
-            WindowState = FormWindowState.Maximized;
-        }
-
-        private void btn_close_Click(object sender, System.EventArgs e)
-        {
-            Close();
-        }       
+            //MaximizedBounds = Screen.FromHandle(Handle).WorkingArea;
+            //WindowState = FormWindowState.Maximized;
+        }   
 
         private void treeView1_AfterSelect_1(object sender, TreeViewEventArgs e)
         {
-            employeeListboxes = myDatabase.GetEmployeeListbox(
+            employeeListboxes = _dataBase.GetEmployeeListbox(
                 "select employeeid, familiya from employee where department <@ '" + treeView1.SelectedNode.Name
-                + "' order by familiya");
+                + "' and status = true order by familiya");
 
             comboBox2.Items.Clear();
             foreach(EmployeeListbox employeeListbox in employeeListboxes)
@@ -113,7 +85,223 @@ namespace Reports
                 Clipboard.SetDataObject(dataObj);            
         }
 
-        private void pictureBox1_Click(object sender, System.EventArgs e)
+        //bystaff
+        private void button2_Click(object sender, System.EventArgs e)
+        {
+            if (treeView1 == null || string.IsNullOrEmpty(comboBox2.Text) || treeView1.SelectedNode == null)
+                return;
+
+            label5.Text = "";
+
+            try
+            {
+                switch (programm_type)
+                {
+                    case "1":
+                        var single = new CustomClasses.SingleShift(dataGridView1, label5);
+                        single.ReportByPerson(comboBox1.SelectedIndex, employeeListboxes[comboBox2.SelectedIndex].ID,
+                        dateTimePicker1.Text, dateTimePicker2.Text);
+                        break;
+                    //case 2:
+                    //    var single_temp = new CustomClasses.SingleShiftTemp(dataGridView1, label5);
+                    //    single_temp.ReportByPerson(comboBox1.SelectedIndex, employeeListboxes[comboBox2.SelectedIndex].ID,
+                    //    dateTimePicker1.Text, dateTimePicker2.Text);
+                    //    break;
+                    case "2":
+                        var multiple = new CustomClasses.MultipleShift(dataGridView1, label5);
+                        multiple.ReportByPerson(comboBox1.SelectedIndex, employeeListboxes[comboBox2.SelectedIndex].ID,
+                        dateTimePicker1.Text, dateTimePicker2.Text);
+                        break;
+                    //case 4:
+                    //    var multiple_temp = new CustomClasses.MultipleShiftTemp(dataGridView1, label5);
+                    //    multiple_temp.ReportByPerson(comboBox1.SelectedIndex, employeeListboxes[comboBox2.SelectedIndex].ID,
+                    //    dateTimePicker1.Text, dateTimePicker2.Text);
+                    //    break;
+                    default:
+                        break;
+                }
+            }
+            catch (Exception msg)
+            {
+                MessageBox.Show(msg.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        //bydepartment
+        private void button1_Click(object sender, System.EventArgs e)
+        {
+            if (treeView1.Nodes.Count == 0 || string.IsNullOrEmpty(comboBox1.Text) || treeView1.SelectedNode == null)
+                return;
+
+            if (treeView1.SelectedNode == treeView1.Nodes[0])
+                label5.Text = treeView1.SelectedNode.Text + " | ";
+            else
+                label5.Text = Properties.Resources.DEPARTMENT + ": " + treeView1.SelectedNode.Text + " | ";
+
+            try
+            {              
+                switch (programm_type)
+                {
+                    case "1":
+                        var single = new CustomClasses.SingleShift(dataGridView1, label5);
+                        single.ReportByOtdel(comboBox1.SelectedIndex, treeView1.SelectedNode.Name, dateTimePicker1.Text,
+                            dateTimePicker2.Text);
+                        break;
+                    //case 2:
+                    //    var single_temp = new CustomClasses.SingleShiftTemp(dataGridView1, label5);
+                    //    single_temp.ReportByOtdel(comboBox1.SelectedIndex, treeView1.SelectedNode.Name, dateTimePicker1.Text,
+                    //        dateTimePicker2.Text);
+                    //    break;
+                    case "2":
+                        var multiple = new CustomClasses.MultipleShift(dataGridView1, label5);
+                        multiple.ReportByOtdel(comboBox1.SelectedIndex, treeView1.SelectedNode.Name, dateTimePicker1.Text,
+                            dateTimePicker2.Text);
+                        break;
+                    //case 4:
+                    //    var multiple_temp = new CustomClasses.MultipleShiftTemp(dataGridView1, label5);
+                    //    multiple_temp.ReportByOtdel(comboBox1.SelectedIndex, treeView1.SelectedNode.Name, dateTimePicker1.Text,
+                    //        dateTimePicker2.Text);
+                    //    break;
+                    default:
+                        break;
+
+                    //case 0:
+                    //    _dataBase.getRecords("select *from getallevents_by_otdel('" + treeView1.SelectedNode.Name + "','" + dateTimePicker1.Text + "','" +
+                    //        dateTimePicker2.Text + "')", dataGridView1);
+                    //    break;
+                    //case 1:
+                    //    _dataBase.getRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel," +
+                    //        "t2.lavozim, t1.kirish, t1.chiqish from reports t1 inner join employee t2 on " +
+                    //        "t1.employeeid = t2.employeeid where t1.kirish::date >= '" + dateTimePicker1.Text + "' and t1.kirish::date <= '" +
+                    //        dateTimePicker2.Text + "' and t2.department  <@ '" + treeView1.SelectedNode.Name + "'", dataGridView1);
+                    //    break;
+                    //case 2:
+                    //    _dataBase.getRecords("select *from getlate_by_otdel('" + treeView1.SelectedNode.Name + "','" +
+                    //        dateTimePicker1.Text + "','" + dateTimePicker2.Text + "')", dataGridView1);
+                    //    break;
+                    //case 3:
+                    //    _dataBase.getRecords("select *from getearly_by_otdel('" + treeView1.SelectedNode.Name + "','" +
+                    //        dateTimePicker1.Text + "','" + dateTimePicker2.Text + "')", dataGridView1);
+                    //    break;
+                    //case 4:
+                    //    _dataBase.getRecords("select *from getmissed_by_otdel('" + treeView1.SelectedNode.Name + "','" +
+                    //        dateTimePicker1.Text + "','" + dateTimePicker2.Text + "')", dataGridView1);
+                    //    break;
+                    //case 5:
+                    //    _dataBase.getRecords("select *from getworkedhours_total_by_otdel('" + treeView1.SelectedNode.Name +
+                    //        "','" + dateTimePicker1.Text + "','" + dateTimePicker2.Text + "')", dataGridView1);
+                    //    break;
+                    //case 6:
+                    //    _dataBase.getRecords("select *from getworked_hours_by_otdel('" + treeView1.SelectedNode.Name + "','" +
+                    //        dateTimePicker1.Text + "','" + dateTimePicker2.Text + "')", dataGridView1);
+                    //    break;
+                    //case 7:
+                    //    _dataBase.getRecords("select *from get_extra_worked_hours_total_by_otdel('" + treeView1.SelectedNode.Name + "','" +
+                    //        dateTimePicker1.Text + "','" + dateTimePicker2.Text + "')", dataGridView1);
+                    //    break;
+                    //case 8:
+                    //    _dataBase.getRecords("select *from get_extrawork_by_otdel('" + treeView1.SelectedNode.Name + "','" +
+                    //        dateTimePicker1.Text + "','" + dateTimePicker2.Text + "')", dataGridView1);
+                    //    break;
+                    //case 9:
+                    //    _dataBase.getRecords("select *from getbeing_factory_by_otdel('" + treeView1.SelectedNode.Name + "','" +
+                    //        dateTimePicker1.Text + "','" + dateTimePicker2.Text + "')", dataGridView1);
+                    //    break;
+                    //case 10:
+                    //    _dataBase.getRecords("select *from getsotrudniki_vnutri_day('" + DateTime.Now.ToString("yyyy-MM-dd") + "','" +
+                    //    DateTime.Now.ToString("yyyy-MM-dd") + "')", dataGridView1);
+                    //    break;
+                    //case 11:
+                    //    _dataBase.getRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, " +
+                    //    "t2.lavozim, t1.sabab, t1.dan, t1.gacha from otpusk t1 inner join employee t2 on t1.employeeid = " +
+                    //    "t2.employeeid where (t2.department  <@ '" + treeView1.SelectedNode.Name + "' and dan >= '" +
+                    //    dateTimePicker1.Text + "' and dan <= '" + dateTimePicker2.Text + "') or (t2.department  <@ '" +
+                    //    treeView1.SelectedNode.Name + "' and gacha >= '" + dateTimePicker1.Text + "' and gacha <= '" +
+                    //    dateTimePicker2.Text + "')", dataGridView1);
+                    //    break;
+                    //case 12:
+                    //    _dataBase.getRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, t2.lavozim, " +
+                    //        "t1.door, t1.sana, t1.temperature from temperature t1 inner join employee t2 on t1.employeeid = " +
+                    //        "t2.employeeid where t2.department <@ '" + treeView1.SelectedNode.Name + "' and t1.sana >= '" + dateTimePicker1.Text + "' and " +
+                    //        "t1.sana <= '" + dateTimePicker2.Text + "'", dataGridView1);
+                    //    break;
+                }
+                //RowCnt(comboBox1.SelectedIndex);
+            }
+            catch (Exception msg)
+            {
+                MessageBox.Show(msg.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }            
+        }
+
+        //private void RowCnt(int index)
+        //{
+        //    switch (index)
+        //    {
+        //        case 0:
+        //            int otp = 0, opzd = 0, rann = 0, ots = 0;
+        //            foreach (DataGridViewRow row in dataGridView1.Rows)
+        //            {
+        //                if (!string.IsNullOrEmpty(row.Cells["VACATION"].Value.ToString()))
+        //                {
+        //                    otp++;
+        //                }
+
+        //                if (!string.IsNullOrEmpty(row.Cells["LATE"].Value.ToString()))
+        //                {
+        //                    opzd++;
+        //                }
+        //                if (!string.IsNullOrEmpty(row.Cells["EARLY"].Value.ToString()))
+        //                {
+        //                    rann++;
+        //                }
+        //                if (!string.IsNullOrEmpty(row.Cells["MISSING"].Value.ToString()))
+        //                {
+        //                    ots++;
+        //                }
+        //            }
+        //            label5.Text += Properties.Resources.HOLIDAY + "&" + Properties.Resources.VACATION + ": " + otp +
+        //                "   |   " + Properties.Resources.LATE_COME + ": " + opzd +
+        //                "   |   " + Properties.Resources.EARLY_GONE + ": " + rann +
+        //                "   |   " + Properties.Resources.MISSING + ": " + ots;
+        //            break;
+        //        case 1:
+        //            label5.Text += "    " + Properties.Resources.NUMBER_OF_EVENTS + ": " + dataGridView1.RowCount;
+        //            break;
+        //        case 2:
+        //            label5.Text += "    " + Properties.Resources.LATE_COME + ": " + dataGridView1.RowCount;
+        //            break;
+        //        case 3:
+        //            label5.Text += "    " + Properties.Resources.EARLY_GONE + ": " + dataGridView1.RowCount;
+        //            break;
+        //        case 4:
+        //            label5.Text += "    " + Properties.Resources.MISSING + ": " + dataGridView1.RowCount;
+        //            break;
+        //        case 10:
+        //            label5.Text += "    " + Properties.Resources.EMPLOYEE_INSIDE + ": " + dataGridView1.RowCount;
+        //            break;
+        //        case 11:
+        //            label5.Text += "    " + Properties.Resources.HOLIDAY + "&" + Properties.Resources.VACATION + ": " + dataGridView1.RowCount;
+        //            break;
+        //        default: label5.Text = ""; break;
+        //    }
+        //}
+
+        private void dataGridView1_SelectionChanged(object sender, System.EventArgs e)
+        {
+            if (dataGridView1.CurrentRow == null)
+                return; 
+            
+            dataGridView1.Rows[dataGridView1.CurrentRow.Index].Selected = true;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
         {
             if (dataGridView1.Rows.Count < 1)
                 return;
@@ -131,11 +319,11 @@ namespace Reports
                 };
                 xlWorkBook = xlexcel.Workbooks.Add(misValue);
                 xlWorkSheet = (Microsoft.Office.Interop.Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
-                xlWorkSheet.Cells[1, 1] = "Poytaxt Bank: Отчёт от " + dateTimePicker1.Text + ", до " +
-                    dateTimePicker2.Text + ", фильтр по " + comboBox1.Text;
+                xlWorkSheet.Cells[1, 1] = treeView1.Nodes[0].Text + ": " + Properties.Resources.REPORT_FROM + dateTimePicker1.Text + ", " + Properties.Resources.TO
+                    + " " + dateTimePicker2.Text + ", " + Properties.Resources.FILTER + " " + comboBox1.Text;
                 xlWorkSheet.Cells[3, 1] = label5.Text;
                 int index = 0;
-               for(int i = 0; i < dataGridView1.ColumnCount; i++)
+                for (int i = 0; i < dataGridView1.ColumnCount; i++)
                 {
                     index = i + 1;
                     xlWorkSheet.Cells[5, index] = dataGridView1.Columns[i].HeaderText;
@@ -147,127 +335,117 @@ namespace Reports
             }
             catch (System.Exception msg)
             {
-                MessageBox.Show(msg.ToString());
+                MessageBox.Show(msg.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
-            //xlWorkBook.Close();
         }
 
-        //bystaff
-        private void button2_Click(object sender, System.EventArgs e)
+        private void pictureBox4_Click_1(object sender, EventArgs e)
         {
-            if (treeView1 == null || string.IsNullOrEmpty(comboBox2.Text))
-                return;
-
-            label5.Text = "";
-
-            try
-            {
-                switch (programm_type)
-                {
-                    case 1:
-                        var single = new CustomClasses.SingleShift(dataGridView1, label5);
-                        single.ReportByPerson(comboBox1.SelectedIndex, employeeListboxes[comboBox2.SelectedIndex].ID,
-                        dateTimePicker1.Text, dateTimePicker2.Text);
-                        break;
-                    //case 2:
-                    //    var single_temp = new CustomClasses.SingleShiftTemp(dataGridView1, label5);
-                    //    single_temp.ReportByPerson(comboBox1.SelectedIndex, employeeListboxes[comboBox2.SelectedIndex].ID,
-                    //    dateTimePicker1.Text, dateTimePicker2.Text);
-                    //    break;
-                    case 2:
-                        var multiple = new CustomClasses.MultipleShift(dataGridView1, label5);
-                        multiple.ReportByPerson(comboBox1.SelectedIndex, employeeListboxes[comboBox2.SelectedIndex].ID,
-                        dateTimePicker1.Text, dateTimePicker2.Text);
-                        break;
-                    //case 4:
-                    //    var multiple_temp = new CustomClasses.MultipleShiftTemp(dataGridView1, label5);
-                    //    multiple_temp.ReportByPerson(comboBox1.SelectedIndex, employeeListboxes[comboBox2.SelectedIndex].ID,
-                    //    dateTimePicker1.Text, dateTimePicker2.Text);
-                    //    break;
-                    default:                        
-                        break;
-                }
-            }
-            catch (Exception msg)
-            {
-                MessageBox.Show(msg.ToString());
-            }
-            
+            new Holiday().ShowDialog();
         }
 
-        //bydepartment
-        private void button1_Click(object sender, System.EventArgs e)
-        {
-            if (treeView1.Nodes.Count == 0 || string.IsNullOrEmpty(comboBox1.Text))
-                return;
-
-            if (treeView1.SelectedNode == treeView1.Nodes[0])
-                label5.Text = treeView1.SelectedNode.Text + " | ";
-            else
-                label5.Text = "Отдел: " + treeView1.SelectedNode.Text + " | ";
-
-            try
-            {              
-                switch (programm_type)
-                {
-                    case 1:
-                        var single = new CustomClasses.SingleShift(dataGridView1, label5);
-                        single.ReportByOtdel(comboBox1.SelectedIndex, treeView1.SelectedNode.Name, dateTimePicker1.Text,
-                            dateTimePicker2.Text);
-                        break;
-                    //case 2:
-                    //    var single_temp = new CustomClasses.SingleShiftTemp(dataGridView1, label5);
-                    //    single_temp.ReportByOtdel(comboBox1.SelectedIndex, treeView1.SelectedNode.Name, dateTimePicker1.Text,
-                    //        dateTimePicker2.Text);
-                    //    break;
-                    case 2:
-                        var multiple = new CustomClasses.MultipleShift(dataGridView1, label5);
-                        multiple.ReportByOtdel(comboBox1.SelectedIndex, treeView1.SelectedNode.Name, dateTimePicker1.Text,
-                            dateTimePicker2.Text);
-                        break;
-                    //case 4:
-                    //    var multiple_temp = new CustomClasses.MultipleShiftTemp(dataGridView1, label5);
-                    //    multiple_temp.ReportByOtdel(comboBox1.SelectedIndex, treeView1.SelectedNode.Name, dateTimePicker1.Text,
-                    //        dateTimePicker2.Text);
-                    //    break;
-                    default:                        
-                        break;
-                }
-            }
-            catch (Exception msg)
-            {
-                MessageBox.Show(msg.ToString());
-            }
-            
-        }
-
-        private void pictureBox2_Click(object sender, System.EventArgs e)
+        private void pictureBox2_Click_1(object sender, EventArgs e)
         {
             new UserSettings().ShowDialog();
         }
 
-        private void dataGridView1_SelectionChanged(object sender, System.EventArgs e)
+        private void pictureBox1_MouseEnter_1(object sender, EventArgs e)
         {
-            if (dataGridView1.CurrentRow == null)
-                return;                    
-            dataGridView1.Rows[dataGridView1.CurrentRow.Index].Selected = true;
+            pictureBox1.Image = Properties.Resources.excel_light;
         }
 
-        private void pictureBox4_Click(object sender, System.EventArgs e)
+        private void pictureBox1_MouseLeave_1(object sender, EventArgs e)
         {
-            new Holiday().ShowDialog();
-            //new BaseForms.HolidayBase(3, 0).ShowDialog();
+            pictureBox1.Image = Properties.Resources.excel;
         }
 
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        private void pictureBox4_MouseEnter_1(object sender, EventArgs e)
         {
-            Application.Exit();
+            pictureBox4.Image = Properties.Resources.calendar;
         }
 
-        private void pictureBox5_Click(object sender, EventArgs e)
+        private void pictureBox4_MouseLeave_1(object sender, EventArgs e)
         {
+            pictureBox4.Image = Properties.Resources.calendar_light;
+        }
 
+        private void pictureBox2_MouseEnter_1(object sender, EventArgs e)
+        {
+            pictureBox2.Image = Properties.Resources.user_holiday;
+        }
+
+        private void pictureBox2_MouseLeave_1(object sender, EventArgs e)
+        {
+            pictureBox2.Image = Properties.Resources.user_holiday_light;
+        }
+
+        private void button3_MouseEnter(object sender, EventArgs e)
+        {
+            button3.BackColor = System.Drawing.Color.Red;
+        }
+
+        private void button3_MouseLeave(object sender, EventArgs e)
+        {            
+            button3.BackColor = System.Drawing.Color.FromArgb(68, 68, 68);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MaximizeCheck();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                Location = new System.Drawing.Point(
+                    (Location.X - lastLocation.X) + e.X, (Location.Y - lastLocation.Y) + e.Y);
+
+                Update();
+            }
+        }
+
+        private void panel5_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void panel5_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
+        private void panel5_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                Location = new System.Drawing.Point(
+                    (Location.X - lastLocation.X) + e.X, (Location.Y - lastLocation.Y) + e.Y);
+
+                Update();
+            }
         }
     }
 }

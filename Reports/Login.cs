@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace Reports
 {
@@ -8,52 +9,43 @@ namespace Reports
         {
             InitializeComponent();
             textBox3.Select();
+            _dataBase = new DataBase();
         }
+
+        private readonly DataBase _dataBase;
 
         private void btn_connect_Click(object sender, System.EventArgs e)
         {
-            MyDatabase myDatabase = new MyDatabase();
-            if(string.IsNullOrEmpty(textBox2.Text) && string.IsNullOrEmpty(textBox3.Text))
-            {
-                MessageBox.Show("заполните все обязательные поля");
-            }
-            else
-            {
-                if (myDatabase.checkRow("select 1 from login where username = '" + textBox2.Text + "' and pass = '" +
-                textBox3.Text + "'"))
-                {
-                    Hide();
-                    new Form1().Show();                    
-                }
-                else
-                {
-                    textBox3.ForeColor = System.Drawing.Color.Red;
-                    MessageBox.Show("неверный логин или пароль");                    
-                }
-            }            
+            ConnectDB();
         }
 
-        private void connectDB()
+        private void ConnectDB()
         {
-            MyDatabase myDatabase = new MyDatabase();
-            if (string.IsNullOrEmpty(textBox2.Text) && string.IsNullOrEmpty(textBox3.Text))
+            try
             {
-                MessageBox.Show("заполните все обязательные поля");
-            }
-            else
-            {
-                if (myDatabase.checkRow("select 1 from login where username = '" + textBox2.Text + "' and pass = '" +
-                textBox3.Text + "'"))
+                if (string.IsNullOrEmpty(textBox2.Text) && string.IsNullOrEmpty(textBox3.Text))
                 {
-                    Hide();
-                    new Form1().Show();
+                    MessageBox.Show(Properties.Resources.FILL_IN_FIELDS, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    textBox3.ForeColor = System.Drawing.Color.Red;
-                    MessageBox.Show("неверный логин или пароль");
+                    if (_dataBase.checkRow("select 1 from login where username = '" + textBox2.Text + "' and pass = '" +
+                    textBox3.Text + "'"))
+                    {
+                        Hide();
+                        new Form1().Show();
+                    }
+                    else
+                    {
+                        textBox3.ForeColor = System.Drawing.Color.Red;
+                        MessageBox.Show(Properties.Resources.USERNAME_OR_PASSWORD_WRONG, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
+            catch (Exception msg)
+            {
+                MessageBox.Show(msg.ToString(), "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }            
         }
 
         private void btn_close_Click(object sender, System.EventArgs e)
@@ -72,7 +64,7 @@ namespace Reports
             textBox3.ForeColor = System.Drawing.Color.Black;
             if (e.KeyValue == (char)Keys.Enter)
             {
-                connectDB();
+                ConnectDB();
             }
         }
     }
