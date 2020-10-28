@@ -120,14 +120,14 @@
   <data name="BUSSINESS_TRIP" xml:space="preserve">
     <value>business trip</value>
   </data>
+  <data name="CONTROL_LANGUAGE_CHANGE" xml:space="preserve">
+    <value>Change the language?</value>
+  </data>
   <data name="DATE_FUTURE" xml:space="preserve">
     <value>The date must be set for the future</value>
   </data>
   <data name="DELETE" xml:space="preserve">
     <value>Delete?</value>
-  </data>
-  <data name="DEPARTMENT" xml:space="preserve">
-    <value>Department</value>
   </data>
   <data name="EARLY_GONE" xml:space="preserve">
     <value>Early gone</value>
@@ -144,83 +144,77 @@
   <data name="FILTER" xml:space="preserve">
     <value>filter by</value>
   </data>
-  <data name="FROM" xml:space="preserve">
-    <value>From</value>
-  </data>
   <data name="GRIDVIEW_DATE" xml:space="preserve">
-    <value>DATE</value>
+    <value>Date</value>
   </data>
   <data name="GRIDVIEW_DAY" xml:space="preserve">
-    <value>DAY</value>
+    <value>Day</value>
   </data>
   <data name="GRIDVIEW_DEPARTMENT" xml:space="preserve">
-    <value>DEPARTMENT</value>
+    <value>Department</value>
+  </data>
+  <data name="GRIDVIEW_DOOR" xml:space="preserve">
+    <value>Door</value>
   </data>
   <data name="GRIDVIEW_EARLY" xml:space="preserve">
-    <value>EARLY</value>
+    <value>Early</value>
   </data>
   <data name="GRIDVIEW_ENTER" xml:space="preserve">
-    <value>ENTER</value>
+    <value>Enter</value>
   </data>
   <data name="GRIDVIEW_EXIT" xml:space="preserve">
-    <value>EXIT</value>
+    <value>Exit</value>
   </data>
   <data name="GRIDVIEW_FAMILY_NAME" xml:space="preserve">
-    <value>FAMILY NAME</value>
+    <value>Father's name</value>
   </data>
   <data name="GRIDVIEW_FROM" xml:space="preserve">
-    <value>FROM</value>
+    <value>From</value>
   </data>
   <data name="GRIDVIEW_HOLIDAY" xml:space="preserve">
-    <value>HOLIDAY</value>
+    <value>Holiday</value>
+  </data>
+  <data name="GRIDVIEW_HOURS" xml:space="preserve">
+    <value>Hours</value>
   </data>
   <data name="GRIDVIEW_HOURS_DAY" xml:space="preserve">
-    <value>HOURS DAY</value>
+    <value>Hours day</value>
   </data>
   <data name="GRIDVIEW_HOURS_NIGHT" xml:space="preserve">
-    <value>HOURS NIGHT</value>
-  </data>
-  <data name="GRIDVIEW_HOURS_PERIOD" xml:space="preserve">
-    <value>HOURS IN THIS PERIOD</value>
+    <value>Hours night</value>
   </data>
   <data name="GRIDVIEW_LATE" xml:space="preserve">
-    <value>LATE</value>
+    <value>Late</value>
   </data>
   <data name="GRIDVIEW_MISSING" xml:space="preserve">
-    <value>MISSING</value>
+    <value>Missing</value>
   </data>
   <data name="GRIDVIEW_NAME" xml:space="preserve">
-    <value>NAME</value>
+    <value>Name</value>
   </data>
   <data name="GRIDVIEW_PERSENCE" xml:space="preserve">
-    <value>TIME OF PRESENCE</value>
+    <value>Time of persence</value>
   </data>
   <data name="GRIDVIEW_POSITION" xml:space="preserve">
-    <value>POSITION</value>
+    <value>Position</value>
   </data>
   <data name="GRIDVIEW_QUICK_OUTSIDE" xml:space="preserve">
-    <value>OUTSIDE</value>
+    <value>Outside</value>
   </data>
   <data name="GRIDVIEW_REASON" xml:space="preserve">
-    <value>REASON</value>
+    <value>Reason</value>
   </data>
   <data name="GRIDVIEW_SURNAME" xml:space="preserve">
-    <value>SURNAME</value>
+    <value>Surename</value>
   </data>
   <data name="GRIDVIEW_TEMPERATURE" xml:space="preserve">
-    <value>TEMPERATURE</value>
+    <value>Temperature</value>
   </data>
   <data name="GRIDVIEW_TO" xml:space="preserve">
-    <value>TO</value>
-  </data>
-  <data name="GRIDVIEW_TOTAL_HOURS_DAY" xml:space="preserve">
-    <value>TOTAL HOURS DAY</value>
-  </data>
-  <data name="GRIDVIEW_TOTAL_HOURS_NIGHT" xml:space="preserve">
-    <value>TOTAL HOURS NIGHT</value>
+    <value>To</value>
   </data>
   <data name="GRIDVIEW_VACATION" xml:space="preserve">
-    <value>VACATION</value>
+    <value>Vacation</value>
   </data>
   <data name="HOLIDAY" xml:space="preserve">
     <value>Holiday</value>

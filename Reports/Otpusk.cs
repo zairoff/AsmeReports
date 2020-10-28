@@ -35,8 +35,8 @@ namespace Reports
             dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
             dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
             dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_REASON;
-            dataGridView1.Columns[6].HeaderText = Properties.Resources.FROM;
-            dataGridView1.Columns[7].HeaderText = Properties.Resources.TO;
+            dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_FROM;
+            dataGridView1.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_TO;
         }
 
         private void InitializeComponent()

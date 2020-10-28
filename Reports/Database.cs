@@ -34,7 +34,7 @@ namespace Reports
                 conn.Open();
                 using (var adapter = new Npgsql.NpgsqlDataAdapter(query, conn))
                 {
-                    System.Data.DataTable dataTable = new System.Data.DataTable();
+                    var dataTable = new System.Data.DataTable();
                     adapter.Fill(dataTable);
                     dataGridView.DataSource = dataTable;
                     //GridHeaders();

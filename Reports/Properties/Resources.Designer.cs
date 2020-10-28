@@ -90,6 +90,15 @@ namespace Reports.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Изменить язык?.
+        /// </summary>
+        internal static string CONTROL_LANGUAGE_CHANGE {
+            get {
+                return ResourceManager.GetString("CONTROL_LANGUAGE_CHANGE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Дата должна быть установлена ​​на будущее.
         /// </summary>
         internal static string DATE_FUTURE {
@@ -104,15 +113,6 @@ namespace Reports.Properties {
         internal static string DELETE {
             get {
                 return ResourceManager.GetString("DELETE", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Отдел.
-        /// </summary>
-        internal static string DEPARTMENT {
-            get {
-                return ResourceManager.GetString("DEPARTMENT", resourceCulture);
             }
         }
         
@@ -192,15 +192,6 @@ namespace Reports.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to От.
-        /// </summary>
-        internal static string FROM {
-            get {
-                return ResourceManager.GetString("FROM", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Дата.
         /// </summary>
         internal static string GRIDVIEW_DATE {
@@ -219,11 +210,20 @@ namespace Reports.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ОТДЕЛ.
+        ///   Looks up a localized string similar to Отдел.
         /// </summary>
         internal static string GRIDVIEW_DEPARTMENT {
             get {
                 return ResourceManager.GetString("GRIDVIEW_DEPARTMENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Дверь.
+        /// </summary>
+        internal static string GRIDVIEW_DOOR {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_DOOR", resourceCulture);
             }
         }
         
@@ -255,7 +255,7 @@ namespace Reports.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ОТЧЕСТВО.
+        ///   Looks up a localized string similar to Отчество.
         /// </summary>
         internal static string GRIDVIEW_FAMILY_NAME {
             get {
@@ -282,7 +282,16 @@ namespace Reports.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to День.
+        ///   Looks up a localized string similar to Часы .
+        /// </summary>
+        internal static string GRIDVIEW_HOURS {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_HOURS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Часы в день.
         /// </summary>
         internal static string GRIDVIEW_HOURS_DAY {
             get {
@@ -291,20 +300,11 @@ namespace Reports.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ноч.
+        ///   Looks up a localized string similar to Часы в ноч.
         /// </summary>
         internal static string GRIDVIEW_HOURS_NIGHT {
             get {
                 return ResourceManager.GetString("GRIDVIEW_HOURS_NIGHT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Часы .
-        /// </summary>
-        internal static string GRIDVIEW_HOURS_PERIOD {
-            get {
-                return ResourceManager.GetString("GRIDVIEW_HOURS_PERIOD", resourceCulture);
             }
         }
         
@@ -327,7 +327,7 @@ namespace Reports.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ИМЯ.
+        ///   Looks up a localized string similar to Имя.
         /// </summary>
         internal static string GRIDVIEW_NAME {
             get {
@@ -336,7 +336,7 @@ namespace Reports.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ПРИСУТСТВИЕ.
+        ///   Looks up a localized string similar to Присутсвие.
         /// </summary>
         internal static string GRIDVIEW_PERSENCE {
             get {
@@ -345,7 +345,7 @@ namespace Reports.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ДОЛЖНОСТЬ.
+        ///   Looks up a localized string similar to Должность.
         /// </summary>
         internal static string GRIDVIEW_POSITION {
             get {
@@ -363,7 +363,7 @@ namespace Reports.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ПРИЧИНА.
+        ///   Looks up a localized string similar to Причина.
         /// </summary>
         internal static string GRIDVIEW_REASON {
             get {
@@ -372,7 +372,7 @@ namespace Reports.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ФАМИЛИЯ.
+        ///   Looks up a localized string similar to Фамилия.
         /// </summary>
         internal static string GRIDVIEW_SURNAME {
             get {
@@ -381,7 +381,7 @@ namespace Reports.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Температура.
         /// </summary>
         internal static string GRIDVIEW_TEMPERATURE {
             get {
@@ -390,7 +390,7 @@ namespace Reports.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to До.
         /// </summary>
         internal static string GRIDVIEW_TO {
             get {
@@ -399,25 +399,7 @@ namespace Reports.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string GRIDVIEW_TOTAL_HOURS_DAY {
-            get {
-                return ResourceManager.GetString("GRIDVIEW_TOTAL_HOURS_DAY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
-        /// </summary>
-        internal static string GRIDVIEW_TOTAL_HOURS_NIGHT {
-            get {
-                return ResourceManager.GetString("GRIDVIEW_TOTAL_HOURS_NIGHT", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Отпуск.
         /// </summary>
         internal static string GRIDVIEW_VACATION {
             get {
@@ -575,6 +557,16 @@ namespace Reports.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ru {
+            get {
+                object obj = ResourceManager.GetObject("ru", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap search {
             get {
                 object obj = ResourceManager.GetObject("search", resourceCulture);
@@ -583,11 +575,12 @@ namespace Reports.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to до.
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static string TO {
+        internal static System.Drawing.Bitmap uk {
             get {
-                return ResourceManager.GetString("TO", resourceCulture);
+                object obj = ResourceManager.GetObject("uk", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

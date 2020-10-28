@@ -23,8 +23,8 @@ namespace Reports
         {
             dataGridView1.Columns[0].HeaderText = "Index";
             dataGridView1.Columns[1].HeaderText = Properties.Resources.HOLIDAY;
-            dataGridView1.Columns[2].HeaderText = Properties.Resources.FROM;
-            dataGridView1.Columns[3].HeaderText = Properties.Resources.TO;
+            dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_FROM;
+            dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_TO;
         }
 
         private void InitializeComponent()
