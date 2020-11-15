@@ -118,7 +118,25 @@ namespace Reports
                 }
             }
             return mySmenas;
-        }        
+        }
+
+        public string GetString(string query)
+        {
+            var str = "";
+            using (var connection = new Npgsql.NpgsqlConnection(Helper.CnnVal("DBConnection")))
+            {
+                using (var cmd = new Npgsql.NpgsqlCommand(query, connection))
+                {
+                    connection.Open();
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                            str = reader[0].ToString();
+                    }
+                }
+            }
+            return str;
+        }
     }
 
     public class EmployeeListbox

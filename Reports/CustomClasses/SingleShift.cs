@@ -150,8 +150,7 @@ namespace Reports.CustomClasses
         }
 
         private void GridHeaders(int index)
-        {
-            
+        {            
             switch (index)
             {
                 case 0:
@@ -334,29 +333,29 @@ namespace Reports.CustomClasses
                     int otp = 0, opzd = 0, rann = 0, ots = 0;
                     foreach (DataGridViewRow row in _dataGridView.Rows)
                     {
-                        if (!string.IsNullOrEmpty(row.Cells[Properties.Resources.GRIDVIEW_VACATION].Value.ToString()))
+                        if (!string.IsNullOrEmpty(row.Cells[8].Value.ToString())) // otpusk
                         {
                             otp++;
                         }
 
-                        if (!string.IsNullOrEmpty(row.Cells[Properties.Resources.GRIDVIEW_LATE].Value.ToString()))
+                        if (!string.IsNullOrEmpty(row.Cells[11].Value.ToString()))
                         {
                             opzd++;
                         }
-                        if (!string.IsNullOrEmpty(row.Cells[Properties.Resources.GRIDVIEW_EARLY].Value.ToString()))
+                        if (!string.IsNullOrEmpty(row.Cells[13].Value.ToString()))
                         {
                             rann++;
                         }
-                        if (!string.IsNullOrEmpty(row.Cells[Properties.Resources.GRIDVIEW_MISSING].Value.ToString()))
+                        if (!string.IsNullOrEmpty(row.Cells[15].Value.ToString()))
                         {
                             ots++;
                         }
 
                     }
-                    _label.Text += Properties.Resources.HOLIDAY + "&" + Properties.Resources.VACATION + ": " + otp +
-                        "   |   " + Properties.Resources.LATE_COME + ": " + opzd +
+                    _label.Text +=  Properties.Resources.VACATION + ": "   + otp +
+                        "   |   " + Properties.Resources.LATE_COME + ": "  + opzd +
                         "   |   " + Properties.Resources.EARLY_GONE + ": " + rann +
-                        "   |   " + Properties.Resources.MISSING + ": " + ots;
+                        "   |   " + Properties.Resources.MISSING + ": "    + ots;
                     break;
                 case 1:
                     _label.Text += "    " + Properties.Resources.NUMBER_OF_EVENTS + ": " + _dataGridView.RowCount;

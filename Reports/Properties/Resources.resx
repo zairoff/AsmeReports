@@ -280,9 +280,6 @@
   <data name="HOLIDAY_INFO" xml:space="preserve">
     <value>Праздник существует в этом периоде времени</value>
   </data>
-  <data name="GRIDVIEW_VACATION" xml:space="preserve">
-    <value>Отпуск</value>
-  </data>
   <data name="HOLIDAY" xml:space="preserve">
     <value>Праздник</value>
   </data>
@@ -306,5 +303,8 @@
   </data>
   <data name="CONTROL_LANGUAGE_CHANGE" xml:space="preserve">
     <value>Изменить язык?</value>
+  </data>
+  <data name="GRIDVIEW_VACATION" xml:space="preserve">
+    <value>Vacation</value>
   </data>
 </root>

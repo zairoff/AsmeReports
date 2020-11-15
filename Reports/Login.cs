@@ -7,12 +7,26 @@ namespace Reports
     {
         public Login()
         {
-            InitializeComponent();
-            textBox3.Select();
             _dataBase = new DataBase();
+            SetLanguage();
+            InitializeComponent();
+            textBox3.Select();            
         }
 
         private readonly DataBase _dataBase;
+
+        private void SetLanguage()
+        {
+            try
+            {
+                var language = _dataBase.GetString("select lan from language limit 1");
+                System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(language);
+            }
+            catch (Exception msg)
+            {
+                MessageBox.Show(msg.ToString(), "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void btn_connect_Click(object sender, System.EventArgs e)
         {

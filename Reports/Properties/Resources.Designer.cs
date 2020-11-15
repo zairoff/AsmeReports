@@ -399,7 +399,7 @@ namespace Reports.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Отпуск.
+        ///   Looks up a localized string similar to Vacation.
         /// </summary>
         internal static string GRIDVIEW_VACATION {
             get {

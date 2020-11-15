@@ -330,180 +330,7 @@ namespace Reports.CustomClasses
                     break;
 
                 default: break;
-            }
-            //switch (index)
-            //{
-            //    case 0:
-            //        _dataGridView.Columns[0].HeaderText = "ID";
-            //        _dataGridView.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-            //        _dataGridView.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-            //        _dataGridView.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-            //        _dataGridView.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
-            //        _dataGridView.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
-            //        _dataGridView.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_DAY;
-            //        _dataGridView.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_HOLIDAY;
-            //        _dataGridView.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_VACATION;
-            //        _dataGridView.Columns[9].HeaderText = Properties.Resources.GRIDVIEW_QUICK_OUTSIDE;
-            //        _dataGridView.Columns[10].HeaderText = Properties.Resources.GRIDVIEW_ENTER;
-            //        _dataGridView.Columns[11].HeaderText = Properties.Resources.GRIDVIEW_LATE;
-            //        _dataGridView.Columns[12].HeaderText = Properties.Resources.GRIDVIEW_EXIT;
-            //        _dataGridView.Columns[13].HeaderText = Properties.Resources.GRIDVIEW_EARLY;
-            //        _dataGridView.Columns[14].HeaderText = Properties.Resources.GRIDVIEW_HOURS_DAY;
-            //        _dataGridView.Columns[15].HeaderText = Properties.Resources.GRIDVIEW_HOURS_NIGHT;
-            //        _dataGridView.Columns[16].HeaderText = Properties.Resources.GRIDVIEW_MISSING;
-            //        break;
-
-            //    case 1:
-            //        _dataGridView.Columns[0].HeaderText = "ID";
-            //        _dataGridView.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-            //        _dataGridView.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-            //        _dataGridView.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
-            //        _dataGridView.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
-            //        _dataGridView.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
-            //        _dataGridView.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_ENTER;
-            //        _dataGridView.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_EXIT;
-            //        break;
-            //    case 2:
-            //        _dataGridView.Columns[0].HeaderText = "ID";
-            //        _dataGridView.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-            //        _dataGridView.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-            //        _dataGridView.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
-            //        _dataGridView.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
-            //        _dataGridView.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
-            //        _dataGridView.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_DAY;
-            //        _dataGridView.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_ENTER;
-            //        _dataGridView.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_LATE;
-            //        break;
-            //    case 3:
-            //        _dataGridView.Columns[0].HeaderText = "ID";
-            //        _dataGridView.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-            //        _dataGridView.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-            //        _dataGridView.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
-            //        _dataGridView.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
-            //        _dataGridView.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
-            //        _dataGridView.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_DAY;
-            //        _dataGridView.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_EXIT;
-            //        _dataGridView.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_EARLY;
-            //        break;
-            //    case 4:
-            //        _dataGridView.Columns[0].HeaderText = "ID";
-            //        _dataGridView.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-            //        _dataGridView.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-            //        _dataGridView.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
-            //        _dataGridView.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
-            //        _dataGridView.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
-            //        _dataGridView.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_DAY;
-            //        _dataGridView.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_HOLIDAY;
-            //        _dataGridView.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_VACATION;
-            //        break;
-
-            //    case 5:
-            //        _dataGridView.Columns[0].HeaderText = "ID";
-            //        _dataGridView.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-            //        _dataGridView.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-            //        _dataGridView.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
-            //        _dataGridView.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
-            //        _dataGridView.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
-            //        _dataGridView.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_FROM;
-            //        _dataGridView.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_TO;
-            //        _dataGridView.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_HOLIDAY;
-            //        _dataGridView.Columns[9].HeaderText = Properties.Resources.GRIDVIEW_VACATION;
-            //        _dataGridView.Columns[10].HeaderText = Properties.Resources.GRIDVIEW_QUICK_OUTSIDE;
-            //        _dataGridView.Columns[11].HeaderText = Properties.Resources.GRIDVIEW_TOTAL_HOURS_DAY;
-            //        _dataGridView.Columns[12].HeaderText = Properties.Resources.GRIDVIEW_TOTAL_HOURS_NIGHT;
-            //        break;
-
-            //    case 6:
-            //        _dataGridView.Columns[0].HeaderText = "ID";
-            //        _dataGridView.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-            //        _dataGridView.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-            //        _dataGridView.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
-            //        _dataGridView.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
-            //        _dataGridView.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
-            //        _dataGridView.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_DAY;
-            //        _dataGridView.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_HOLIDAY;
-            //        _dataGridView.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_VACATION;
-            //        _dataGridView.Columns[9].HeaderText = Properties.Resources.GRIDVIEW_QUICK_OUTSIDE;
-            //        _dataGridView.Columns[10].HeaderText = Properties.Resources.GRIDVIEW_HOURS_DAY;
-            //        break;
-
-            //    case 7:
-            //        _dataGridView.Columns[0].HeaderText = "ID";
-            //        _dataGridView.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-            //        _dataGridView.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-            //        _dataGridView.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
-            //        _dataGridView.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
-            //        _dataGridView.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
-            //        _dataGridView.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_FROM;
-            //        _dataGridView.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_TO;
-            //        _dataGridView.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_HOURS_PERIOD;
-            //        break;
-
-            //    case 8:
-            //        _dataGridView.Columns[0].HeaderText = "ID";
-            //        _dataGridView.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-            //        _dataGridView.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-            //        _dataGridView.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
-            //        _dataGridView.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
-            //        _dataGridView.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
-            //        _dataGridView.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_DAY;
-            //        _dataGridView.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_HOLIDAY;
-            //        _dataGridView.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_VACATION;
-            //        _dataGridView.Columns[9].HeaderText = Properties.Resources.GRIDVIEW_QUICK_OUTSIDE;
-            //        _dataGridView.Columns[10].HeaderText = Properties.Resources.GRIDVIEW_HOURS_DAY;
-            //        break;
-
-            //    case 9:
-            //        _dataGridView.Columns[0].HeaderText = "ID";
-            //        _dataGridView.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-            //        _dataGridView.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-            //        _dataGridView.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
-            //        _dataGridView.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
-            //        _dataGridView.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
-            //        _dataGridView.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_DAY;
-            //        _dataGridView.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_HOLIDAY;
-            //        _dataGridView.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_VACATION;
-            //        _dataGridView.Columns[9].HeaderText = Properties.Resources.GRIDVIEW_QUICK_OUTSIDE;
-            //        _dataGridView.Columns[10].HeaderText = Properties.Resources.GRIDVIEW_ENTER;
-            //        _dataGridView.Columns[11].HeaderText = Properties.Resources.GRIDVIEW_EXIT;
-            //        _dataGridView.Columns[12].HeaderText = Properties.Resources.GRIDVIEW_PERSENCE;
-            //        break;
-
-            //    case 10:
-            //        _dataGridView.Columns[0].HeaderText = "ID";
-            //        _dataGridView.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-            //        _dataGridView.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-            //        _dataGridView.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
-            //        _dataGridView.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
-            //        _dataGridView.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
-            //        _dataGridView.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_DATE;
-            //        break;
-
-            //    case 11:
-            //        _dataGridView.Columns[0].HeaderText = "ID";
-            //        _dataGridView.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-            //        _dataGridView.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-            //        _dataGridView.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
-            //        _dataGridView.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
-            //        _dataGridView.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
-            //        _dataGridView.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_VACATION;
-            //        _dataGridView.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_FROM;
-            //        _dataGridView.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_TO;
-            //        break;
-
-            //    case 12:
-            //        _dataGridView.Columns[0].HeaderText = "ID";
-            //        _dataGridView.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-            //        _dataGridView.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-            //        _dataGridView.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
-            //        _dataGridView.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
-            //        _dataGridView.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
-            //        _dataGridView.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_DAY;
-            //        _dataGridView.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_TEMPERATURE;
-            //        break;
-
-            //    default: break;
-            //}
+            }           
         }
 
         private void RowCnt(int index)
@@ -514,29 +341,28 @@ namespace Reports.CustomClasses
                     int otp = 0, opzd = 0, rann = 0, ots = 0;
                     foreach (DataGridViewRow row in _dataGridView.Rows)
                     {
-                        if (!string.IsNullOrEmpty(row.Cells[Properties.Resources.GRIDVIEW_VACATION].Value.ToString()))
+                        if (!string.IsNullOrEmpty(row.Cells[8].Value.ToString())) // otpusk
                         {
                             otp++;
                         }
 
-                        if (!string.IsNullOrEmpty(row.Cells[Properties.Resources.GRIDVIEW_LATE].Value.ToString()))
+                        if (!string.IsNullOrEmpty(row.Cells[11].Value.ToString()))
                         {
                             opzd++;
                         }
-                        if (!string.IsNullOrEmpty(row.Cells[Properties.Resources.GRIDVIEW_EARLY].Value.ToString()))
+                        if (!string.IsNullOrEmpty(row.Cells[13].Value.ToString()))
                         {
                             rann++;
                         }
-                        if (!string.IsNullOrEmpty(row.Cells[Properties.Resources.GRIDVIEW_MISSING].Value.ToString()))
+                        if (!string.IsNullOrEmpty(row.Cells[16].Value.ToString()))
                         {
                             ots++;
                         }
-
                     }
-                    _label.Text += Properties.Resources.HOLIDAY + "&" + Properties.Resources.VACATION  + ": " + otp +
-                        "   |   " + Properties.Resources.LATE_COME + ": " + opzd + 
+                    _label.Text +=  Properties.Resources.VACATION  + ": "  + otp +
+                        "   |   " + Properties.Resources.LATE_COME + ": "  + opzd + 
                         "   |   " + Properties.Resources.EARLY_GONE + ": " + rann + 
-                        "   |   " + Properties.Resources.MISSING + ": " + ots;
+                        "   |   " + Properties.Resources.MISSING + ": "    + ots;
                     break;
                 case 1:
                     _label.Text += "    " + Properties.Resources.NUMBER_OF_EVENTS + ": " + _dataGridView.RowCount;

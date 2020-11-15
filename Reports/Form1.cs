@@ -528,10 +528,17 @@ namespace Reports
             if (dialogResult == DialogResult.Yes)
             {
                 try
-                {                    
+                {
+                    //var config = System.Configuration.ConfigurationManager.OpenExeConfiguration(System.Configuration.ConfigurationUserLevel.None);
+                    //config.AppSettings.Settings["language"].Value = language;
+                    //config.Save();
+
+                    //System.Configuration.ConfigurationManager.RefreshSection("appSettings");
+
+                    _dataBase.insertData("update language set lan = '" + language + "'");
                     System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(language);
                     var resources = new System.Resources.ResourceManager("Reports.Form1", System.Reflection.Assembly.GetExecutingAssembly());
-
+                    dataGridView1.DataSource = null;
                     label3.Text = resources.GetString("label3.Text");
                     label4.Text = resources.GetString("label4.Text");
                     button1.Text = resources.GetString("button1.Text");
@@ -552,22 +559,12 @@ namespace Reports
                     resources.GetString("comboBox1.Items10"),
                     resources.GetString("comboBox1.Items11"),
                     resources.GetString("comboBox1.Items12")});
-                    comboBox1.SelectedIndex = 0;
-
-                    dataGridView1.DataSource = null;
-                    //dataGridView1.Rows.Clear();
-
-                    var config = System.Configuration.ConfigurationManager.OpenExeConfiguration(System.Configuration.ConfigurationUserLevel.None);
-                    config.AppSettings.Settings["language"].Value = language;
-                    config.Save();
-
-                    System.Configuration.ConfigurationManager.RefreshSection("appSettings");
+                    comboBox1.SelectedIndex = 0;                    
                 }
                 catch (Exception msg)
                 {
                     MessageBox.Show(msg.ToString(), "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                
+                }                
             }
         }
     }
