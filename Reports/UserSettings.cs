@@ -17,7 +17,7 @@ namespace Reports
 
         private void FillTree()
         {
-            System.Collections.Generic.List<MyTree> myTrees = _dataBase.getTree("select ttext, mytree from department order by id asc");
+            System.Collections.Generic.List<MyTree> myTrees = _dataBase.GetTree("select ttext, mytree from department order by id asc");
             for (int i = 0; i < myTrees.Count; i++)
             {
                 TreeNode tnode = new TreeNode();
@@ -28,10 +28,10 @@ namespace Reports
         }
 
         private void GetEmployee(string str)
-        {
+        {          
             flowLayoutPanel1.Controls.Clear();
             var employees = _dataBase.GetEmployees(str);
-            foreach (MyControls.Employee employee in employees)
+            foreach (var employee in employees)
             {
                 flowLayoutPanel1.Controls.Add(employee);
             }

@@ -118,159 +118,156 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BUSSINESS_TRIP" xml:space="preserve">
-    <value>business trip</value>
+    <value>командировка</value>
   </data>
   <data name="CONTROL_LANGUAGE_CHANGE" xml:space="preserve">
-    <value>Change the language?</value>
+    <value>Изменить язык?</value>
   </data>
   <data name="DATE_FUTURE" xml:space="preserve">
-    <value>The date must be set for the future</value>
+    <value>Дата должна быть установлена ​​на будущее</value>
   </data>
   <data name="DELETE" xml:space="preserve">
-    <value>Delete?</value>
+    <value>Удалить?</value>
   </data>
   <data name="EARLY_GONE" xml:space="preserve">
-    <value>Early gone</value>
+    <value>Ранний уход</value>
   </data>
   <data name="EMPLOYEE_INSIDE" xml:space="preserve">
-    <value>Employee inside</value>
+    <value>Сотрудники внутри</value>
   </data>
   <data name="EMPLOYEE_IN_PERIOD_TIME" xml:space="preserve">
-    <value>The employee has already occupied during this period of time</value>
+    <value>Сотрудник уже занял в этот период времени</value>
   </data>
   <data name="FILL_IN_FIELDS" xml:space="preserve">
-    <value>Fill in all required fields</value>
+    <value>Заполните все обязательные поля</value>
   </data>
   <data name="FILTER" xml:space="preserve">
-    <value>filter by</value>
+    <value>фильтр по</value>
   </data>
   <data name="GRIDVIEW_DATE" xml:space="preserve">
-    <value>Date</value>
+    <value>Дата</value>
   </data>
   <data name="GRIDVIEW_DAY" xml:space="preserve">
-    <value>Day</value>
+    <value>День</value>
   </data>
   <data name="GRIDVIEW_DEPARTMENT" xml:space="preserve">
-    <value>Department</value>
+    <value>Отдел</value>
   </data>
   <data name="GRIDVIEW_DOOR" xml:space="preserve">
-    <value>Door</value>
+    <value>Дверь</value>
   </data>
   <data name="GRIDVIEW_EARLY" xml:space="preserve">
-    <value>Early</value>
+    <value>Рано</value>
   </data>
   <data name="GRIDVIEW_ENTER" xml:space="preserve">
-    <value>Enter</value>
+    <value>Вход</value>
   </data>
   <data name="GRIDVIEW_EXIT" xml:space="preserve">
-    <value>Exit</value>
+    <value>Выход</value>
   </data>
   <data name="GRIDVIEW_FAMILY_NAME" xml:space="preserve">
-    <value>Father's name</value>
+    <value>Отчество</value>
   </data>
   <data name="GRIDVIEW_FROM" xml:space="preserve">
-    <value>From</value>
+    <value>От</value>
   </data>
   <data name="GRIDVIEW_HOLIDAY" xml:space="preserve">
-    <value>Holiday</value>
+    <value>Праздник</value>
   </data>
   <data name="GRIDVIEW_HOURS" xml:space="preserve">
-    <value>Hours</value>
+    <value>Часы </value>
   </data>
   <data name="GRIDVIEW_HOURS_DAY" xml:space="preserve">
-    <value>Hours day</value>
+    <value>Часы в день</value>
   </data>
   <data name="GRIDVIEW_HOURS_NIGHT" xml:space="preserve">
-    <value>Hours night</value>
+    <value>Часы в ноч</value>
   </data>
   <data name="GRIDVIEW_LATE" xml:space="preserve">
-    <value>Late</value>
+    <value>Опаздал/а</value>
   </data>
   <data name="GRIDVIEW_MISSING" xml:space="preserve">
-    <value>Missing</value>
+    <value>Отсутствующие</value>
   </data>
   <data name="GRIDVIEW_NAME" xml:space="preserve">
-    <value>Name</value>
+    <value>Имя</value>
   </data>
   <data name="GRIDVIEW_PERSENCE" xml:space="preserve">
-    <value>Time of persence</value>
+    <value>Присутсвие</value>
   </data>
   <data name="GRIDVIEW_POSITION" xml:space="preserve">
-    <value>Position</value>
+    <value>Должность</value>
   </data>
   <data name="GRIDVIEW_QUICK_OUTSIDE" xml:space="preserve">
-    <value>Outside</value>
+    <value>Уволнительные</value>
   </data>
   <data name="GRIDVIEW_REASON" xml:space="preserve">
-    <value>Reason</value>
+    <value>Причина</value>
   </data>
   <data name="GRIDVIEW_SURNAME" xml:space="preserve">
-    <value>Surename</value>
+    <value>Фамилия</value>
   </data>
   <data name="GRIDVIEW_TEMPERATURE" xml:space="preserve">
-    <value>Temperature</value>
+    <value>Температура</value>
   </data>
   <data name="GRIDVIEW_TO" xml:space="preserve">
-    <value>To</value>
+    <value>До</value>
   </data>
   <data name="GRIDVIEW_VACATION" xml:space="preserve">
     <value>Vacation</value>
   </data>
   <data name="HOLIDAY" xml:space="preserve">
-    <value>Holiday</value>
+    <value>Праздник</value>
   </data>
   <data name="HOLIDAY_INFO" xml:space="preserve">
-    <value>The holiday exists in this period of time</value>
+    <value>Праздник существует в этом периоде времени</value>
   </data>
   <data name="LATE_COME" xml:space="preserve">
-    <value>Late come</value>
+    <value>Опоздал/а</value>
   </data>
   <data name="LOADING" xml:space="preserve">
-    <value>Loading</value>
+    <value>Загрузка</value>
   </data>
   <data name="MISSING" xml:space="preserve">
-    <value>Missing</value>
+    <value>Отсуствует</value>
   </data>
   <data name="NUMBER_OF_EVENTS" xml:space="preserve">
-    <value>Number of events</value>
+    <value>Количество событий</value>
   </data>
   <data name="PAID_VACATION" xml:space="preserve">
-    <value>paid vacation</value>
+    <value>оплачиваемый отпуск</value>
   </data>
   <data name="PASSWORD_NOT_MATCH" xml:space="preserve">
-    <value>Passwords don't match</value>
+    <value>Пароли не совпадают</value>
   </data>
   <data name="PASSWORD_SUCCESS" xml:space="preserve">
-    <value>Updated successfully!</value>
+    <value>Обновлено успешно!</value>
   </data>
   <data name="PASSWORD_WRONG" xml:space="preserve">
-    <value>Password is wrong</value>
+    <value>Неверный пароль</value>
   </data>
   <data name="QUICK_OUTSIDE_INFO" xml:space="preserve">
-    <value>This table for events during the working day</value>
+    <value>Этот таблица для события в течение рабoчий день</value>
   </data>
   <data name="QUICK_OUTSIDE_PAID" xml:space="preserve">
-    <value>paid</value>
+    <value>оплачиваемый</value>
   </data>
   <data name="QUICK_OUTSIDE_UNPAID" xml:space="preserve">
-    <value>unpaid</value>
+    <value>неоплачиваемый</value>
   </data>
   <data name="REPORT_FROM" xml:space="preserve">
-    <value>Report from</value>
-  </data>
-  <data name="TO" xml:space="preserve">
-    <value>to</value>
+    <value>Отчёт от</value>
   </data>
   <data name="UNPAID_VACATION" xml:space="preserve">
-    <value>unpaid vacation</value>
+    <value>неоплачиваемый отпуск</value>
   </data>
   <data name="USERNAME_OR_PASSWORD_WRONG" xml:space="preserve">
-    <value>Username or password is wrong</value>
+    <value>Неверный логин или пароль</value>
   </data>
   <data name="VACATION" xml:space="preserve">
-    <value>Vacation</value>
+    <value>Отпуск</value>
   </data>
   <data name="WARNING" xml:space="preserve">
-    <value>Warning</value>
+    <value>Предупреждение</value>
   </data>
 </root>

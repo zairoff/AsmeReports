@@ -4,7 +4,8 @@
     {
         public static string CnnVal(string name)
         {
-            return System.Configuration.ConfigurationManager.ConnectionStrings[name].ConnectionString;
+            return "Server = localhost; Port = 5432; User Id = postgres; Password = postgres; Database = '" +
+                System.Configuration.ConfigurationManager.AppSettings["db"] + "'";
         }
     }
 }

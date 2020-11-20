@@ -1,9 +1,11 @@
 ﻿
+using System.Threading.Tasks;
+
 namespace Reports
 {
     class DataBase
     {
-        public System.Collections.Generic.List<MyTree> getTree(string query)
+        public System.Collections.Generic.List<MyTree> GetTree(string query)
         {
             System.Collections.Generic.List<MyTree> myTrees = new System.Collections.Generic.List<MyTree>();
             using (var connection = new Npgsql.NpgsqlConnection(Helper.CnnVal("DBConnection")))
@@ -27,7 +29,7 @@ namespace Reports
             return myTrees;
         }
 
-        public void getRecords(string query, System.Windows.Forms.DataGridView dataGridView)
+        public void GetRecords(string query, System.Windows.Forms.DataGridView dataGridView)
         {
             using (var conn = new Npgsql.NpgsqlConnection(Helper.CnnVal("DBConnection")))
             {
@@ -41,10 +43,28 @@ namespace Reports
                 }
             }
         }
-        
+
+        public async Task<System.Data.DataTable> GetRecords(string query)
+        {
+            using (var dataTable = new System.Data.DataTable())
+            {
+                using (var conn = new Npgsql.NpgsqlConnection(Helper.CnnVal("DBConnection")))
+                {
+                    await conn.OpenAsync();
+                    using (var cmd = new Npgsql.NpgsqlCommand(query, conn))
+                    {
+                        var reader = await cmd.ExecuteReaderAsync();
+                        dataTable.Load(reader);
+                        return dataTable;
+                    }                        
+                }
+            }
+        }
+
         public System.Collections.Generic.List<MyControls.Employee> GetEmployees(string query)
         {
             System.Collections.Generic.List<MyControls.Employee> employees = new System.Collections.Generic.List<MyControls.Employee>();
+
             using (var connection = new Npgsql.NpgsqlConnection(Helper.CnnVal("DBConnection")))
             {
                 connection.Open();               
@@ -56,13 +76,15 @@ namespace Reports
                     {
                         while (reader.Read())
                         {
-                            MyControls.Employee employee = new MyControls.Employee();
-                            //employee.Dock = System.Windows.Forms.DockStyle.Fill;
-                            employee.FIO     = reader[1].ToString() + " " + reader[2].ToString() + " " + reader[3].ToString();
-                            employee.UserID  = reader[0].ToString();                           
-                            employee.MyImage = System.Drawing.Image.FromStream(new System.IO.MemoryStream((byte[])reader[4]));
-                            employee.Otdel   = reader[5].ToString();
-                            employee.Lavozim = reader[6].ToString();
+                            MyControls.Employee employee = new MyControls.Employee
+                            {
+                                //employee.Dock = System.Windows.Forms.DockStyle.Fill;
+                                FIO = reader[1].ToString() + " " + reader[2].ToString() + " " + reader[3].ToString(),
+                                UserID = reader[0].ToString(),
+                                MyImage = System.Drawing.Image.FromStream(new System.IO.MemoryStream((byte[])reader[4])),
+                                Otdel = reader[5].ToString(),
+                                Lavozim = reader[6].ToString()
+                            };
                             employees.Add(employee);
                         }
                     }
@@ -71,7 +93,7 @@ namespace Reports
             return employees;
         }
 
-        public void insertData(string query)
+        public void InsertData(string query)
         {
             using (var connection = new Npgsql.NpgsqlConnection(Helper.CnnVal("DBConnection")))
             {
@@ -84,7 +106,7 @@ namespace Reports
             }
         }
 
-        public bool checkRow(string query)
+        public bool CheckRow(string query)
         {
             using (var connection = new Npgsql.NpgsqlConnection(Helper.CnnVal("DBConnection")))
             {                
@@ -108,10 +130,11 @@ namespace Reports
                     var reader = cmd.ExecuteReader();
                     while (reader.Read())
                     {
-                        EmployeeListbox deviceInfo = new EmployeeListbox
+                        var deviceInfo = new EmployeeListbox
                         {
                             ID = System.Convert.ToInt32(reader[0]),
-                            Familiya = reader[1].ToString()
+                            Familiya = reader[1].ToString(),
+                            Ism = reader[2].ToString()
                         };
                         mySmenas.Add(deviceInfo);
                     }
@@ -144,5 +167,7 @@ namespace Reports
         public int ID { get; set; }
 
         public string Familiya { get; set; }
+
+        public string Ism { get; set; }
     }
 }

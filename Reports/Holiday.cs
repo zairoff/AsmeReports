@@ -11,7 +11,7 @@ namespace Reports
             MaximizedBounds = Screen.FromHandle(Handle).WorkingArea;
             WindowState = FormWindowState.Maximized;
             _dataBase = new DataBase();
-            _dataBase.getRecords("select id, bayram_nomi, dan, gacha from holidays order by id desc", dataGridView1);
+            _dataBase.GetRecords("select id, bayram_nomi, dan, gacha from holidays order by id desc", dataGridView1);
             dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-dd");
             dateTimePicker2.Text = DateTime.Now.ToString("yyyy-MM-dd");
             Setheaders();
@@ -52,7 +52,11 @@ namespace Reports
         {
             if (checkDate())
             {
-                if (_dataBase.checkRow("select exists(select 1 from holidays where ('" +
+                MessageBox.Show(Properties.Resources.DATE_FUTURE, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (_dataBase.CheckRow("select exists(select 1 from holidays where ('" +
                 dateTimePicker1.Text + "' >= dan and '" + dateTimePicker1.Text + "' <= gacha) or " +
                 "('" + dateTimePicker2.Text + "' >= dan and '" + dateTimePicker2.Text + "' <= gacha)" +
                 " or (dan >= '" + dateTimePicker1.Text + "' and dan <= '" + dateTimePicker2.Text + "'))"))
@@ -60,15 +64,11 @@ namespace Reports
                     MessageBox.Show(Properties.Resources.HOLIDAY_INFO, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
-                _dataBase.insertData("insert into holidays (bayram_nomi, dan, gacha) " +
+                _dataBase.InsertData("insert into holidays (bayram_nomi, dan, gacha) " +
                 "values('" + textBox1.Text + "','" + dateTimePicker1.Text + "','" + dateTimePicker2.Text + "')");
 
-                _dataBase.getRecords("select id, bayram_nomi, dan, gacha from holidays order by id desc", dataGridView1);
+                _dataBase.GetRecords("select id, bayram_nomi, dan, gacha from holidays order by id desc", dataGridView1);
                 Setheaders();
-            }
-            else
-            {
-                MessageBox.Show(Properties.Resources.DATE_FUTURE, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -79,9 +79,9 @@ namespace Reports
 
             if (Check())
             {
-                _dataBase.insertData("delete from holidays where id = " + 
+                _dataBase.InsertData("delete from holidays where id = " + 
                 Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentCell.RowIndex].Value));
-                _dataBase.getRecords("select id, bayram_nomi, dan, gacha from holidays order by id desc", dataGridView1);
+                _dataBase.GetRecords("select id, bayram_nomi, dan, gacha from holidays order by id desc", dataGridView1);
                 Setheaders();
             }
         }

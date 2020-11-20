@@ -12,7 +12,7 @@ namespace Reports
             WindowState = FormWindowState.Maximized;
             this.userID = userID;
             myDatabase = new DataBase();
-            myDatabase.getRecords("select t1.id, t2.familiya, t2.ism, t2.otdel, t2.lavozim, t1.sabab," +
+            myDatabase.GetRecords("select t1.id, t2.familiya, t2.ism, t2.otdel, t2.lavozim, t1.sabab," +
             "t1.dan, t1.gacha from uvolnitelnie t1 inner join employee t2 on t1.employeeid = t2.employeeid " +
             "where t1.employeeid = " + userID + " order by t1.id desc", dataGridView1);
             dateTimePicker1.CustomFormat = "yyyy-MM-dd HH:mm:ss";
@@ -75,7 +75,7 @@ namespace Reports
                 return;
             }
 
-            if (myDatabase.checkRow("select exists(select 1 from uvolnitelnie where (employeeid = " +
+            if (myDatabase.CheckRow("select exists(select 1 from uvolnitelnie where (employeeid = " +
             userID + " and '" + dateTimePicker1.Text + "' >= dan and '" + dateTimePicker1.Text + "' <= gacha) or " +
             "(employeeid = " + userID + " and '" + dateTimePicker2.Text + "' >= dan and '" +
             dateTimePicker2.Text + "' <= gacha) or (employeeid = " + userID + " and dan >= '" +
@@ -85,11 +85,11 @@ namespace Reports
                 return;
             }
 
-            myDatabase.insertData("insert into uvolnitelnie (employeeid, status, sabab, dan, gacha) " +
+            myDatabase.InsertData("insert into uvolnitelnie (employeeid, status, sabab, dan, gacha) " +
             "values(" + userID + "," + comboBox1.SelectedIndex + ",'" + textBox1.Text + "','" +
             dateTimePicker1.Text + "','" + dateTimePicker2.Text + "')");
 
-            myDatabase.getRecords("select t1.id, t2.familiya, t2.ism, t2.otdel, t2.lavozim, t1.sabab," +
+            myDatabase.GetRecords("select t1.id, t2.familiya, t2.ism, t2.otdel, t2.lavozim, t1.sabab," +
             "t1.dan, t1.gacha from uvolnitelnie t1 inner join employee t2 on t1.employeeid = t2.employeeid " +
             "where t1.employeeid = " + userID + " order by t1.id desc", dataGridView1);
             Setheaders();                                                             
@@ -102,9 +102,9 @@ namespace Reports
 
             if (Check())
             {
-                myDatabase.insertData("delete from uvolnitelnie where id = " +
+                myDatabase.InsertData("delete from uvolnitelnie where id = " +
                 Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentCell.RowIndex].Value));
-                myDatabase.getRecords("select t1.id, t2.familiya, t2.ism, t2.otdel, t2.lavozim, t1.sabab," +
+                myDatabase.GetRecords("select t1.id, t2.familiya, t2.ism, t2.otdel, t2.lavozim, t1.sabab," +
                 "t1.dan, t1.gacha from uvolnitelnie t1 inner join employee t2 on t1.employeeid = t2.employeeid " +
                 "where t1.employeeid = " + userID + " order by t1.id desc", dataGridView1);
                 Setheaders();

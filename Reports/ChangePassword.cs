@@ -26,7 +26,7 @@ namespace Reports
                 MessageBox.Show(Properties.Resources.FILL_IN_FIELDS, "info", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (!_dataBase.checkRow("select 1 from login where pass = '" + textBox1.Text.Trim() + "'"))
+            if (!_dataBase.CheckRow("select 1 from login where pass = '" + textBox1.Text.Trim() + "'"))
             {
                 textBox1.ForeColor = System.Drawing.Color.Red;
                 MessageBox.Show(Properties.Resources.PASSWORD_WRONG, "info", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -40,9 +40,9 @@ namespace Reports
                 return;
             }
 
-            _dataBase.insertData("update login set pass = '" + textBox3.Text + "' where pass = '" + textBox1.Text + "'");
+            _dataBase.InsertData("update login set pass = '" + textBox3.Text + "' where pass = '" + textBox1.Text + "'");
 
-            if(_dataBase.checkRow("select 1 from login where pass = '" + textBox3.Text.Trim() + "'"))
+            if(_dataBase.CheckRow("select 1 from login where pass = '" + textBox3.Text.Trim() + "'"))
             {
                 MessageBox.Show(Properties.Resources.PASSWORD_SUCCESS, "info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 textBox1.Text = "";

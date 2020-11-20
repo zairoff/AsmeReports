@@ -307,4 +307,7 @@
   <data name="GRIDVIEW_VACATION" xml:space="preserve">
     <value>Vacation</value>
   </data>
+  <data name="LOADING" xml:space="preserve">
+    <value>Загрузка</value>
+  </data>
 </root>

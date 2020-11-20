@@ -303,6 +303,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_54DBBE4DDD474DA69FFFDAA203BA16AF"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_5535951AA0F8DA6C3A00D8AC9FC10216"
         "OwnerKey" = "8:_02401CE8506D67BBFA6547E9279FBF8C"
         "MsmSig" = "8:_UNDEFINED"
@@ -1768,6 +1774,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_54DBBE4DDD474DA69FFFDAA203BA16AF"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_DAF80BFA178340B8B79E96B4F7B6FB99"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -2874,6 +2886,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_54DBBE4DDD474DA69FFFDAA203BA16AF"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Reports.resources, Version=1.0.0.0, Culture=ru, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_54DBBE4DDD474DA69FFFDAA203BA16AF"
+                    {
+                    "Name" = "8:Reports.resources.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\Reports\\bin\\Debug\\ru\\Reports.resources.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_FBDED367816C403598A198CA1657C2F8"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5535951AA0F8DA6C3A00D8AC9FC10216"
@@ -5859,6 +5902,17 @@
                         {
                         }
                     }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_FBDED367816C403598A198CA1657C2F8"
+                    {
+                    "Name" = "8:ru"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_FA4ACF13412C43F3B85002F6F3C1870B"
+                        "Folders"
+                        {
+                        }
+                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_D27D56D6AAA7471D9CCBD6EB8FD73F40"
@@ -5889,7 +5943,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:QuantReport"
         "ProductCode" = "8:{AE78DD39-4FA4-468F-8CE3-48293E8D3C11}"
-        "PackageCode" = "8:{08AFA36F-56E9-406D-BD74-19DF9F3CC88A}"
+        "PackageCode" = "8:{CEAD62BD-514A-469D-ABAC-41F410645AC5}"
         "UpgradeCode" = "8:{A53E53B0-D679-4394-9302-6C1F3A25A779}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

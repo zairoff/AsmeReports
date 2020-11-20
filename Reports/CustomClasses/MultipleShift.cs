@@ -21,53 +21,53 @@ namespace Reports.CustomClasses
             switch (index)
             {
                 case 0:
-                    _dataBase.getRecords("select *from getallevents_by_otdel('" + tree + "','" + dan + "','" +
+                    _dataBase.GetRecords("select *from getallevents_by_otdel('" + tree + "','" + dan + "','" +
                         gacha + "')", _dataGridView);
                     break;
                 case 1:
-                    _dataBase.getRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel," +
+                    _dataBase.GetRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel," +
                         "t2.lavozim, t1.kirish, t1.chiqish from reports t1 inner join employee t2 on " +
                         "t1.employeeid = t2.employeeid where t1.kirish::date >= '" + dan + "' and t1.kirish::date <= '" +
                         gacha + "' and t2.department  <@ '" + tree + "'", _dataGridView);
                     break;
                 case 2:
-                    _dataBase.getRecords("select *from getlate_by_otdel('" + tree + "','" +
+                    _dataBase.GetRecords("select *from getlate_by_otdel('" + tree + "','" +
                         dan + "','" + gacha + "')", _dataGridView);
                     break;
                 case 3:
-                    _dataBase.getRecords("select *from getearly_by_otdel('" + tree + "','" +
+                    _dataBase.GetRecords("select *from getearly_by_otdel('" + tree + "','" +
                         dan + "','" + gacha + "')", _dataGridView);
                     break;
                 case 4:
-                    _dataBase.getRecords("select *from getmissed_by_otdel('" + tree + "','" +
+                    _dataBase.GetRecords("select *from getmissed_by_otdel('" + tree + "','" +
                         dan + "','" + gacha + "')", _dataGridView);
                     break;
                 case 5:
-                    _dataBase.getRecords("select *from getworkedhours_total_by_otdel('" + tree +
+                    _dataBase.GetRecords("select *from getworkedhours_total_by_otdel('" + tree +
                         "','" + dan + "','" + gacha + "')", _dataGridView);
                     break;
                 case 6:
-                    _dataBase.getRecords("select *from getworked_hours_by_otdel('" + tree + "','" +
+                    _dataBase.GetRecords("select *from getworked_hours_by_otdel('" + tree + "','" +
                         dan + "','" + gacha + "')", _dataGridView);
                     break;
                 case 7:
-                    _dataBase.getRecords("select *from get_extra_worked_hours_total_by_otdel('" + tree + "','" +
+                    _dataBase.GetRecords("select *from get_extra_worked_hours_total_by_otdel('" + tree + "','" +
                         dan + "','" + gacha + "')", _dataGridView);
                     break;
                 case 8:
-                    _dataBase.getRecords("select *from get_extrawork_by_otdel('" + tree + "','" +
+                    _dataBase.GetRecords("select *from get_extrawork_by_otdel('" + tree + "','" +
                         dan + "','" + gacha + "')", _dataGridView);
                     break;
                 case 9:
-                    _dataBase.getRecords("select *from getbeing_factory_by_otdel('" + tree + "','" +
+                    _dataBase.GetRecords("select *from getbeing_factory_by_otdel('" + tree + "','" +
                         dan + "','" + gacha + "')", _dataGridView);
                     break;
                 case 10:
-                    _dataBase.getRecords("select *from getsotrudniki_vnutri_day('" + DateTime.Now.ToString("yyyy-MM-dd") + "','" +
+                    _dataBase.GetRecords("select *from getsotrudniki_vnutri_day('" + DateTime.Now.ToString("yyyy-MM-dd") + "','" +
                     DateTime.Now.ToString("yyyy-MM-dd") + "')", _dataGridView);
                     break;
                 case 11:
-                    _dataBase.getRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, " +
+                    _dataBase.GetRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, " +
                     "t2.lavozim, t1.sabab, t1.dan, t1.gacha from otpusk t1 inner join employee t2 on t1.employeeid = " +
                     "t2.employeeid where (t2.department  <@ '" + tree + "' and dan >= '" +
                     dan + "' and dan <= '" + gacha + "') or (t2.department  <@ '" +
@@ -75,7 +75,7 @@ namespace Reports.CustomClasses
                     gacha + "')", _dataGridView);
                     break;
                 case 12:
-                    _dataBase.getRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, t2.lavozim, " +
+                    _dataBase.GetRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, t2.lavozim, " +
                     "t1.door, t1.sana, t1.temperature from temperature t1 inner join employee t2 on t1.employeeid = " +
                     "t2.employeeid where t2.department <@ '" + tree + "' and t1.sana >= '" + dan + "' and " +
                     "t1.sana <= '" + gacha + "'", _dataGridView);
@@ -91,45 +91,45 @@ namespace Reports.CustomClasses
             switch (index)
             {
                 case 0:
-                    _dataBase.getRecords("select *from getallevents_by_person(" + id + ",'" +
+                    _dataBase.GetRecords("select *from getallevents_by_person(" + id + ",'" +
                     dan + "','" + gacha + "')", _dataGridView);
                     break;
                 case 1:
-                    _dataBase.getRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel," +
+                    _dataBase.GetRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel," +
                     "t2.lavozim, t1.kirish, t1.chiqish from reports t1 inner join employee t2 on " +
                     "t1.employeeid = t2.employeeid where t1.kirish::date >= '" + dan + "' and t1.kirish::date <= '" +
                     gacha + "' and t2.employeeid = " + id, _dataGridView);
                     break;
                 case 2:
-                    _dataBase.getRecords("select *from getlate_by_person(" + id + ",'" + dan + "','" + gacha +
+                    _dataBase.GetRecords("select *from getlate_by_person(" + id + ",'" + dan + "','" + gacha +
                         "')", _dataGridView);
                     break;
                 case 3:
-                    _dataBase.getRecords("select *from getearly_by_person(" + id + ",'" + dan + "','" + gacha +
+                    _dataBase.GetRecords("select *from getearly_by_person(" + id + ",'" + dan + "','" + gacha +
                         "')", _dataGridView);
                     break;
                 case 4:
-                    _dataBase.getRecords("select *from getmissed_by_person(" + id + ",'" + dan + "','" + gacha +
+                    _dataBase.GetRecords("select *from getmissed_by_person(" + id + ",'" + dan + "','" + gacha +
                         "')", _dataGridView);
                     break;
                 case 5:
-                    _dataBase.getRecords("select *from getworked_hours_total_byperson(" + id + ",'" + dan + "','" +
+                    _dataBase.GetRecords("select *from getworked_hours_total_byperson(" + id + ",'" + dan + "','" +
                     gacha + "')", _dataGridView);
                     break;
                 case 6:
-                    _dataBase.getRecords("select *from getworked_hours_by_person(" + id + ",'" + dan + "','" +
+                    _dataBase.GetRecords("select *from getworked_hours_by_person(" + id + ",'" + dan + "','" +
                     gacha + "')", _dataGridView);
                     break;
                 case 7:
-                    _dataBase.getRecords("select *from get_extra_worked_hours_total_by_person(" + id + ",'" + dan + "','" +
+                    _dataBase.GetRecords("select *from get_extra_worked_hours_total_by_person(" + id + ",'" + dan + "','" +
                     gacha + "')", _dataGridView);
                     break;
                 case 8:
-                    _dataBase.getRecords("select *from get_extrawork_by_person(" + id + ",'" + dan + "','" +
+                    _dataBase.GetRecords("select *from get_extrawork_by_person(" + id + ",'" + dan + "','" +
                     gacha + "')", _dataGridView);
                     break;
                 case 9:
-                    _dataBase.getRecords("select *from getbeing_factory_by_person(" + id + ",'" + dan + "','" +
+                    _dataBase.GetRecords("select *from getbeing_factory_by_person(" + id + ",'" + dan + "','" +
                     gacha + "')", _dataGridView);
                     break;
                 //case 10:
@@ -137,14 +137,14 @@ namespace Reports.CustomClasses
                 //    DateTime.Now.ToString("yyyy-MM-dd") + "')", _dataGridView);
                 //    break;
                 case 11:
-                    _dataBase.getRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, " +
+                    _dataBase.GetRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, " +
                     "t2.lavozim, t1.sabab, t1.dan, t1.gacha from otpusk t1 inner join employee t2 on t1.employeeid = " +
                     "t2.employeeid where (t1.employeeid = " + id + " and dan >= '" + dan + "' and dan <= '" +
                     gacha + "') or (t1.employeeid = " + id + " and gacha >= '" + dan + "' and gacha <= '" +
                     gacha + "')", _dataGridView);
                     break;
                 case 12:
-                    _dataBase.getRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, t2.lavozim, " +
+                    _dataBase.GetRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, t2.lavozim, " +
                     "t1.door, t1.sana, t1.temperature from temperature t1 inner join employee t2 on t1.employeeid = " +
                     "t2.employeeid where t1.employeeid = " + id + " and t1.sana >= '" + dan + "' and " +
                     "t1.sana <= '" + gacha + "'", _dataGridView);

@@ -43,7 +43,7 @@ namespace Reports
                 }
                 else
                 {
-                    if (_dataBase.checkRow("select 1 from login where username = '" + textBox2.Text + "' and pass = '" +
+                    if (_dataBase.CheckRow("select 1 from login where username = '" + textBox2.Text + "' and pass = '" +
                     textBox3.Text + "'"))
                     {
                         Hide();

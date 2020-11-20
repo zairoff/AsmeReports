@@ -12,7 +12,7 @@ namespace Reports
             WindowState = FormWindowState.Maximized;
             userID = id;
             myDatabase = new DataBase();
-            myDatabase.getRecords("select t1.id, t2.familiya, t2.ism, t2.otdel, t2.lavozim, t1.sabab," +
+            myDatabase.GetRecords("select t1.id, t2.familiya, t2.ism, t2.otdel, t2.lavozim, t1.sabab," +
             "t1.dan, t1.gacha from otpusk t1 inner join employee t2 on t1.employeeid = t2.employeeid " +
             "where t1.employeeid = " + id + " order by t1.id desc", dataGridView1);
             dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-dd");
@@ -65,7 +65,11 @@ namespace Reports
         {
             if (checkDate())
             {
-                if (myDatabase.checkRow("select exists(select 1 from otpusk where (employeeid = " +
+                MessageBox.Show(Properties.Resources.DATE_FUTURE, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                if (myDatabase.CheckRow("select exists(select 1 from otpusk where (employeeid = " +
                             userID + " and '" + dateTimePicker1.Text + "' >= dan and '" + dateTimePicker1.Text + "' <= gacha) or " +
                             "(employeeid = " + userID + " and '" + dateTimePicker2.Text + "' >= dan and '" +
                             dateTimePicker2.Text + "' <= gacha) or (employeeid = " + userID + " and dan >= '" +
@@ -75,18 +79,14 @@ namespace Reports
                 }
                 else
                 {
-                    myDatabase.insertData("insert into otpusk (employeeid, sabab, status, dan, gacha) " +
+                    myDatabase.InsertData("insert into otpusk (employeeid, sabab, status, dan, gacha) " +
                     "values(" + userID + ",'" + textBox1.Text + "'," + comboBox1.SelectedIndex + ", '" +
                     dateTimePicker1.Text + "','" + dateTimePicker2.Text + "')");
-                    myDatabase.getRecords("select t1.id, t2.familiya, t2.ism, t2.otdel, t2.lavozim, t1.sabab," +
+                    myDatabase.GetRecords("select t1.id, t2.familiya, t2.ism, t2.otdel, t2.lavozim, t1.sabab," +
                     "t1.dan, t1.gacha from otpusk t1 inner join employee t2 on t1.employeeid = t2.employeeid " +
                     "where t1.employeeid = " + userID + " order by t1.id desc", dataGridView1);
                     Setheaders();
                 }
-            }
-            else
-            {
-                MessageBox.Show(Properties.Resources.DATE_FUTURE, "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -97,9 +97,9 @@ namespace Reports
             
             if (Check())
             {
-                myDatabase.insertData("delete from otpusk where id = " + 
+                myDatabase.InsertData("delete from otpusk where id = " + 
                 Convert.ToInt32(dataGridView1[0, dataGridView1.CurrentCell.RowIndex].Value));
-                myDatabase.getRecords("select t1.id, t2.familiya, t2.ism, t2.otdel, t2.lavozim, t1.sabab," +
+                myDatabase.GetRecords("select t1.id, t2.familiya, t2.ism, t2.otdel, t2.lavozim, t1.sabab," +
                 "t1.dan, t1.gacha from otpusk t1 inner join employee t2 on t1.employeeid = t2.employeeid " +
                 "where t1.employeeid = " + userID + " order by t1.id desc", dataGridView1);
                 Setheaders();
