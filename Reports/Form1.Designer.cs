@@ -288,7 +288,6 @@
             this.LanguageEnglish.Name = "LanguageEnglish";
             this.LanguageEnglish.TabStop = false;
             this.LanguageEnglish.Click += new System.EventHandler(this.LanguageEnglish_Click);
-            this.LanguageEnglish.MouseHover += new System.EventHandler(this.LanguageEnglish_MouseHover);
             // 
             // pictureBox3
             // 

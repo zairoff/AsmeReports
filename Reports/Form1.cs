@@ -30,6 +30,7 @@ namespace Reports
             }
             else
             {
+                MaximizedBounds = Screen.FromHandle(Handle).WorkingArea;
                 WindowState = FormWindowState.Maximized;
                 max_check = true;
             }
@@ -72,7 +73,7 @@ namespace Reports
             treeView1.SelectedNode.ForeColor = System.Drawing.Color.White;
         }        
 
-        private void copyAlltoClipboard()
+        private void CopyAlltoClipboard()
         {            
             dataGridView1.SelectAll();
             DataObject dataObj = dataGridView1.GetClipboardContent();
@@ -352,12 +353,13 @@ namespace Reports
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
                     dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_HOLIDAY;
                     dataGridView1.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_VACATION;
-                    dataGridView1.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_DATE;
-                    dataGridView1.Columns[9].HeaderText = Properties.Resources.GRIDVIEW_ENTER;
-                    dataGridView1.Columns[10].HeaderText = Properties.Resources.GRIDVIEW_LATE;
-                    dataGridView1.Columns[11].HeaderText = Properties.Resources.GRIDVIEW_EXIT;
-                    dataGridView1.Columns[12].HeaderText = Properties.Resources.GRIDVIEW_EARLY;
-                    dataGridView1.Columns[13].HeaderText = Properties.Resources.GRIDVIEW_MISSING;
+                    dataGridView1.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_QUICK_OUTSIDE;
+                    dataGridView1.Columns[9].HeaderText = Properties.Resources.GRIDVIEW_DATE;
+                    dataGridView1.Columns[10].HeaderText = Properties.Resources.GRIDVIEW_ENTER;
+                    dataGridView1.Columns[11].HeaderText = Properties.Resources.GRIDVIEW_LATE;
+                    dataGridView1.Columns[12].HeaderText = Properties.Resources.GRIDVIEW_EXIT;
+                    dataGridView1.Columns[13].HeaderText = Properties.Resources.GRIDVIEW_EARLY;
+                    dataGridView1.Columns[14].HeaderText = Properties.Resources.GRIDVIEW_MISSING;
                     break;
 
                 case 1:
@@ -590,7 +592,7 @@ namespace Reports
             if (dataGridView1.Rows.Count < 1)
                 return;
 
-            copyAlltoClipboard();
+            CopyAlltoClipboard();
             Microsoft.Office.Interop.Excel.Application xlexcel;
             Microsoft.Office.Interop.Excel.Workbook xlWorkBook;
             Microsoft.Office.Interop.Excel.Worksheet xlWorkSheet;
@@ -740,11 +742,6 @@ namespace Reports
         private void LanguageRussian_Click(object sender, EventArgs e)
         {
             ChangeLanguage("ru");
-        }
-
-        private void LanguageEnglish_MouseHover(object sender, EventArgs e)
-        {
-            new ToolTip().Show("English",LanguageEnglish, 3);
         }
 
         private void ChangeLanguage(string language)
