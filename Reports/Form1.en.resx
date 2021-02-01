@@ -158,43 +158,43 @@
   <data name="label3.Text" xml:space="preserve">
     <value>Filter</value>
   </data>
-  <data name="comboBox1.Items" xml:space="preserve">
-    <value>Protocol by schedule</value>
-  </data>
   <data name="comboBox1.Items1" xml:space="preserve">
+    <value>Protocol by schedule for each day of the period</value>
+  </data>
+  <data name="comboBox1.Items" xml:space="preserve">
     <value>Protocol by all events</value>
   </data>
-  <data name="comboBox1.Items2" xml:space="preserve">
-    <value>Latecomers</value>
-  </data>
   <data name="comboBox1.Items3" xml:space="preserve">
-    <value>Early leave</value>
-  </data>
-  <data name="comboBox1.Items4" xml:space="preserve">
-    <value>Missings</value>
+    <value>Latecomers for each day of the period</value>
   </data>
   <data name="comboBox1.Items5" xml:space="preserve">
-    <value>Worked hours for the period</value>
-  </data>
-  <data name="comboBox1.Items6" xml:space="preserve">
-    <value>Worked hours for each day of the period</value>
+    <value>Early leaves for each day of the period</value>
   </data>
   <data name="comboBox1.Items7" xml:space="preserve">
-    <value>Worked hours outside the schedule for the period</value>
-  </data>
-  <data name="comboBox1.Items8" xml:space="preserve">
-    <value>Worked hours outside the schedule for each day of the period</value>
-  </data>
-  <data name="comboBox1.Items9" xml:space="preserve">
-    <value>Time of presence in company</value>
+    <value>Missings for each day of the period</value>
   </data>
   <data name="comboBox1.Items10" xml:space="preserve">
-    <value>Employees - inside</value>
+    <value>Worked hours for the period</value>
   </data>
-  <data name="comboBox1.Items11" xml:space="preserve">
-    <value>Vacation - sick leave</value>
+  <data name="comboBox1.Items9" xml:space="preserve">
+    <value>Worked hours for each day of the period</value>
   </data>
   <data name="comboBox1.Items12" xml:space="preserve">
+    <value>Worked hours outside the schedule for the period</value>
+  </data>
+  <data name="comboBox1.Items11" xml:space="preserve">
+    <value>Worked hours outside the schedule for each day of the period</value>
+  </data>
+  <data name="comboBox1.Items14" xml:space="preserve">
+    <value>Time of presence in company</value>
+  </data>
+  <data name="comboBox1.Items15" xml:space="preserve">
+    <value>Employees - inside</value>
+  </data>
+  <data name="comboBox1.Items16" xml:space="preserve">
+    <value>Vacation - sick leave</value>
+  </data>
+  <data name="comboBox1.Items17" xml:space="preserve">
     <value>Temperature</value>
   </data>
   <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -217,5 +217,20 @@
   </data>
   <data name="pictureBox1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="comboBox1.Items2" xml:space="preserve">
+    <value>Protocol by schedule for the period</value>
+  </data>
+  <data name="comboBox1.Items4" xml:space="preserve">
+    <value>Latecomers for the period</value>
+  </data>
+  <data name="comboBox1.Items6" xml:space="preserve">
+    <value>Early leaves for the period</value>
+  </data>
+  <data name="comboBox1.Items8" xml:space="preserve">
+    <value>Missings for the period</value>
+  </data>
+  <data name="comboBox1.Items13" xml:space="preserve">
+    <value>Worked hours on weekends</value>
   </data>
 </root>

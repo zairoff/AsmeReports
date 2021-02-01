@@ -225,7 +225,12 @@
             resources.GetString("comboBox1.Items9"),
             resources.GetString("comboBox1.Items10"),
             resources.GetString("comboBox1.Items11"),
-            resources.GetString("comboBox1.Items12")});
+            resources.GetString("comboBox1.Items12"),
+            resources.GetString("comboBox1.Items13"),
+            resources.GetString("comboBox1.Items14"),
+            resources.GetString("comboBox1.Items15"),
+            resources.GetString("comboBox1.Items16"),
+            resources.GetString("comboBox1.Items17")});
             this.comboBox1.Name = "comboBox1";
             // 
             // dateTimePicker2
@@ -307,6 +312,7 @@
             // pictureBox4
             // 
             resources.ApplyResources(this.pictureBox4, "pictureBox4");
+            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox4.Image = global::Reports.Properties.Resources.calendar_light;
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.TabStop = false;
@@ -317,6 +323,7 @@
             // pictureBox2
             // 
             resources.ApplyResources(this.pictureBox2, "pictureBox2");
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox2.Image = global::Reports.Properties.Resources.user_holiday_light;
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.TabStop = false;
@@ -327,6 +334,7 @@
             // pictureBox1
             // 
             resources.ApplyResources(this.pictureBox1, "pictureBox1");
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::Reports.Properties.Resources.excel;
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.TabStop = false;

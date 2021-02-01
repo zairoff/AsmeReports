@@ -96,79 +96,115 @@ namespace Reports
                 switch (comboBox1.SelectedIndex)
                 {
                     case 0:
-                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getallevents_by_person(" + 
-                                            employeeListboxes[comboBox2.SelectedIndex].ID + ",'" +
-                                            dateTimePicker1.Text + "','" + 
-                                            dateTimePicker2.Text + "')"
-                                            );
-                        break;
-                    case 1:
                         dataGridView1.DataSource = await _dataBase.GetRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, t2.lavozim, t1.kirish, t1.chiqish " +
                                             "from reports t1 " +
                                             "inner join employee t2 " +
                                             "on t1.employeeid = t2.employeeid " +
-                                            "where t1.kirish::date >= '" + dateTimePicker1.Text + 
-                                            "' and t1.kirish::date <= '" + dateTimePicker2.Text + 
+                                            "where t1.kirish::date >= '" + dateTimePicker1.Text +
+                                            "' and t1.kirish::date <= '" + dateTimePicker2.Text +
                                             "' and t2.employeeid = " + employeeListboxes[comboBox2.SelectedIndex].ID
+                                            );                        
+                        break;
+                    case 1:
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getallevents_by_person(" +
+                                            employeeListboxes[comboBox2.SelectedIndex].ID + ",'" +
+                                            dateTimePicker1.Text + "','" +
+                                            dateTimePicker2.Text + "')"
                                             );
                         break;
                     case 2:
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getallevents_by_person_total(" +
+                                            employeeListboxes[comboBox2.SelectedIndex].ID + ",'" +
+                                            dateTimePicker1.Text + "','" +
+                                            dateTimePicker2.Text + "')"
+                                            );
+                        break;
+                    case 3:
                         dataGridView1.DataSource = await _dataBase.GetRecords("select *from getlate_by_person(" + 
                                             employeeListboxes[comboBox2.SelectedIndex].ID + ",'" + 
                                             dateTimePicker1.Text + "','" + 
                                             dateTimePicker2.Text + "')"
                                             );
                         break;
-                    case 3:
+                    case 4:
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getlate_by_person_total(" +
+                                            employeeListboxes[comboBox2.SelectedIndex].ID + ",'" +
+                                            dateTimePicker1.Text + "','" +
+                                            dateTimePicker2.Text + "')"
+                                            );
+                        break;
+                    case 5:
                         dataGridView1.DataSource = await _dataBase.GetRecords("select *from getearly_by_person(" + 
                                             employeeListboxes[comboBox2.SelectedIndex].ID + ",'" +
                                             dateTimePicker1.Text + "','" + 
                                             dateTimePicker2.Text + "')"
                                             );
                         break;
-                    case 4:
+                    case 6:
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getearly_by_person_total(" +
+                                            employeeListboxes[comboBox2.SelectedIndex].ID + ",'" +
+                                            dateTimePicker1.Text + "','" +
+                                            dateTimePicker2.Text + "')"
+                                            );
+                        break;
+                    case 7:
                         dataGridView1.DataSource = await _dataBase.GetRecords("select *from getmissed_by_person(" + 
                                             employeeListboxes[comboBox2.SelectedIndex].ID + ",'" +
                                             dateTimePicker1.Text + "','" + 
                                             dateTimePicker2.Text + "')"
                                             );
                         break;
-                    case 5:
-                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getworked_hours_total_by_person(" + 
+                    case 8:
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getmissed_by_person_total(" +
                                             employeeListboxes[comboBox2.SelectedIndex].ID + ",'" +
                                             dateTimePicker1.Text + "','" +
                                             dateTimePicker2.Text + "')"
                                             );
                         break;
-                    case 6:
-                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getworked_hours_by_person(" + 
-                                            employeeListboxes[comboBox2.SelectedIndex].ID + ",'" + 
-                                            dateTimePicker1.Text + "','" +
-                                            dateTimePicker2.Text + "')"
-                                            );
-                        break;
-                    case 7:
-                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from get_extra_worked_hours_total_by_person(" + 
-                                            employeeListboxes[comboBox2.SelectedIndex].ID + ",'" + 
-                                            dateTimePicker1.Text + "','" +
-                                            dateTimePicker2.Text + "')"
-                                            );
-                        break;
-                    case 8:
-                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from get_extrawork_by_person(" + 
-                                            employeeListboxes[comboBox2.SelectedIndex].ID + ",'" + 
-                                            dateTimePicker1.Text + "','" +
-                                            dateTimePicker2.Text + "')" 
-                                            );
-                        break;
                     case 9:
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getworked_hours_by_person(" +
+                                            employeeListboxes[comboBox2.SelectedIndex].ID + ",'" +
+                                            dateTimePicker1.Text + "','" +
+                                            dateTimePicker2.Text + "')"
+                                            );                        
+                        break;
+                    case 10:
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getworked_hours_total_by_person(" +
+                                            employeeListboxes[comboBox2.SelectedIndex].ID + ",'" +
+                                            dateTimePicker1.Text + "','" +
+                                            dateTimePicker2.Text + "')"
+                                            );
+                        break;
+                    case 11:
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from get_extrawork_by_person(" +
+                                            employeeListboxes[comboBox2.SelectedIndex].ID + ",'" +
+                                            dateTimePicker1.Text + "','" +
+                                            dateTimePicker2.Text + "')"
+                                            );
+                        
+                        break;
+                    case 12:
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from get_extra_worked_hours_total_by_person(" +
+                                            employeeListboxes[comboBox2.SelectedIndex].ID + ",'" +
+                                            dateTimePicker1.Text + "','" +
+                                            dateTimePicker2.Text + "')"
+                                            );
+                        break;
+                    case 13:
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from get_dayoff_worked_hours_by_person_total(" +
+                                            employeeListboxes[comboBox2.SelectedIndex].ID + ",'" +
+                                            dateTimePicker1.Text + "','" +
+                                            dateTimePicker2.Text + "')"
+                                            );
+                        break;
+                    case 14:
                         dataGridView1.DataSource = await _dataBase.GetRecords("select *from getbeing_factory_by_person(" + 
                                             employeeListboxes[comboBox2.SelectedIndex].ID + ",'" + 
                                             dateTimePicker1.Text + "','" +
                                             dateTimePicker2.Text + "')"
                                             );
                         break;
-                    case 11:
+                    case 16:
                         dataGridView1.DataSource = await _dataBase.GetRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, t2.lavozim, t1.sabab, t1.dan, t1.gacha " +
                                             "from otpusk t1 " +
                                             "inner join employee t2 " +
@@ -181,7 +217,7 @@ namespace Reports
                                             dateTimePicker2.Text + "')"
                                             );
                         break;
-                    case 12:
+                    case 17:
                         dataGridView1.DataSource = await _dataBase.GetRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, t2.lavozim, t1.door, t1.sana, t1.temperature " +
                                             "from temperature t1 " +
                                             "inner join employee t2 " +
@@ -202,6 +238,10 @@ namespace Reports
             catch (Exception msg)
             {
                 MessageBox.Show(msg.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                StopProgress();
+                label5.Text = "";
+                button1.Enabled = true;
+                button2.Enabled = true;
             }
         }
 
@@ -220,13 +260,6 @@ namespace Reports
                 switch (comboBox1.SelectedIndex)
                 {
                     case 0:
-                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getallevents_by_otdel('" +
-                                            treeView1.SelectedNode.Name + "','" +
-                                            dateTimePicker1.Text + "','" +
-                                            dateTimePicker2.Text + "')" 
-                                            );                        
-                        break;
-                    case 1:
                         dataGridView1.DataSource = await _dataBase.GetRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, t2.lavozim, t1.kirish, t1.chiqish " +
                                              "from reports t1 " +
                                              "inner join employee t2 " +
@@ -236,68 +269,109 @@ namespace Reports
                                              "' and t2.department  <@ '" + treeView1.SelectedNode.Name + "'"
                                              );
                         break;
+                    case 1:
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getallevents_by_otdel('" +
+                                            treeView1.SelectedNode.Name + "','" +
+                                            dateTimePicker1.Text + "','" +
+                                            dateTimePicker2.Text + "')" 
+                                            );                        
+                        break;
                     case 2:
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getallevents_by_otdel_total('" +
+                                            treeView1.SelectedNode.Name + "','" +
+                                            dateTimePicker1.Text + "','" +
+                                            dateTimePicker2.Text + "')"
+                                            );
+                        break;
+                    case 3:
                         dataGridView1.DataSource = await _dataBase.GetRecords("select *from getlate_by_otdel('" +
                                             treeView1.SelectedNode.Name + "','" +
                                             dateTimePicker1.Text + "','" +
                                             dateTimePicker2.Text + "')");
                         break;
-                    case 3:
+                    case 4:
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getlate_by_otdel_total('" +
+                                            treeView1.SelectedNode.Name + "','" +
+                                            dateTimePicker1.Text + "','" +
+                                            dateTimePicker2.Text + "')");
+                        break;
+                    case 5:
                         dataGridView1.DataSource = await _dataBase.GetRecords("select *from getearly_by_otdel('" +
                                             treeView1.SelectedNode.Name + "','" +
                                             dateTimePicker1.Text + "','" +
                                             dateTimePicker2.Text + "')"
                                             );
                         break;
-                    case 4:
-                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getmissed_by_otdel('" +
-                                            treeView1.SelectedNode.Name + "','" +
-                                            dateTimePicker1.Text + "','" +
-                                            dateTimePicker2.Text + "')"
-                                            );
-                        break;
-                    case 5:
-                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getworked_hours_total_by_otdel('" +
-                                            treeView1.SelectedNode.Name + "','" +
-                                            dateTimePicker1.Text + "','" +
-                                            dateTimePicker2.Text + "')"
-                                            );
-                        break;
                     case 6:
-                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getworked_hours_by_otdel('" +
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getearly_by_otdel_total('" +
                                             treeView1.SelectedNode.Name + "','" +
                                             dateTimePicker1.Text + "','" +
                                             dateTimePicker2.Text + "')"
                                             );
                         break;
                     case 7:
-                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from get_extra_worked_hours_total_by_otdel('" +
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getmissed_by_otdel('" +
                                             treeView1.SelectedNode.Name + "','" +
                                             dateTimePicker1.Text + "','" +
                                             dateTimePicker2.Text + "')"
                                             );
                         break;
                     case 8:
-                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from get_extrawork_by_otdel('" +
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getmissed_by_otdel_total('" +
                                             treeView1.SelectedNode.Name + "','" +
                                             dateTimePicker1.Text + "','" +
                                             dateTimePicker2.Text + "')"
                                             );
                         break;
                     case 9:
-                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getbeing_factory_by_otdel('" +
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getworked_hours_by_otdel('" +
                                             treeView1.SelectedNode.Name + "','" +
                                             dateTimePicker1.Text + "','" +
                                             dateTimePicker2.Text + "')"
                                             );
                         break;
                     case 10:
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getworked_hours_total_by_otdel('" +
+                                            treeView1.SelectedNode.Name + "','" +
+                                            dateTimePicker1.Text + "','" +
+                                            dateTimePicker2.Text + "')"
+                                            );
+                        break;
+                    case 11:
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from get_extrawork_by_otdel('" +
+                                            treeView1.SelectedNode.Name + "','" +
+                                            dateTimePicker1.Text + "','" +
+                                            dateTimePicker2.Text + "')"
+                                            );
+                        break;
+                    case 12:
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from get_extra_worked_hours_total_by_otdel('" +
+                                            treeView1.SelectedNode.Name + "','" +
+                                            dateTimePicker1.Text + "','" +
+                                            dateTimePicker2.Text + "')"
+                                            );
+                        break;
+                    case 13:
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from get_dayoff_worked_hours_by_otdel_total('" +
+                                            treeView1.SelectedNode.Name + "','" +
+                                            dateTimePicker1.Text + "','" +
+                                            dateTimePicker2.Text + "')"
+                                            );
+                        break;
+                    case 14:
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from getbeing_factory_by_otdel('" +
+                                            treeView1.SelectedNode.Name + "','" +
+                                            dateTimePicker1.Text + "','" +
+                                            dateTimePicker2.Text + "')"
+                                            );
+                        break;
+                    case 15:
                         dataGridView1.DataSource = await _dataBase.GetRecords("select *from getsotrudniki_vnutri_day('" +
                                             DateTime.Now.ToString("yyyy-MM-dd") + "','" +
                                             DateTime.Now.ToString("yyyy-MM-dd") + "')"
                                             );
                         break;
-                    case 11:
+                    case 16:
                         dataGridView1.DataSource = await _dataBase.GetRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, t2.lavozim, t1.sabab, t1.dan, t1.gacha " +
                                             "from otpusk t1 " +
                                             "inner join employee t2 " +
@@ -310,14 +384,14 @@ namespace Reports
                                             "' and gacha <= '" + dateTimePicker2.Text + "')"
                                             );
                         break;
-                    case 12:
+                    case 17:
                         dataGridView1.DataSource = await _dataBase.GetRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, t2.lavozim, t1.door, t1.sana, t1.temperature " +
                                             "from temperature t1 " +
                                             "inner join employee " +
                                             "t2 on t1.employeeid = t2.employeeid " +
                                             "where t2.department <@ '" + treeView1.SelectedNode.Name +
-                                            "' and t1.sana >= '" + dateTimePicker1.Text +
-                                            "' and " + "t1.sana <= '" + dateTimePicker2.Text + "'"
+                                            "' and t1.sana::date >= '" + dateTimePicker1.Text +
+                                            "' and " + "t1.sana::date <= '" + dateTimePicker2.Text + "'"
                                             );
                         break;
                     default: break;
@@ -332,11 +406,15 @@ namespace Reports
                 button1.Enabled = true;
                 button2.Enabled = true;
                 GridHeaders(comboBox1.SelectedIndex);
-                RowCnt(comboBox1.SelectedIndex);
+                RowCnt();
             }
             catch (Exception msg)
             {
                 MessageBox.Show(msg.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                StopProgress();
+                label5.Text = "";
+                button1.Enabled = true;
+                button2.Enabled = true;
             }            
         }
 
@@ -345,6 +423,17 @@ namespace Reports
             switch (index)
             {
                 case 0:
+                    dataGridView1.Columns[0].HeaderText = "ID";
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
+                    dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
+                    dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_ENTER;
+                    dataGridView1.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_EXIT;
+                    break;
+
+                case 1:
                     dataGridView1.Columns[0].HeaderText = "ID";
                     dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
                     dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
@@ -362,18 +451,26 @@ namespace Reports
                     dataGridView1.Columns[14].HeaderText = Properties.Resources.GRIDVIEW_MISSING;
                     break;
 
-                case 1:
+                case 2:
                     dataGridView1.Columns[0].HeaderText = "ID";
                     dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
                     dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                     dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
                     dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
-                    dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_ENTER;
-                    dataGridView1.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_EXIT;
-
+                    dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_FROM;
+                    dataGridView1.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_TO;
+                    dataGridView1.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_WORKED;
+                    dataGridView1.Columns[9].HeaderText = Properties.Resources.GRIDVIEW_HOURS;
+                    dataGridView1.Columns[10].HeaderText = Properties.Resources.GRIDVIEW_WORKED_EXTRA;
+                    dataGridView1.Columns[11].HeaderText = Properties.Resources.GRIDVIEW_LATE;
+                    dataGridView1.Columns[12].HeaderText = Properties.Resources.GRIDVIEW_LATE_HOURS;
+                    dataGridView1.Columns[13].HeaderText = Properties.Resources.GRIDVIEW_EARLY;
+                    dataGridView1.Columns[14].HeaderText = Properties.Resources.GRIDVIEW_EARLY_HOURS;
+                    dataGridView1.Columns[15].HeaderText = Properties.Resources.GRIDVIEW_MISSING;
                     break;
-                case 2:
+
+                case 3:
                     dataGridView1.Columns[0].HeaderText = "ID";
                     dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
                     dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
@@ -385,7 +482,19 @@ namespace Reports
                     dataGridView1.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_LATE;
                     break;
 
-                case 3:
+                case 4:
+                    dataGridView1.Columns[0].HeaderText = "ID";
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
+                    dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
+                    dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_FROM;
+                    dataGridView1.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_TO;
+                    dataGridView1.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_LATE;
+                    break;
+
+                case 5:
                     dataGridView1.Columns[0].HeaderText = "ID";
                     dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
                     dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
@@ -397,7 +506,19 @@ namespace Reports
                     dataGridView1.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_EARLY;
                     break;
 
-                case 4:
+                case 6:
+                    dataGridView1.Columns[0].HeaderText = "ID";
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
+                    dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
+                    dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_FROM;
+                    dataGridView1.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_TO;
+                    dataGridView1.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_EARLY;
+                    break;
+
+                case 7:
                     dataGridView1.Columns[0].HeaderText = "ID";
                     dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
                     dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
@@ -409,7 +530,7 @@ namespace Reports
                     dataGridView1.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_VACATION;
                     break;
 
-                case 5:
+                case 8:
                     dataGridView1.Columns[0].HeaderText = "ID";
                     dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
                     dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
@@ -418,10 +539,10 @@ namespace Reports
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
                     dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_FROM;
                     dataGridView1.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_TO;
-                    dataGridView1.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_HOURS;
+                    dataGridView1.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_MISSING;
                     break;
 
-                case 6:
+                case 9:
                     dataGridView1.Columns[0].HeaderText = "ID";
                     dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
                     dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
@@ -434,7 +555,30 @@ namespace Reports
                     dataGridView1.Columns[9].HeaderText = Properties.Resources.GRIDVIEW_HOURS;
                     break;
 
-                case 7:
+                case 10:
+                    dataGridView1.Columns[0].HeaderText = "ID";
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
+                    dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
+                    dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_FROM;
+                    dataGridView1.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_TO;
+                    dataGridView1.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_HOURS;
+                    break;                
+
+                case 11:
+                    dataGridView1.Columns[0].HeaderText = "ID";
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
+                    dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
+                    dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_DATE;
+                    dataGridView1.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_HOURS;
+                    break;
+
+                case 12:
                     dataGridView1.Columns[0].HeaderText = "ID";
                     dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
                     dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
@@ -446,18 +590,19 @@ namespace Reports
                     dataGridView1.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_HOURS;
                     break;
 
-                case 8:
+                case 13:
                     dataGridView1.Columns[0].HeaderText = "ID";
                     dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
                     dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                     dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
                     dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
-                    dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_DATE;
-                    dataGridView1.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_HOURS;
+                    dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_FROM;
+                    dataGridView1.Columns[7].HeaderText = Properties.Resources.GRIDVIEW_TO;
+                    dataGridView1.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_HOURS;
                     break;
 
-                case 9:
+                case 14:
                     dataGridView1.Columns[0].HeaderText = "ID";
                     dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
                     dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
@@ -470,7 +615,7 @@ namespace Reports
                     dataGridView1.Columns[9].HeaderText = Properties.Resources.GRIDVIEW_HOURS;
                     break;
 
-                case 10:
+                case 15:
                     dataGridView1.Columns[0].HeaderText = "ID";
                     dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
                     dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
@@ -480,7 +625,7 @@ namespace Reports
                     dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_DATE;
                     break;
 
-                case 11:
+                case 16:
                     dataGridView1.Columns[0].HeaderText = "ID";
                     dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
                     dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
@@ -492,7 +637,7 @@ namespace Reports
                     dataGridView1.Columns[8].HeaderText = Properties.Resources.GRIDVIEW_TO;
                     break;
 
-                case 12:
+                case 17:
                     dataGridView1.Columns[0].HeaderText = "ID";
                     dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
                     dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
@@ -508,54 +653,77 @@ namespace Reports
             }
         }
 
-        private void RowCnt(int index)
+        private void RowCnt()
         {
-            switch (index)
+            switch (comboBox1.SelectedIndex)
             {
                 case 0:
+                    label5.Text += "    " + Properties.Resources.NUMBER_OF_EVENTS + ": " + dataGridView1.RowCount;                    
+                    break;
+                case 1:
                     int otp = 0, opzd = 0, rann = 0, ots = 0;
                     foreach (DataGridViewRow row in dataGridView1.Rows)
                     {
                         if (!string.IsNullOrEmpty(row.Cells[7].Value.ToString())) // otpusk
-                        {
                             otp++;
-                        }
 
-                        if (!string.IsNullOrEmpty(row.Cells[10].Value.ToString()))
-                        {
+                        if (!string.IsNullOrEmpty(row.Cells[11].Value.ToString()))
                             opzd++;
-                        }
-                        if (!string.IsNullOrEmpty(row.Cells[12].Value.ToString()))
-                        {
-                            rann++;
-                        }
-                        if (!string.IsNullOrEmpty(row.Cells[13].Value.ToString()))
-                        {
-                            ots++;
-                        }
 
+                        if (!string.IsNullOrEmpty(row.Cells[13].Value.ToString()))
+                            rann++;
+
+                        if (!string.IsNullOrEmpty(row.Cells[14].Value.ToString()))
+                            ots++;
                     }
                     label5.Text += Properties.Resources.VACATION + ": " + otp +
                         "   |   " + Properties.Resources.LATE_COME + ": " + opzd +
                         "   |   " + Properties.Resources.EARLY_GONE + ": " + rann +
                         "   |   " + Properties.Resources.MISSING + ": " + ots;
                     break;
-                case 1:
-                    label5.Text += "    " + Properties.Resources.NUMBER_OF_EVENTS + ": " + dataGridView1.RowCount;
-                    break;
                 case 2:
-                    label5.Text += "    " + Properties.Resources.LATE_COME + ": " + dataGridView1.RowCount;
+                    //otp = 0; opzd = 0; rann = 0; ots = 0;
+                    //foreach (DataGridViewRow row in dataGridView1.Rows)
+                    //{                  
+                    //    if (row.Cells[8].Value.ToString() != "0")
+                    //        opzd++;
+
+                    //    if (row.Cells[9].Value.ToString() != "0")
+                    //        rann++;
+
+                    //    if (row.Cells[10].Value.ToString() != "0")
+                    //        ots++;
+                    //}
+                    //label5.Text += Properties.Resources.LATE_COME + ": " + opzd +
+                    //    "   |   " + Properties.Resources.EARLY_GONE + ": " + rann +
+                    //    "   |   " + Properties.Resources.MISSING + ": " + ots;                    
                     break;
                 case 3:
-                    label5.Text += "    " + Properties.Resources.EARLY_GONE + ": " + dataGridView1.RowCount;
+                    label5.Text += "    " + Properties.Resources.LATE_COME + ": " + dataGridView1.RowCount;
+
+                    //label5.Text += "    " + Properties.Resources.EARLY_GONE + ": " + dataGridView1.RowCount;
                     break;
                 case 4:
+                    //label5.Text += "    " + Properties.Resources.LATE_COME + ": " + dataGridView1.RowCount;
+
+                    //label5.Text += "    " + Properties.Resources.MISSING + ": " + dataGridView1.RowCount;
+                    break;
+                case 5:
+                    label5.Text += "    " + Properties.Resources.EARLY_GONE + ": " + dataGridView1.RowCount;
+                    break;
+                case 6:
+                    //label5.Text += "    " + Properties.Resources.EARLY_GONE + ": " + dataGridView1.RowCount;
+                    break;
+                case 7:
                     label5.Text += "    " + Properties.Resources.MISSING + ": " + dataGridView1.RowCount;
                     break;
-                case 10:
+                case 8:
+                    //label5.Text += "    " + Properties.Resources.MISSING + ": " + dataGridView1.RowCount;
+                    break;
+                case 15:
                     label5.Text += "    " + Properties.Resources.EMPLOYEE_INSIDE + ": " + dataGridView1.RowCount;
                     break;
-                case 11:
+                case 16:
                     label5.Text += "    " + Properties.Resources.HOLIDAY + "&" + Properties.Resources.VACATION + ": " + dataGridView1.RowCount;
                     break;
                 default: label5.Text = ""; break;
@@ -756,12 +924,6 @@ namespace Reports
             {
                 try
                 {
-                    //var config = System.Configuration.ConfigurationManager.OpenExeConfiguration(System.Configuration.ConfigurationUserLevel.None);
-                    //config.AppSettings.Settings["language"].Value = language;
-                    //config.Save();
-
-                    //System.Configuration.ConfigurationManager.RefreshSection("appSettings");
-
                     _dataBase.InsertData("update language set lan = '" + language + "'");
                     System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.GetCultureInfo(language);
                     var resources = new System.Resources.ResourceManager("Reports.Form1", System.Reflection.Assembly.GetExecutingAssembly());
@@ -785,7 +947,12 @@ namespace Reports
                     resources.GetString("comboBox1.Items9"),
                     resources.GetString("comboBox1.Items10"),
                     resources.GetString("comboBox1.Items11"),
-                    resources.GetString("comboBox1.Items12")});
+                    resources.GetString("comboBox1.Items12"),
+                    resources.GetString("comboBox1.Items13"),
+                    resources.GetString("comboBox1.Items14"),
+                    resources.GetString("comboBox1.Items15"),
+                    resources.GetString("comboBox1.Items16"),
+                    resources.GetString("comboBox1.Items17")});
                     comboBox1.SelectedIndex = 0;                    
                 }
                 catch (Exception msg)

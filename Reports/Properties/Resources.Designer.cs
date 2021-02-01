@@ -192,6 +192,15 @@ namespace Reports.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Количество.
+        /// </summary>
+        internal static string GRIDVIEW_COUNT {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_COUNT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Дата.
         /// </summary>
         internal static string GRIDVIEW_DATE {
@@ -233,6 +242,15 @@ namespace Reports.Properties {
         internal static string GRIDVIEW_EARLY {
             get {
                 return ResourceManager.GetString("GRIDVIEW_EARLY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Часы раннего ухода.
+        /// </summary>
+        internal static string GRIDVIEW_EARLY_HOURS {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_EARLY_HOURS", resourceCulture);
             }
         }
         
@@ -318,6 +336,15 @@ namespace Reports.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Часы позднего прибытия.
+        /// </summary>
+        internal static string GRIDVIEW_LATE_HOURS {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_LATE_HOURS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Отсутствующие.
         /// </summary>
         internal static string GRIDVIEW_MISSING {
@@ -399,11 +426,29 @@ namespace Reports.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vacation.
+        ///   Looks up a localized string similar to Отпуск.
         /// </summary>
         internal static string GRIDVIEW_VACATION {
             get {
                 return ResourceManager.GetString("GRIDVIEW_VACATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Работал/а.
+        /// </summary>
+        internal static string GRIDVIEW_WORKED {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_WORKED", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Часы вне графика.
+        /// </summary>
+        internal static string GRIDVIEW_WORKED_EXTRA {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_WORKED_EXTRA", resourceCulture);
             }
         }
         

@@ -144,6 +144,9 @@
   <data name="FILTER" xml:space="preserve">
     <value>filter by</value>
   </data>
+  <data name="GRIDVIEW_COUNT" xml:space="preserve">
+    <value>Count</value>
+  </data>
   <data name="GRIDVIEW_DATE" xml:space="preserve">
     <value>Date</value>
   </data>
@@ -158,6 +161,9 @@
   </data>
   <data name="GRIDVIEW_EARLY" xml:space="preserve">
     <value>Early</value>
+  </data>
+  <data name="GRIDVIEW_EARLY_HOURS" xml:space="preserve">
+    <value>Early hours</value>
   </data>
   <data name="GRIDVIEW_ENTER" xml:space="preserve">
     <value>Enter</value>
@@ -185,6 +191,9 @@
   </data>
   <data name="GRIDVIEW_LATE" xml:space="preserve">
     <value>Late</value>
+  </data>
+  <data name="GRIDVIEW_LATE_HOURS" xml:space="preserve">
+    <value>Late hours</value>
   </data>
   <data name="GRIDVIEW_MISSING" xml:space="preserve">
     <value>Missing</value>
@@ -215,6 +224,12 @@
   </data>
   <data name="GRIDVIEW_VACATION" xml:space="preserve">
     <value>Vacation</value>
+  </data>
+  <data name="GRIDVIEW_WORKED" xml:space="preserve">
+    <value>Worked</value>
+  </data>
+  <data name="GRIDVIEW_WORKED_EXTRA" xml:space="preserve">
+    <value>Extra hours</value>
   </data>
   <data name="HOLIDAY" xml:space="preserve">
     <value>Holiday</value>

@@ -305,9 +305,24 @@
     <value>Изменить язык?</value>
   </data>
   <data name="GRIDVIEW_VACATION" xml:space="preserve">
-    <value>Vacation</value>
+    <value>Отпуск</value>
   </data>
   <data name="LOADING" xml:space="preserve">
     <value>Загрузка</value>
+  </data>
+  <data name="GRIDVIEW_COUNT" xml:space="preserve">
+    <value>Количество</value>
+  </data>
+  <data name="GRIDVIEW_EARLY_HOURS" xml:space="preserve">
+    <value>Часы раннего ухода</value>
+  </data>
+  <data name="GRIDVIEW_LATE_HOURS" xml:space="preserve">
+    <value>Часы позднего прибытия</value>
+  </data>
+  <data name="GRIDVIEW_WORKED" xml:space="preserve">
+    <value>Работал/а</value>
+  </data>
+  <data name="GRIDVIEW_WORKED_EXTRA" xml:space="preserve">
+    <value>Часы вне графика</value>
   </data>
 </root>

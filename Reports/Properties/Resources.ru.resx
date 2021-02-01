@@ -144,6 +144,9 @@
   <data name="FILTER" xml:space="preserve">
     <value>фильтр по</value>
   </data>
+  <data name="GRIDVIEW_COUNT" xml:space="preserve">
+    <value>Количество</value>
+  </data>
   <data name="GRIDVIEW_DATE" xml:space="preserve">
     <value>Дата</value>
   </data>
@@ -158,6 +161,9 @@
   </data>
   <data name="GRIDVIEW_EARLY" xml:space="preserve">
     <value>Рано</value>
+  </data>
+  <data name="GRIDVIEW_EARLY_HOURS" xml:space="preserve">
+    <value>Часы раннего ухода</value>
   </data>
   <data name="GRIDVIEW_ENTER" xml:space="preserve">
     <value>Вход</value>
@@ -185,6 +191,9 @@
   </data>
   <data name="GRIDVIEW_LATE" xml:space="preserve">
     <value>Опаздал/а</value>
+  </data>
+  <data name="GRIDVIEW_LATE_HOURS" xml:space="preserve">
+    <value>Часы позднего прибытия</value>
   </data>
   <data name="GRIDVIEW_MISSING" xml:space="preserve">
     <value>Отсутствующие</value>
@@ -214,7 +223,13 @@
     <value>До</value>
   </data>
   <data name="GRIDVIEW_VACATION" xml:space="preserve">
-    <value>Vacation</value>
+    <value>Отпуск</value>
+  </data>
+  <data name="GRIDVIEW_WORKED" xml:space="preserve">
+    <value>Работал/а</value>
+  </data>
+  <data name="GRIDVIEW_WORKED_EXTRA" xml:space="preserve">
+    <value>Часы вне графика</value>
   </data>
   <data name="HOLIDAY" xml:space="preserve">
     <value>Праздник</value>
