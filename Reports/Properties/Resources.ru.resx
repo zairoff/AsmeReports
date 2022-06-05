@@ -156,6 +156,9 @@
   <data name="GRIDVIEW_DEPARTMENT" xml:space="preserve">
     <value>Отдел</value>
   </data>
+  <data name="GRIDVIEW_DIRECTION" xml:space="preserve">
+    <value>Направления</value>
+  </data>
   <data name="GRIDVIEW_DOOR" xml:space="preserve">
     <value>Дверь</value>
   </data>
@@ -176,6 +179,9 @@
   </data>
   <data name="GRIDVIEW_FROM" xml:space="preserve">
     <value>От</value>
+  </data>
+  <data name="GRIDVIEW_GRAFIK" xml:space="preserve">
+    <value>График</value>
   </data>
   <data name="GRIDVIEW_HOLIDAY" xml:space="preserve">
     <value>Праздник</value>
@@ -281,6 +287,9 @@
   </data>
   <data name="VACATION" xml:space="preserve">
     <value>Отпуск</value>
+  </data>
+  <data name="VIOLATION" xml:space="preserve">
+    <value>Нарушение</value>
   </data>
   <data name="WARNING" xml:space="preserve">
     <value>Предупреждение</value>

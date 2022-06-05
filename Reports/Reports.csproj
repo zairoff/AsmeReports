@@ -87,13 +87,13 @@
     <Compile Include="ChangePassword.Designer.cs">
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="CustomClasses\MultipleShift.cs" />
     <Compile Include="Doors.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Doors.Designer.cs">
       <DependentUpon>Doors.cs</DependentUpon>
     </Compile>
+    <Compile Include="File\Excel.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +110,7 @@
     <Compile Include="Holiday.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Interfaces\IFileWriter.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,7 +130,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CustomClasses\SingleShift.cs" />
     <Compile Include="UserSettings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -297,6 +297,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ru.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forward_dark.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

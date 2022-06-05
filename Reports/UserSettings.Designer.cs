@@ -37,10 +37,16 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.ForwardBtn = new System.Windows.Forms.PictureBox();
+            this.BackBtn = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ForwardBtn)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BackBtn)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -53,9 +59,9 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(958, 22);
             this.panel1.TabIndex = 0;
-            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
-            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
-            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Panel1_MouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Panel1_MouseMove);
+            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Panel1_MouseUp);
             // 
             // btn_min
             // 
@@ -69,7 +75,7 @@
             this.btn_min.TabIndex = 1;
             this.btn_min.Text = "__";
             this.btn_min.UseVisualStyleBackColor = true;
-            this.btn_min.Click += new System.EventHandler(this.btn_min_Click);
+            this.btn_min.Click += new System.EventHandler(this.Btn_min_Click);
             // 
             // btn_close
             // 
@@ -84,7 +90,7 @@
             this.btn_close.TabIndex = 0;
             this.btn_close.Text = "X";
             this.btn_close.UseVisualStyleBackColor = true;
-            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
+            this.btn_close.Click += new System.EventHandler(this.Btn_close_Click);
             // 
             // panel2
             // 
@@ -109,7 +115,7 @@
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(251, 585);
             this.treeView1.TabIndex = 0;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeView1_AfterSelect);
             // 
             // flowLayoutPanel1
             // 
@@ -119,9 +125,9 @@
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.AutoScrollMargin = new System.Drawing.Size(10, 10);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(274, 25);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(274, 72);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(680, 629);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(680, 582);
             this.flowLayoutPanel1.TabIndex = 3;
             this.flowLayoutPanel1.WrapContents = false;
             // 
@@ -146,7 +152,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(194, 25);
             this.textBox1.TabIndex = 0;
-            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyUp);
+            this.textBox1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.TextBox1_KeyUp);
             // 
             // pictureBox1
             // 
@@ -158,12 +164,51 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.panel4.Controls.Add(this.ForwardBtn);
+            this.panel4.Controls.Add(this.BackBtn);
+            this.panel4.Location = new System.Drawing.Point(274, 28);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(680, 38);
+            this.panel4.TabIndex = 5;
+            // 
+            // ForwardBtn
+            // 
+            this.ForwardBtn.Image = global::Reports.Properties.Resources.forward_dark;
+            this.ForwardBtn.Location = new System.Drawing.Point(47, 6);
+            this.ForwardBtn.Name = "ForwardBtn";
+            this.ForwardBtn.Size = new System.Drawing.Size(25, 25);
+            this.ForwardBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.ForwardBtn.TabIndex = 1;
+            this.ForwardBtn.TabStop = false;
+            this.ForwardBtn.Click += new System.EventHandler(this.ForwardBtn_Click);
+            this.ForwardBtn.MouseEnter += new System.EventHandler(this.ForwardBtn_MouseEnter);
+            this.ForwardBtn.MouseLeave += new System.EventHandler(this.ForwardBtn_MouseLeave);
+            // 
+            // BackBtn
+            // 
+            this.BackBtn.Image = global::Reports.Properties.Resources.back_dark;
+            this.BackBtn.Location = new System.Drawing.Point(7, 6);
+            this.BackBtn.Name = "BackBtn";
+            this.BackBtn.Size = new System.Drawing.Size(25, 25);
+            this.BackBtn.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.BackBtn.TabIndex = 0;
+            this.BackBtn.TabStop = false;
+            this.BackBtn.Click += new System.EventHandler(this.BackBtn_Click);
+            this.BackBtn.MouseEnter += new System.EventHandler(this.BackBtn_MouseEnter);
+            this.BackBtn.MouseLeave += new System.EventHandler(this.BackBtn_MouseLeave);
+            // 
             // UserSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(33)))), ((int)(((byte)(43)))));
             this.ClientSize = new System.Drawing.Size(958, 669);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.panel2);
@@ -176,6 +221,9 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ForwardBtn)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BackBtn)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -191,5 +239,8 @@
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.Button btn_min;
         private System.Windows.Forms.Button btn_close;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.PictureBox ForwardBtn;
+        private System.Windows.Forms.PictureBox BackBtn;
     }
 }

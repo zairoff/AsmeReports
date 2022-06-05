@@ -156,6 +156,9 @@
   <data name="GRIDVIEW_DEPARTMENT" xml:space="preserve">
     <value>Department</value>
   </data>
+  <data name="GRIDVIEW_DIRECTION" xml:space="preserve">
+    <value>Direction</value>
+  </data>
   <data name="GRIDVIEW_DOOR" xml:space="preserve">
     <value>Door</value>
   </data>
@@ -176,6 +179,15 @@
   </data>
   <data name="GRIDVIEW_FROM" xml:space="preserve">
     <value>From</value>
+  </data>
+  <data name="GRIDVIEW_GRAFIK" xml:space="preserve">
+    <value>Shift</value>
+  </data>
+  <data name="GRIDVIEW_GRAFIK_ENTER" xml:space="preserve">
+    <value>Shift enter</value>
+  </data>
+  <data name="GRIDVIEW_GRAFIK_EXIT" xml:space="preserve">
+    <value>Shift exit</value>
   </data>
   <data name="GRIDVIEW_HOLIDAY" xml:space="preserve">
     <value>Holiday</value>
@@ -284,6 +296,9 @@
   </data>
   <data name="VACATION" xml:space="preserve">
     <value>Vacation</value>
+  </data>
+  <data name="VIOLATION" xml:space="preserve">
+    <value>Violation</value>
   </data>
   <data name="WARNING" xml:space="preserve">
     <value>Warning</value>

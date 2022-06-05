@@ -61,6 +61,26 @@ namespace Reports.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap back {
+            get {
+                object obj = ResourceManager.GetObject("back", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap back_dark {
+            get {
+                object obj = ResourceManager.GetObject("back_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to командировка.
         /// </summary>
         internal static string BUSSINESS_TRIP {
@@ -192,6 +212,26 @@ namespace Reports.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap forward {
+            get {
+                object obj = ResourceManager.GetObject("forward", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap forward_dark {
+            get {
+                object obj = ResourceManager.GetObject("forward_dark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Количество.
         /// </summary>
         internal static string GRIDVIEW_COUNT {
@@ -224,6 +264,15 @@ namespace Reports.Properties {
         internal static string GRIDVIEW_DEPARTMENT {
             get {
                 return ResourceManager.GetString("GRIDVIEW_DEPARTMENT", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Направления.
+        /// </summary>
+        internal static string GRIDVIEW_DIRECTION {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_DIRECTION", resourceCulture);
             }
         }
         
@@ -287,6 +336,33 @@ namespace Reports.Properties {
         internal static string GRIDVIEW_FROM {
             get {
                 return ResourceManager.GetString("GRIDVIEW_FROM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to График.
+        /// </summary>
+        internal static string GRIDVIEW_GRAFIK {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_GRAFIK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to График вход.
+        /// </summary>
+        internal static string GRIDVIEW_GRAFIK_ENTER {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_GRAFIK_ENTER", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to График выход.
+        /// </summary>
+        internal static string GRIDVIEW_GRAFIK_EXIT {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_GRAFIK_EXIT", resourceCulture);
             }
         }
         
@@ -682,6 +758,15 @@ namespace Reports.Properties {
         internal static string VACATION {
             get {
                 return ResourceManager.GetString("VACATION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Нарушение.
+        /// </summary>
+        internal static string VIOLATION {
+            get {
+                return ResourceManager.GetString("VIOLATION", resourceCulture);
             }
         }
         

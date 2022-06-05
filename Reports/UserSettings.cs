@@ -14,6 +14,8 @@ namespace Reports
         private DataBase _dataBase;
         private System.Drawing.Point lastLocation;
         private bool mouseDown = false;
+        private int _dataBaseLimit = 50;
+        private int _databaseOffset = 0;
 
         private void FillTree()
         {
@@ -31,40 +33,41 @@ namespace Reports
         {          
             flowLayoutPanel1.Controls.Clear();
             var employees = _dataBase.GetEmployees(str);
-            foreach (var employee in employees)
-            {
-                flowLayoutPanel1.Controls.Add(employee);
-            }
+            for (int i = employees.Count - 1; i >= 0; i--)
+                flowLayoutPanel1.Controls.Add(employees[i]);
         }
 
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        private void TreeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
-            GetEmployee("select employeeid, familiya, ism, otchestvo, photo::bytea, otdel, lavozim from employee where" +
-                " department <@ '" + treeView1.SelectedNode.Name + "' and status = true");
+            GetEmployee("select employeeid, familiya, ism, otchestvo, photo::bytea, otdel, lavozim " +
+                        "from employee where department <@ '" + treeView1.SelectedNode.Name +
+                        "' and status = true order by employeeid asc LIMIT " + _dataBaseLimit);
+
+            _databaseOffset = 0;
         }
 
-        private void btn_close_Click(object sender, System.EventArgs e)
+        private void Btn_close_Click(object sender, System.EventArgs e)
         {
             Close();
         }
 
-        private void btn_min_Click(object sender, System.EventArgs e)
+        private void Btn_min_Click(object sender, System.EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
         }
 
-        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        private void Panel1_MouseDown(object sender, MouseEventArgs e)
         {
             mouseDown = true;
             lastLocation = e.Location;
         }
 
-        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        private void Panel1_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
         }
 
-        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        private void Panel1_MouseMove(object sender, MouseEventArgs e)
         {
             if (mouseDown)
             {
@@ -75,7 +78,7 @@ namespace Reports
             }
         }
 
-        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        private void TextBox1_KeyUp(object sender, KeyEventArgs e)
         {
             if (string.IsNullOrEmpty(textBox1.Text))
                 return;
@@ -84,6 +87,52 @@ namespace Reports
                 " familiya ILIKE '" + textBox1.Text.Trim() + "%' and status = true";
 
             GetEmployee(query);
+        }
+
+        private void ForwardBtn_MouseEnter(object sender, System.EventArgs e)
+        {
+            ForwardBtn.Image = Properties.Resources.forward;
+        }
+
+        private void ForwardBtn_MouseLeave(object sender, System.EventArgs e)
+        {
+            ForwardBtn.Image = Properties.Resources.forward_dark;
+        }
+
+        private void ForwardBtn_Click(object sender, System.EventArgs e)
+        {
+            if (treeView1.Nodes.Count == 0 || treeView1.SelectedNode == null)
+                return;
+
+            _databaseOffset += _dataBaseLimit;
+
+            GetEmployee("select employeeid, familiya, ism, otchestvo, photo::bytea, otdel, lavozim " +
+                        "from employee where department <@ '" + treeView1.SelectedNode.Name +
+                        "' and status = true order by employeeid asc LIMIT " + _dataBaseLimit + 
+                        " OFFSET " + _databaseOffset);
+        }
+
+        private void BackBtn_MouseEnter(object sender, System.EventArgs e)
+        {
+            BackBtn.Image = Properties.Resources.back;
+        }
+
+        private void BackBtn_MouseLeave(object sender, System.EventArgs e)
+        {
+            BackBtn.Image = Properties.Resources.back_dark;
+        }
+
+        private void BackBtn_Click(object sender, System.EventArgs e)
+        {
+            if (_databaseOffset < _dataBaseLimit || treeView1.Nodes.Count == 0 || treeView1.SelectedNode == null)
+                return;
+
+            _databaseOffset -= _dataBaseLimit;
+
+            GetEmployee("select employeeid, familiya, ism, otchestvo, photo::bytea, otdel, lavozim " +
+                        "from employee where department <@ '" + treeView1.SelectedNode.Name +
+                        "' and status = true order by employeeid asc LIMIT " + _dataBaseLimit +
+                        " OFFSET " + _databaseOffset);
         }
     }
 }
