@@ -215,6 +215,9 @@
   <data name="comboBox1.Items18" xml:space="preserve">
     <value>Violation</value>
   </data>
+  <data name="comboBox1.Items19" xml:space="preserve">
+    <value>Enters</value>
+  </data>
   <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>

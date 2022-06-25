@@ -239,6 +239,16 @@ namespace Reports
                                             dateTimePicker2.Text + "')"
                                             );
                         break;
+                    case 19:
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select e.employeeid, e.ism, e.familiya from reports r " +
+                                                    "inner join employee e " +
+                                                    "on e.employeeid = r.employeeid " +
+                                                    "where e.employeeid = " + employeeListboxes[comboBox2.SelectedIndex].ID +
+                                                    " and r.kirish::date >= '" + dateTimePicker1.Text + "' " + 
+                                                    "and r.kirish::date <= '" + dateTimePicker2.Text + "' " +
+                                                    "group by e.employeeid, e.ism, e.familiya"
+                                            );
+                        break;
                     default: break;
                 }
                 StopProgress();
@@ -421,6 +431,17 @@ namespace Reports
                                             treeView1.SelectedNode.Name + "','" +
                                             dateTimePicker1.Text + "','" +
                                             dateTimePicker2.Text + "')"
+                                            );
+                        break;
+
+                    case 19:
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select e.employeeid, e.ism, e.familiya from reports r " +
+                                                    "inner join employee e " +
+                                                    "on e.employeeid = r.employeeid " +
+                                                    "where e.department <@ '" + treeView1.SelectedNode.Name + "' " +
+                                                    "and r.kirish::date >= '" + dateTimePicker1.Text + "' " +
+                                                    "and r.kirish::date <= '" + dateTimePicker2.Text + "' " +
+                                                    "group by e.employeeid, e.ism, e.familiya"
                                             );
                         break;
                     default: break;
@@ -704,6 +725,12 @@ namespace Reports
                     dataGridView1.Columns[17].HeaderText = Properties.Resources.GRIDVIEW_MISSING;
                     break;
 
+                case 19:
+                    dataGridView1.Columns[0].HeaderText = "ID";
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
+                    break;
+
                 default: break;
             }
         }
@@ -787,6 +814,11 @@ namespace Reports
                     break;
                 case 18:
                     label5.Text += "    " + Properties.Resources.VIOLATION + ": " + dataGridView1.RowCount;
+
+                    //label5.Text += "    " + Properties.Resources.EARLY_GONE + ": " + dataGridView1.RowCount;
+                    break;
+                case 19:
+                    label5.Text += "    " + Properties.Resources.ENTERS + ": " + dataGridView1.RowCount;
 
                     //label5.Text += "    " + Properties.Resources.EARLY_GONE + ": " + dataGridView1.RowCount;
                     break;

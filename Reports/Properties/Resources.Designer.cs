@@ -174,6 +174,15 @@ namespace Reports.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Входы.
+        /// </summary>
+        internal static string ENTERS {
+            get {
+                return ResourceManager.GetString("ENTERS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap excel {
