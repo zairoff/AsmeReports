@@ -16,6 +16,8 @@ namespace Reports
             _dataBase = new DataBase();
             FillTree();            
             fileWriter = new Excel();
+            dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            dateTimePicker2.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
         private DataBase _dataBase;
