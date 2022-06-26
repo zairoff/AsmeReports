@@ -120,10 +120,13 @@
   <data name="GRIDVIEW_VACATION" xml:space="preserve">
     <value>Отпуск</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="forward" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forward.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="GRIDVIEW_HOURS" xml:space="preserve">
     <value>Часы </value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\logo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -172,8 +175,8 @@
   <data name="GRIDVIEW_HOURS_DAY" xml:space="preserve">
     <value>Часы в день</value>
   </data>
-  <data name="excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="forward_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forward_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="CONTROL_LANGUAGE_CHANGE" xml:space="preserve">
     <value>Изменить язык?</value>
@@ -241,20 +244,23 @@
   <data name="REPORT_FROM" xml:space="preserve">
     <value>Отчёт от</value>
   </data>
+  <data name="ENTERS" xml:space="preserve">
+    <value>Входы</value>
+  </data>
   <data name="GRIDVIEW_LATE_HOURS" xml:space="preserve">
     <value>Часы позднего прибытия</value>
   </data>
   <data name="VIOLATION" xml:space="preserve">
     <value>Нарушение</value>
   </data>
-  <data name="NUMBER_OF_EVENTS" xml:space="preserve">
-    <value>Количество событий</value>
+  <data name="FILTER" xml:space="preserve">
+    <value>фильтр по</value>
   </data>
   <data name="quant" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\quant.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="GRIDVIEW_COUNT" xml:space="preserve">
-    <value>Количество</value>
+  <data name="excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="PASSWORD_NOT_MATCH" xml:space="preserve">
     <value>Пароли не совпадают</value>
@@ -265,6 +271,9 @@
   <data name="GRIDVIEW_NAME" xml:space="preserve">
     <value>Имя</value>
   </data>
+  <data name="EARLY_GONE" xml:space="preserve">
+    <value>Ранний уход</value>
+  </data>
   <data name="back" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -274,14 +283,8 @@
   <data name="GRIDVIEW_HOLIDAY" xml:space="preserve">
     <value>Праздник</value>
   </data>
-  <data name="FILTER" xml:space="preserve">
-    <value>фильтр по</value>
-  </data>
   <data name="UNPAID_VACATION" xml:space="preserve">
     <value>неоплачиваемый отпуск</value>
-  </data>
-  <data name="VACATION" xml:space="preserve">
-    <value>Отпуск</value>
   </data>
   <data name="HOLIDAY" xml:space="preserve">
     <value>Праздник</value>
@@ -304,20 +307,26 @@
   <data name="GRIDVIEW_PERSENCE" xml:space="preserve">
     <value>Присутсвие</value>
   </data>
+  <data name="NUMBER_OF_EVENTS" xml:space="preserve">
+    <value>Количество событий</value>
+  </data>
+  <data name="back_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\back_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="GRIDVIEW_REASON" xml:space="preserve">
     <value>Причина</value>
   </data>
-  <data name="EARLY_GONE" xml:space="preserve">
-    <value>Ранний уход</value>
-  </data>
-  <data name="forward" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forward.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="GRIDVIEW_COUNT" xml:space="preserve">
+    <value>Количество</value>
   </data>
   <data name="GRIDVIEW_POSITION" xml:space="preserve">
     <value>Должность</value>
   </data>
-  <data name="back_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\back_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="logo3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logo3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="alarm_clock_white" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\alarm_clock_white.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="EMPLOYEE_IN_PERIOD_TIME" xml:space="preserve">
     <value>Сотрудник уже занял в этот период времени</value>
@@ -340,8 +349,8 @@
   <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logo3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logo3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="VACATION" xml:space="preserve">
+    <value>Отпуск</value>
   </data>
   <data name="GRIDVIEW_GRAFIK_ENTER" xml:space="preserve">
     <value>График вход</value>
@@ -349,10 +358,7 @@
   <data name="GRIDVIEW_WORKED" xml:space="preserve">
     <value>Работал/а</value>
   </data>
-  <data name="forward_dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\forward_dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ENTERS" xml:space="preserve">
-    <value>Входы</value>
+  <data name="alarm_clock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\alarm_clock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

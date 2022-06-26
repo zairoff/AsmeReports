@@ -81,6 +81,12 @@
     <Compile Include="BaseForms\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="BreakForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BreakForm.Designer.cs">
+      <DependentUpon>BreakForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BaseForms\HolidayBase.ru.resx">
       <DependentUpon>HolidayBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BreakForm.resx">
+      <DependentUpon>BreakForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChangePassword.en.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>
@@ -309,6 +318,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\forward_dark.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alarm_clock_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\alarm_clock.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
