@@ -126,7 +126,7 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 446</value>
+    <value>14, 491</value>
   </data>
   <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 35</value>
@@ -205,7 +205,7 @@
     <value>2</value>
   </data>
   <data name="dateTimePicker2.CustomFormat" xml:space="preserve">
-    <value>yyyy-MM-dd</value>
+    <value>HH:mm:ss</value>
   </data>
   <data name="dateTimePicker2.Location" type="System.Drawing.Point, System.Drawing">
     <value>14, 119</value>
@@ -286,7 +286,7 @@
     <value>5</value>
   </data>
   <data name="dateTimePicker1.CustomFormat" xml:space="preserve">
-    <value>yyyy-MM-dd</value>
+    <value>HH:mm:ss</value>
   </data>
   <data name="dateTimePicker1.Location" type="System.Drawing.Point, System.Drawing">
     <value>14, 80</value>
@@ -340,7 +340,7 @@
     <value>0, 0</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 493</value>
+    <value>227, 538</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -391,7 +391,7 @@
     <value>227, 0</value>
   </data>
   <data name="dataGridView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>643, 493</value>
+    <value>740, 538</value>
   </data>
   <data name="dataGridView1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -415,7 +415,10 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>870, 493</value>
+    <value>967, 538</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>BreakForm</value>

@@ -16,8 +16,8 @@ namespace Reports
             _dataBase = new DataBase();
             FillTree();            
             fileWriter = new Excel();
-            dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
-            dateTimePicker2.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            dateTimePicker2.Text = DateTime.Now.ToString("yyyy-MM-dd");
         }
 
         private DataBase _dataBase;
@@ -246,12 +246,12 @@ namespace Reports
                                             );
                         break;
                     case 19:
-                        var dataTable = await _dataBase.GetRecords("select e.employeeid, e.ism, e.familiya, e.lavozim, r.kirish, r.chiqish from reports r " +
-                                                    "inner join employee e " +
+                        var dataTable = await _dataBase.GetRecords("select e.employeeid, e.ism, e.familiya, e.lavozim, r.kirish::date as kun, r.kirish, r.chiqish from employee e " +
+                                                    "left join reports r " +
                                                     "on e.employeeid = r.employeeid " +
                                                     "where e.employeeid = " + employeeListboxes[comboBox2.SelectedIndex].ID +
-                                                    " and r.kirish >= '" + dateTimePicker1.Text + "' " + 
-                                                    "and r.kirish <= '" + dateTimePicker2.Text + "' " +
+                                                    " and r.kirish::date >= '" + dateTimePicker1.Text + "' " + 
+                                                    "and r.kirish::date <= '" + dateTimePicker2.Text + "' " +
                                                     "group by e.employeeid, e.ism, e.familiya, e.lavozim, r.kirish, r.chiqish " +
                                                     "order by e.employeeid"
                                             );
@@ -260,22 +260,24 @@ namespace Reports
                             break;
 
                         var grouped = dataTable.AsEnumerable()
-                                            .GroupBy(group => group.Field<int>("employeeid"));
+                                            .GroupBy(group => (group.Field<int>("employeeid"), group.Field<DateTime?>("kun")))
+                                            .Select(group => group.OrderBy(x => x.Field<DateTime?>("kirish")));
 
                         var maxColumn = grouped.Select(group => group.Count()).Max();
 
                         var columns = maxColumn * 2;
 
-                        dataGridView1.ColumnCount = 4 + columns;
+                        dataGridView1.ColumnCount = 5 + columns;
                         dataGridView1.RowCount = grouped.Count();
 
                         dataGridView1.Columns[0].HeaderText = "ID";
                         dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
                         dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                         dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
+                        dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DATE;
                         for (int i = 1; i <= columns; i++)
                         {
-                            dataGridView1.Columns[i + 3].HeaderText = i % 2 != 0 ? Properties.Resources.GRIDVIEW_ENTER :
+                            dataGridView1.Columns[i + 4].HeaderText = i % 2 != 0 ? Properties.Resources.GRIDVIEW_ENTER :
                                                                                    Properties.Resources.GRIDVIEW_EXIT;
                         }
 
@@ -286,8 +288,9 @@ namespace Reports
                             dataGridView1[1, rowIndex].Value = group.Select(s => s.Field<string>("familiya")).First().ToString();
                             dataGridView1[2, rowIndex].Value = group.Select(s => s.Field<string>("ism")).First().ToString();
                             dataGridView1[3, rowIndex].Value = group.Select(s => s.Field<string>("lavozim")).First().ToString();
+                            dataGridView1[4, rowIndex].Value = group.Select(s => s.Field<DateTime?>("kun")).First()?.ToString("yyyy-MM-dd");
 
-                            int columnIndex = 4;
+                            int columnIndex = 5;
                             foreach (var row in group)
                             {
                                 dataGridView1[columnIndex, rowIndex].Value = row.Field<DateTime?>("kirish")?.ToString("HH:mm:ss");
@@ -301,14 +304,9 @@ namespace Reports
                         break;
 
                     case 20:
-                        dataGridView1.DataSource = await _dataBase.GetRecords("select distinct e.employeeid, e.familiya, e.ism, e.otdel, e.lavozim from employee e " +
-                                                    "inner join reports r " +
-                                                    "on e.employeeid = r.employeeid " +
-                                                    "where e.employeeid = " + employeeListboxes[comboBox2.SelectedIndex].ID +
-                                                    " and r.kirish >= '" + dateTimePicker1.Text + "' " +
-                                                    "and r.kirish <= '" + dateTimePicker2.Text + "' " +
-                                                    "order by e.otdel"
-                                            );
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from guest where kirish::date >= '"
+                            + dateTimePicker1.Text + "' and kirish::date <= '" + dateTimePicker2.Text + "'");
+
                         break;
                     default: break;
                 }
@@ -500,14 +498,13 @@ namespace Reports
                         break;
 
                     case 19:
-                        var dataTable = await _dataBase.GetRecords("select e.employeeid, e.ism, e.familiya, e.lavozim, r.kirish, r.chiqish " +
-                                                    "from reports r " +
-                                                    "inner join employee e " +
-                                                    "on e.employeeid = r.employeeid " +
-                                                    "where e.department <@ '" + treeView1.SelectedNode.Name + "' " +
-                                                    "and r.kirish >= '" + dateTimePicker1.Text + "' " +
-                                                    "and r.kirish <= '" + dateTimePicker2.Text + "' " +
-                                                    "group by e.employeeid, e.ism, e.familiya, e.lavozim, r.kirish, r.chiqish " +
+                        var dataTable = await _dataBase.GetRecords("select e.employeeid, e.ism, e.familiya, e.lavozim, r.kirish::date as kun, r.kirish, r.chiqish " +
+                                                    "from (select employeeid, ism, familiya, lavozim from employee " +
+                                                    "where department <@ '" + treeView1.SelectedNode.Name + "') e " +
+                                                    "left join reports r " +
+                                                    "on r.employeeid = e.employeeid " +
+                                                    "and r.kirish::date >= '" + dateTimePicker1.Text + "' " +
+                                                    "and r.kirish::date <= '" + dateTimePicker2.Text + "' " +
                                                     "order by e.employeeid"
                                             );
 
@@ -515,22 +512,24 @@ namespace Reports
                             break;
 
                         var grouped = dataTable.AsEnumerable()
-                                            .GroupBy(group => group.Field<int>("employeeid"));
+                                            .GroupBy(group => (group.Field<int>("employeeid"), group.Field<DateTime?>("kun")))
+                                            .Select(group => group.OrderBy(x => x.Field<DateTime?>("kirish")));
 
                         var maxColumn = grouped.Select(group => group.Count()).Max();
 
                         var columns = maxColumn * 2;
 
-                        dataGridView1.ColumnCount = 4 + columns;
+                        dataGridView1.ColumnCount = 5 + columns;
                         dataGridView1.RowCount = grouped.Count();
 
                         dataGridView1.Columns[0].HeaderText = "ID";
                         dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
                         dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                         dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
+                        dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DATE;
                         for (int i = 1; i <= columns; i++)
                         {
-                            dataGridView1.Columns[i + 3].HeaderText = i % 2 != 0 ? Properties.Resources.GRIDVIEW_ENTER :
+                            dataGridView1.Columns[i + 4].HeaderText = i % 2 != 0 ? Properties.Resources.GRIDVIEW_ENTER :
                                                                                    Properties.Resources.GRIDVIEW_EXIT;
                         }
 
@@ -541,8 +540,9 @@ namespace Reports
                             dataGridView1[1, rowIndex].Value = group.Select(s => s.Field<string>("familiya")).First().ToString();
                             dataGridView1[2, rowIndex].Value = group.Select(s => s.Field<string>("ism")).First().ToString();
                             dataGridView1[3, rowIndex].Value = group.Select(s => s.Field<string>("lavozim")).First().ToString();
+                            dataGridView1[4, rowIndex].Value = group.Select(s => s.Field<DateTime?>("kirish")).First()?.ToString("yyyy-MM-dd");
 
-                            int columnIndex = 4;
+                            int columnIndex = 5;
                             foreach (var row in group)
                             {
                                 dataGridView1[columnIndex, rowIndex].Value = row.Field<DateTime?>("kirish")?.ToString("HH:mm:ss");
@@ -557,15 +557,8 @@ namespace Reports
                         break;
 
                     case 20:
-                        dataGridView1.DataSource = await _dataBase.GetRecords("select distinct e.employeeid, e.familiya, e.ism, e.otdel, e.lavozim " +
-                                                    "from employee e " +
-                                                    "inner join reports r " +
-                                                    "on e.employeeid = r.employeeid " +
-                                                    "where e.department <@ '" + treeView1.SelectedNode.Name + "' " +
-                                                    "and r.kirish >= '" + dateTimePicker1.Text + "' " +
-                                                    "and r.kirish <= '" + dateTimePicker2.Text + "' " +
-                                                    "order by e.otdel"
-                                            );
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select *from guest where kirish::date >= '"
+                            + dateTimePicker1.Text + "' and kirish::date <= '" + dateTimePicker2.Text + "'");
 
                         break;
                     default: break;
@@ -850,11 +843,8 @@ namespace Reports
                     break;
 
                 case 20:
-                    dataGridView1.Columns[0].HeaderText = "ID";
-                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
-                    dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
+                    dataGridView1.Columns[0].HeaderText = Properties.Resources.GRIDVIEW_DOOR;
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_ENTER;
                     break;
 
                 default: break;
@@ -1158,7 +1148,7 @@ namespace Reports
                     resources.GetString("comboBox1.Items16"),
                     resources.GetString("comboBox1.Items17"),
                     resources.GetString("comboBox1.Items18"),
-                    resources.GetString("comboBox1.Items19") });
+                    resources.GetString("comboBox1.Items19")});
                 comboBox1.SelectedIndex = 0;                    
                 }
                 catch (Exception msg)
@@ -1174,6 +1164,21 @@ namespace Reports
                 label5.Text = Properties.Resources.LOADING + " ";
 
             label5.Text += ".";
+        }
+
+        private void pictureBox6_MouseEnter(object sender, EventArgs e)
+        {
+            pictureBox6.Image = Properties.Resources.alarm_clock_white;
+        }
+
+        private void pictureBox6_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox6.Image = Properties.Resources.alarm_clock;
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            new BreakReport().ShowDialog();
         }
     }
 }

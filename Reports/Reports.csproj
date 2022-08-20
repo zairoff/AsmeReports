@@ -87,6 +87,13 @@
     <Compile Include="BreakForm.Designer.cs">
       <DependentUpon>BreakForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BreakModel.cs" />
+    <Compile Include="BreakReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BreakReport.Designer.cs">
+      <DependentUpon>BreakReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="ChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +163,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BreakForm.resx">
       <DependentUpon>BreakForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BreakReport.resx">
+      <DependentUpon>BreakReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ChangePassword.en.resx">
       <DependentUpon>ChangePassword.cs</DependentUpon>
