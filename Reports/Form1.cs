@@ -4,6 +4,7 @@ using System;
 using System.Data;
 using System.Linq;
 using System.Windows.Forms;
+using System.Text;
 
 namespace Reports
 {
@@ -12,6 +13,7 @@ namespace Reports
         public Form1()
         {
             InitializeComponent();
+            _department = Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(System.Configuration.ConfigurationManager.AppSettings["department"]));
             comboBox1.SelectedIndex = 0;
             _dataBase = new DataBase();
             FillTree();            
@@ -26,6 +28,7 @@ namespace Reports
         private System.Drawing.Point lastLocation;
         private bool mouseDown = false;
         private readonly IFileWriter fileWriter;
+        private readonly string _department;
 
         private void MaximizeCheck()
         {
@@ -44,7 +47,7 @@ namespace Reports
 
         private void FillTree()
         {
-            System.Collections.Generic.List<MyTree> myTrees = _dataBase.GetTree("select ttext, mytree from department order by id asc");
+            System.Collections.Generic.List<MyTree> myTrees = _dataBase.GetTree("select ttext, mytree from department where mytree <@ '" + _department + "' order by id asc");
             for (int i = 0; i < myTrees.Count; i++)
             {
                 TreeNode tnode = new TreeNode

@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Text;
+using System.Windows.Forms;
 
 namespace Reports
 {
@@ -8,6 +9,7 @@ namespace Reports
         {
             InitializeComponent();            
             _dataBase = new DataBase();
+            _department = Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(System.Configuration.ConfigurationManager.AppSettings["department"]));
             FillTree();
         }
 
@@ -16,10 +18,11 @@ namespace Reports
         private bool mouseDown = false;
         private int _dataBaseLimit = 50;
         private int _databaseOffset = 0;
+        private readonly string _department;
 
         private void FillTree()
         {
-            System.Collections.Generic.List<MyTree> myTrees = _dataBase.GetTree("select ttext, mytree from department order by id asc");
+            System.Collections.Generic.List<MyTree> myTrees = _dataBase.GetTree("select ttext, mytree from department where mytree <@ '" + _department + "' order by id asc");
             for (int i = 0; i < myTrees.Count; i++)
             {
                 TreeNode tnode = new TreeNode();
