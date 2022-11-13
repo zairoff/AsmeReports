@@ -100,11 +100,11 @@ namespace Reports
                 switch (comboBox1.SelectedIndex)
                 {
                     case 0:
-                        dataGridView1.DataSource = await _dataBase.GetRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, t2.lavozim, t1.door_name, t1.kirish, t1.chiqish " +
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select t2.employeeid, t2.tableid, t2.familiya, t2.ism, t2.otdel, t2.lavozim, t1.door_name, t1.kirish, t1.chiqish " +
                                             "from reports t1 " +
                                             "inner join employee t2 " +
                                             "on t1.employeeid = t2.employeeid " +
-                                            "where t1.kirish::date >= '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") +
+                                            "where t2.status = true and t1.kirish::date >= '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") +
                                             "' and t1.kirish::date <= '" + dateTimePicker2.Value.ToString("yyyy-MM-dd") +
                                             "' and t2.employeeid = " + employeeListboxes[comboBox2.SelectedIndex].ID
                                             );
@@ -218,11 +218,11 @@ namespace Reports
                                             );
                         break;
                     case 16:
-                        dataGridView1.DataSource = await _dataBase.GetRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, t2.lavozim, t1.sabab, t1.dan, t1.gacha " +
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select t2.employeeid, t2.tableid, t2.familiya, t2.ism, t2.otdel, t2.lavozim, t1.sabab, t1.dan, t1.gacha " +
                                             "from otpusk t1 " +
                                             "inner join employee t2 " +
                                             "on t1.employeeid = t2.employeeid " +
-                                            "where (t1.employeeid = " + employeeListboxes[comboBox2.SelectedIndex].ID + 
+                                            "where t2.status = true and (t1.employeeid = " + employeeListboxes[comboBox2.SelectedIndex].ID + 
                                             " and dan >= '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + 
                                             "' and dan <= '" + dateTimePicker2.Value.ToString("yyyy-MM-dd") + 
                                             "') or (t1.employeeid = " + employeeListboxes[comboBox2.SelectedIndex].ID +
@@ -231,11 +231,11 @@ namespace Reports
                                             );
                         break;
                     case 17:
-                        dataGridView1.DataSource = await _dataBase.GetRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, t2.lavozim, t1.door, t1.sana, t1.temperature " +
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select t2.employeeid,  t2.tableid, t2.familiya, t2.ism, t2.otdel, t2.lavozim, t1.door, t1.sana, t1.temperature " +
                                             "from temperature t1 " +
                                             "inner join employee t2 " +
                                             "on t1.employeeid = t2.employeeid " +
-                                            "where t1.employeeid = " + employeeListboxes[comboBox2.SelectedIndex].ID + 
+                                            "where t2.status = true and t1.employeeid = " + employeeListboxes[comboBox2.SelectedIndex].ID + 
                                             " and t1.sana >= '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") + 
                                             "' and t1.sana <= '" + dateTimePicker2.Value.ToString("yyyy-MM-dd") + "'"
                                             );
@@ -248,10 +248,10 @@ namespace Reports
                                             );
                         break;
                     case 19:
-                        var dataTable = await _dataBase.GetRecords("select e.employeeid, e.ism, e.familiya, e.lavozim, r.kirish::date as kun, r.kirish, r.chiqish from employee e " +
+                        var dataTable = await _dataBase.GetRecords("select e.employeeid, e.tableid, e.ism, e.familiya, e.lavozim, r.kirish::date as kun, r.kirish, r.chiqish from employee e " +
                                                     "left join reports r " +
                                                     "on e.employeeid = r.employeeid " +
-                                                    "where e.employeeid = " + employeeListboxes[comboBox2.SelectedIndex].ID +
+                                                    "where e.status = true and e.employeeid = " + employeeListboxes[comboBox2.SelectedIndex].ID +
                                                     " and r.kirish::date >= '" + dateTimePicker1.Text + "' " + 
                                                     "and r.kirish::date <= '" + dateTimePicker2.Text + "' " +
                                                     "group by e.employeeid, e.ism, e.familiya, e.lavozim, r.kirish, r.chiqish " +
@@ -269,17 +269,18 @@ namespace Reports
 
                         var columns = maxColumn * 2;
 
-                        dataGridView1.ColumnCount = 5 + columns;
+                        dataGridView1.ColumnCount = 6 + columns;
                         dataGridView1.RowCount = grouped.Count();
 
                         dataGridView1.Columns[0].HeaderText = "ID";
-                        dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-                        dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-                        dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
-                        dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DATE;
+                        dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_TABLE_ID;
+                        dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                        dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_NAME;
+                        dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
+                        dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_DATE;
                         for (int i = 1; i <= columns; i++)
                         {
-                            dataGridView1.Columns[i + 4].HeaderText = i % 2 != 0 ? Properties.Resources.GRIDVIEW_ENTER :
+                            dataGridView1.Columns[i + 5].HeaderText = i % 2 != 0 ? Properties.Resources.GRIDVIEW_ENTER :
                                                                                    Properties.Resources.GRIDVIEW_EXIT;
                         }
 
@@ -287,12 +288,13 @@ namespace Reports
                         foreach (var group in grouped)
                         {
                             dataGridView1[0, rowIndex].Value = group.Select(s => s.Field<int>("employeeid")).First().ToString();
-                            dataGridView1[1, rowIndex].Value = group.Select(s => s.Field<string>("familiya")).First().ToString();
-                            dataGridView1[2, rowIndex].Value = group.Select(s => s.Field<string>("ism")).First().ToString();
-                            dataGridView1[3, rowIndex].Value = group.Select(s => s.Field<string>("lavozim")).First().ToString();
-                            dataGridView1[4, rowIndex].Value = group.Select(s => s.Field<DateTime?>("kun")).First()?.ToString("yyyy-MM-dd");
+                            dataGridView1[1, rowIndex].Value = group.Select(s => s.Field<string>("tableid")).First()?.ToString();
+                            dataGridView1[2, rowIndex].Value = group.Select(s => s.Field<string>("familiya")).First().ToString();
+                            dataGridView1[3, rowIndex].Value = group.Select(s => s.Field<string>("ism")).First().ToString();
+                            dataGridView1[4, rowIndex].Value = group.Select(s => s.Field<string>("lavozim")).First().ToString();
+                            dataGridView1[5, rowIndex].Value = group.Select(s => s.Field<DateTime?>("kun")).First()?.ToString("yyyy-MM-dd");
 
-                            int columnIndex = 5;
+                            int columnIndex = 6;
                             foreach (var row in group)
                             {
                                 dataGridView1[columnIndex, rowIndex].Value = row.Field<DateTime?>("kirish")?.ToString("HH:mm:ss");
@@ -316,7 +318,10 @@ namespace Reports
                 label5.Text = "";
                 button1.Enabled = true;
                 button2.Enabled = true;
-                GridHeaders(comboBox1.SelectedIndex);
+                if (comboBox1.SelectedIndex != 15)
+                {
+                    GridHeaders(comboBox1.SelectedIndex);
+                }
             }
             catch (Exception msg)
             {
@@ -347,12 +352,12 @@ namespace Reports
                 switch (comboBox1.SelectedIndex)
                 {
                     case 0:
-                        dataGridView1.DataSource = await _dataBase.GetRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel," +
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select t2.employeeid, t2.tableid, t2.familiya, t2.ism, t2.otdel," +
                             " t2.lavozim, t1.door_name, t1.kirish, t1.chiqish " +
                                              "from reports t1 " +
                                              "inner join employee t2 " +
                                              "on t1.employeeid = t2.employeeid " +
-                                             "where t1.kirish::date >= '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") +
+                                             "where t2.status = true and t1.kirish::date >= '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") +
                                              "' and t1.kirish::date <= '" + dateTimePicker2.Value.ToString("yyyy-MM-dd") +
                                              "' and t2.department  <@ '" + treeView1.SelectedNode.Name + "'"
                                              );
@@ -469,11 +474,11 @@ namespace Reports
                                             );
                         break;
                     case 16:
-                        dataGridView1.DataSource = await _dataBase.GetRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, t2.lavozim, t1.sabab, t1.dan, t1.gacha " +
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select t2.employeeid, t2.tableid, t2.familiya, t2.ism, t2.otdel, t2.lavozim, t1.sabab, t1.dan, t1.gacha " +
                                             "from otpusk t1 " +
                                             "inner join employee t2 " +
                                             "on t1.employeeid = t2.employeeid " +
-                                            "where (t2.department  <@ '" + treeView1.SelectedNode.Name +
+                                            "where t2.status = true and (t2.department  <@ '" + treeView1.SelectedNode.Name +
                                             "' and dan >= '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") +
                                             "' and dan <= '" + dateTimePicker2.Value.ToString("yyyy-MM-dd") +
                                             "') or (t2.department  <@ '" + treeView1.SelectedNode.Name +
@@ -482,11 +487,11 @@ namespace Reports
                                             );
                         break;
                     case 17:
-                        dataGridView1.DataSource = await _dataBase.GetRecords("select t2.employeeid, t2.familiya, t2.ism, t2.otchestvo, t2.otdel, t2.lavozim, t1.door, t1.sana, t1.temperature " +
+                        dataGridView1.DataSource = await _dataBase.GetRecords("select t2.employeeid, t2.tableid, t2.familiya, t2.ism, t2.otdel, t2.lavozim, t1.door, t1.sana, t1.temperature " +
                                             "from temperature t1 " +
                                             "inner join employee " +
                                             "t2 on t1.employeeid = t2.employeeid " +
-                                            "where t2.department <@ '" + treeView1.SelectedNode.Name +
+                                            "where t2.status = true and t2.department <@ '" + treeView1.SelectedNode.Name +
                                             "' and t1.sana::date >= '" + dateTimePicker1.Value.ToString("yyyy-MM-dd") +
                                             "' and " + "t1.sana::date <= '" + dateTimePicker2.Value.ToString("yyyy-MM-dd") + "'"
                                             );
@@ -500,9 +505,9 @@ namespace Reports
                         break;
 
                     case 19:
-                        var dataTable = await _dataBase.GetRecords("select e.employeeid, e.ism, e.familiya, e.lavozim, r.kirish::date as kun, r.kirish, r.chiqish " +
-                                                    "from (select employeeid, ism, familiya, lavozim from employee " +
-                                                    "where department <@ '" + treeView1.SelectedNode.Name + "') e " +
+                        var dataTable = await _dataBase.GetRecords("select e.employeeid, e.tableid, e.ism, e.familiya, e.lavozim, r.kirish::date as kun, r.kirish, r.chiqish " +
+                                                    "from (select employeeid, tableid, ism, familiya, lavozim from employee " +
+                                                    "where status = true and department <@ '" + treeView1.SelectedNode.Name + "') e " +
                                                     "left join reports r " +
                                                     "on r.employeeid = e.employeeid " +
                                                     "and r.kirish::date >= '" + dateTimePicker1.Text + "' " +
@@ -521,17 +526,18 @@ namespace Reports
 
                         var columns = maxColumn * 2;
 
-                        dataGridView1.ColumnCount = 5 + columns;
+                        dataGridView1.ColumnCount = 6 + columns;
                         dataGridView1.RowCount = grouped.Count();
 
                         dataGridView1.Columns[0].HeaderText = "ID";
-                        dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-                        dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-                        dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
-                        dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DATE;
+                        dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_TABLE_ID;
+                        dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                        dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_NAME;
+                        dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
+                        dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_DATE;
                         for (int i = 1; i <= columns; i++)
                         {
-                            dataGridView1.Columns[i + 4].HeaderText = i % 2 != 0 ? Properties.Resources.GRIDVIEW_ENTER :
+                            dataGridView1.Columns[i + 5].HeaderText = i % 2 != 0 ? Properties.Resources.GRIDVIEW_ENTER :
                                                                                    Properties.Resources.GRIDVIEW_EXIT;
                         }
 
@@ -539,12 +545,13 @@ namespace Reports
                         foreach (var group in grouped)
                         {
                             dataGridView1[0, rowIndex].Value = group.Select(s => s.Field<int>("employeeid")).First().ToString();
-                            dataGridView1[1, rowIndex].Value = group.Select(s => s.Field<string>("familiya")).First().ToString();
-                            dataGridView1[2, rowIndex].Value = group.Select(s => s.Field<string>("ism")).First().ToString();
-                            dataGridView1[3, rowIndex].Value = group.Select(s => s.Field<string>("lavozim")).First().ToString();
-                            dataGridView1[4, rowIndex].Value = group.Select(s => s.Field<DateTime?>("kirish")).First()?.ToString("yyyy-MM-dd");
+                            dataGridView1[1, rowIndex].Value = group.Select(s => s.Field<string>("tableid")).First()?.ToString();
+                            dataGridView1[2, rowIndex].Value = group.Select(s => s.Field<string>("familiya")).First().ToString();
+                            dataGridView1[3, rowIndex].Value = group.Select(s => s.Field<string>("ism")).First().ToString();
+                            dataGridView1[4, rowIndex].Value = group.Select(s => s.Field<string>("lavozim")).First().ToString();
+                            dataGridView1[5, rowIndex].Value = group.Select(s => s.Field<DateTime?>("kirish")).First()?.ToString("yyyy-MM-dd");
 
-                            int columnIndex = 5;
+                            int columnIndex = 6;
                             foreach (var row in group)
                             {
                                 dataGridView1[columnIndex, rowIndex].Value = row.Field<DateTime?>("kirish")?.ToString("HH:mm:ss");
@@ -593,9 +600,9 @@ namespace Reports
             {
                 case 0:
                     dataGridView1.Columns[0].HeaderText = "ID";
-                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_TABLE_ID;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                     dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
                     dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_DOOR;
@@ -605,9 +612,9 @@ namespace Reports
 
                 case 1:
                     dataGridView1.Columns[0].HeaderText = "ID";
-                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_TABLE_ID;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                     dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
                     dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_HOLIDAY;
@@ -626,9 +633,9 @@ namespace Reports
 
                 case 2:
                     dataGridView1.Columns[0].HeaderText = "ID";
-                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_TABLE_ID;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                     dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
                     dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_FROM;
@@ -645,9 +652,9 @@ namespace Reports
 
                 case 3:
                     dataGridView1.Columns[0].HeaderText = "ID";
-                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_TABLE_ID;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                     dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
                     dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_DATE;
@@ -658,9 +665,9 @@ namespace Reports
 
                 case 4:
                     dataGridView1.Columns[0].HeaderText = "ID";
-                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_TABLE_ID;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                     dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
                     dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_FROM;
@@ -670,9 +677,9 @@ namespace Reports
 
                 case 5:
                     dataGridView1.Columns[0].HeaderText = "ID";
-                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_TABLE_ID;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                     dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
                     dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_DATE;
@@ -683,9 +690,9 @@ namespace Reports
 
                 case 6:
                     dataGridView1.Columns[0].HeaderText = "ID";
-                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_TABLE_ID;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                     dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
                     dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_FROM;
@@ -695,9 +702,9 @@ namespace Reports
 
                 case 7:
                     dataGridView1.Columns[0].HeaderText = "ID";
-                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_TABLE_ID;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                     dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
                     dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_DATE;
@@ -707,9 +714,9 @@ namespace Reports
 
                 case 8:
                     dataGridView1.Columns[0].HeaderText = "ID";
-                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_TABLE_ID;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                     dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
                     dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_FROM;
@@ -719,9 +726,9 @@ namespace Reports
 
                 case 9:
                     dataGridView1.Columns[0].HeaderText = "ID";
-                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_TABLE_ID;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                     dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
                     dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_DATE;
@@ -732,9 +739,9 @@ namespace Reports
 
                 case 10:
                     dataGridView1.Columns[0].HeaderText = "ID";
-                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_TABLE_ID;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                     dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
                     dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_FROM;
@@ -744,9 +751,9 @@ namespace Reports
 
                 case 11:
                     dataGridView1.Columns[0].HeaderText = "ID";
-                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_TABLE_ID;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                     dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
                     dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_DATE;
@@ -755,9 +762,9 @@ namespace Reports
 
                 case 12:
                     dataGridView1.Columns[0].HeaderText = "ID";
-                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_TABLE_ID;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                     dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
                     dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_FROM;
@@ -767,9 +774,9 @@ namespace Reports
 
                 case 13:
                     dataGridView1.Columns[0].HeaderText = "ID";
-                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_TABLE_ID;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                     dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
                     dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_FROM;
@@ -779,9 +786,9 @@ namespace Reports
 
                 case 14:
                     dataGridView1.Columns[0].HeaderText = "ID";
-                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_TABLE_ID;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                     dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
                     dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_DATE;
@@ -792,9 +799,9 @@ namespace Reports
 
                 case 15:
                     dataGridView1.Columns[0].HeaderText = "ID";
-                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_TABLE_ID;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                     dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
                     dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_DATE;
@@ -802,9 +809,9 @@ namespace Reports
 
                 case 16:
                     dataGridView1.Columns[0].HeaderText = "ID";
-                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_TABLE_ID;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                     dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
                     dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_VACATION;
@@ -814,9 +821,9 @@ namespace Reports
 
                 case 17:
                     dataGridView1.Columns[0].HeaderText = "ID";
-                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_TABLE_ID;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                     dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
                     dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_DOOR;
@@ -825,9 +832,9 @@ namespace Reports
                     break;
                 case 18:
                     dataGridView1.Columns[0].HeaderText = "ID";
-                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
-                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_NAME;
-                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_FAMILY_NAME;
+                    dataGridView1.Columns[1].HeaderText = Properties.Resources.GRIDVIEW_TABLE_ID;
+                    dataGridView1.Columns[2].HeaderText = Properties.Resources.GRIDVIEW_SURNAME;
+                    dataGridView1.Columns[3].HeaderText = Properties.Resources.GRIDVIEW_NAME;
                     dataGridView1.Columns[4].HeaderText = Properties.Resources.GRIDVIEW_DEPARTMENT;
                     dataGridView1.Columns[5].HeaderText = Properties.Resources.GRIDVIEW_POSITION;
                     dataGridView1.Columns[6].HeaderText = Properties.Resources.GRIDVIEW_HOLIDAY;

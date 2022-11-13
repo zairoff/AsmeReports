@@ -228,6 +228,9 @@
   <data name="GRIDVIEW_SURNAME" xml:space="preserve">
     <value>Surename</value>
   </data>
+  <data name="GRIDVIEW_TABLE_ID" xml:space="preserve">
+    <value>Table ID</value>
+  </data>
   <data name="GRIDVIEW_TEMPERATURE" xml:space="preserve">
     <value>Temperature</value>
   </data>

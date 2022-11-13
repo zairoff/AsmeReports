@@ -222,6 +222,9 @@
   <data name="GRIDVIEW_SURNAME" xml:space="preserve">
     <value>Фамилия</value>
   </data>
+  <data name="GRIDVIEW_TABLE_ID" xml:space="preserve">
+    <value>Таблица ID</value>
+  </data>
   <data name="GRIDVIEW_TEMPERATURE" xml:space="preserve">
     <value>Температура</value>
   </data>

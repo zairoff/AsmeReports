@@ -513,6 +513,15 @@ namespace Reports.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Таблица ID.
+        /// </summary>
+        internal static string GRIDVIEW_TABLE_ID {
+            get {
+                return ResourceManager.GetString("GRIDVIEW_TABLE_ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Температура.
         /// </summary>
         internal static string GRIDVIEW_TEMPERATURE {
