@@ -18,6 +18,7 @@ namespace Reports
             fileWriter = new Excel();
             dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-dd");
             dateTimePicker2.Text = DateTime.Now.ToString("yyyy-MM-dd");
+            _department = (System.Configuration.ConfigurationManager.AppSettings["department"]);
         }
 
         private DataBase _dataBase;
@@ -26,6 +27,7 @@ namespace Reports
         private System.Drawing.Point lastLocation;
         private bool mouseDown = false;
         private readonly IFileWriter fileWriter;
+        private readonly string _department;
 
         private void MaximizeCheck()
         {
@@ -44,7 +46,7 @@ namespace Reports
 
         private void FillTree()
         {
-            System.Collections.Generic.List<MyTree> myTrees = _dataBase.GetTree("select ttext, mytree from department order by id asc");
+            System.Collections.Generic.List<MyTree> myTrees = _dataBase.GetTree("select ttext, mytree from department where mytree <@ '" + _department + "' ");
             for (int i = 0; i < myTrees.Count; i++)
             {
                 TreeNode tnode = new TreeNode
@@ -56,7 +58,7 @@ namespace Reports
             }
         }
 
-        private void Form1_Load(object sender, System.EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
             //MaximizedBounds = Screen.FromHandle(Handle).WorkingArea;
             //WindowState = FormWindowState.Maximized;

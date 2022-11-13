@@ -121,8 +121,21 @@ namespace Reports
                 dataGridView1.Columns.Clear();
                 dataGridView1.Rows.Clear();
 
-                var from = $"{dateTimePicker1.Text} {_breaks[comboBox1.SelectedIndex].From}";
-                var to = $"{dateTimePicker1.Text} {_breaks[comboBox1.SelectedIndex].To}";
+                var timeFrom = TimeSpan.Parse(_breaks[comboBox1.SelectedIndex].From);
+                var timeTo = TimeSpan.Parse(_breaks[comboBox1.SelectedIndex].To);
+
+                DateTime dateFrom = dateTimePicker1.Value;
+                DateTime dateTo = dateTimePicker1.Value;
+
+                if(timeFrom > timeTo)
+                {
+                    dateTo = dateTo.AddDays(1);
+                }
+
+                var from = $"{dateFrom.ToString("yyyy-MM-dd")} {_breaks[comboBox1.SelectedIndex].From}";
+                var to = $"{dateTo.ToString("yyyy-MM-dd")} {_breaks[comboBox1.SelectedIndex].To}";
+
+                //MessageBox.Show($"from: {from}, to:{to}");
 
                 dataGridView1.DataSource = await _dataBase.GetRecords("select distinct e.employeeid, e.familiya, e.ism, e.otdel, e.lavozim " +
                                                     "from employee e " +
