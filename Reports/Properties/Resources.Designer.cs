@@ -513,7 +513,7 @@ namespace Reports.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Таблица ID.
+        ///   Looks up a localized string similar to Табель №.
         /// </summary>
         internal static string GRIDVIEW_TABLE_ID {
             get {

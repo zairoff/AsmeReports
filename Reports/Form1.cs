@@ -12,13 +12,13 @@ namespace Reports
         public Form1()
         {
             InitializeComponent();
+            _department = (System.Configuration.ConfigurationManager.AppSettings["department"]);
             comboBox1.SelectedIndex = 0;
             _dataBase = new DataBase();
             FillTree();            
             fileWriter = new Excel();
             dateTimePicker1.Text = DateTime.Now.ToString("yyyy-MM-dd");
             dateTimePicker2.Text = DateTime.Now.ToString("yyyy-MM-dd");
-            _department = (System.Configuration.ConfigurationManager.AppSettings["department"]);
         }
 
         private DataBase _dataBase;
@@ -46,7 +46,7 @@ namespace Reports
 
         private void FillTree()
         {
-            System.Collections.Generic.List<MyTree> myTrees = _dataBase.GetTree("select ttext, mytree from department where mytree <@ '" + _department + "' ");
+            System.Collections.Generic.List<MyTree> myTrees = _dataBase.GetTree("select ttext, mytree from department where mytree <@ '" + _department + "' order by id asc");
             for (int i = 0; i < myTrees.Count; i++)
             {
                 TreeNode tnode = new TreeNode
